@@ -1,5 +1,5 @@
 {
-  "name": "kienlongpay/kienlongpay-php-api",
+  "name": "kpay/kpay-sdk",
   "type": "library",
   "description": "Client library for Kien Long bank pay",
   "homepage": "https://kienlongbank.com/",
