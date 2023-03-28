@@ -13,6 +13,9 @@ use src\transaction\response\CancelTransactionResponse;
 use src\transaction\response\CreateTransactionResponse;
 use src\transaction\response\QueryTransactionResponse;
 
+require_once 'config/config.php';
+
+
 class KPayClient
 {
     private ThirdPartyClient $client;
