@@ -4,6 +4,7 @@
   "type": "library",
   "description": "Client library for Kien Long bank pay",
   "homepage": "https://kienlongbank.com/",
+  "license": "MIT",
   "authors": [
     {
       "name": "Unicloud Group developers",
