@@ -16,7 +16,7 @@ class CreateTransactionRequest implements TransactionRequest
     public string $successUrl;
     public string $failUrl;
     public int $redirectAfter;
-    public string $bankAccountId;
+    public string $bankAccountNo;
 
     /**
      * @param string $refTransactionId
@@ -29,9 +29,9 @@ class CreateTransactionRequest implements TransactionRequest
      * @param string $successUrl
      * @param string $failUrl
      * @param int $redirectAfter
-     * @param string $bankAccountId
+     * @param string $bankAccountNo
      */
-    public function __construct(string $refTransactionId, int $amount, string $description, int $timeout, string $title, string $language, CustomerInfo $customerInfo, string $successUrl, string $failUrl, int $redirectAfter, string $bankAccountId)
+    public function __construct(string $refTransactionId, int $amount, string $description, int $timeout, string $title, string $language, CustomerInfo $customerInfo, string $successUrl, string $failUrl, int $redirectAfter, string $bankAccountNo)
     {
         $this->refTransactionId = $refTransactionId;
         $this->amount = $amount;
@@ -43,7 +43,7 @@ class CreateTransactionRequest implements TransactionRequest
         $this->successUrl = $successUrl;
         $this->failUrl = $failUrl;
         $this->redirectAfter = $redirectAfter;
-        $this->bankAccountId = $bankAccountId;
+        $this->bankAccountNo = $bankAccountNo;
     }
 
     /**
@@ -209,17 +209,17 @@ class CreateTransactionRequest implements TransactionRequest
     /**
      * @return string
      */
-    public function getBankAccountId(): string
+    public function getBankAccountNo(): string
     {
-        return $this->bankAccountId;
+        return $this->bankAccountNo;
     }
 
     /**
-     * @param string $bankAccountId
+     * @param string $bankAccountNo
      */
-    public function setBankAccountId(string $bankAccountId): void
+    public function setBankAccountNo(string $bankAccountNo): void
     {
-        $this->bankAccountId = $bankAccountId;
+        $this->bankAccountNo = $bankAccountNo;
     }
 
 }
