@@ -23,11 +23,12 @@
     }
   },
   "require": {
-    "php": ">=7.0",
+    "php": ">=7.3",
     "ext-openssl": "*",
     "guzzlehttp/guzzle": "^7.0",
     "ext-json": "*",
-    "ext-oauth": "*"
+    "ext-oauth": "*",
+    "ext-mbstring": "*"
   },
   "config": {
     "allow-plugins": {
