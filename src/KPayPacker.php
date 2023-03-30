@@ -54,6 +54,7 @@ class KPayPacker
     /**
      * @param PackedMessage $packed_message
      * @return mixed
+     * @noinspection PhpParamsInspection
      */
     public function decode(PackedMessage $packed_message)
     {
