@@ -1,10 +1,14 @@
 <?php
+declare(strict_types=1);
 
 namespace src\transaction\request;
 
+/**
+ *
+ */
 class CancelTransactionRequest implements TransactionRequest
 {
-    public string $transactionId;
+    public  $transactionId;
 
     /**
      * @param string $transactionId

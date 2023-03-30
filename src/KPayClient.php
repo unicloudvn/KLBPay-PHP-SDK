@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace src;
 
@@ -16,21 +17,30 @@ use src\transaction\response\QueryTransactionResponse;
 require_once 'config/config.php';
 
 
+/**
+ *
+ */
 class KPayClient
 {
-    private ThirdPartyClient $client;
-    private KPayPacker $k_pay_packer;
+    private  $client;
+    private  $kPayPacker;
 
 
-    public function __construct(KPayPacker $k_pay_packer)
+    /**
+     * @param KPayPacker $kPayPacker
+     */
+    public function __construct(KPayPacker $kPayPacker)
     {
-        $this->k_pay_packer = $k_pay_packer;
+        $this->kPayPacker = $kPayPacker;
         $this->client = new ThirdPartyClient();
     }
 
+    /**
+     * @return KPayPacker
+     */
     public function getKPayPacker(): KPayPacker
     {
-        return $this->k_pay_packer;
+        return $this->kPayPacker;
     }
 
     /**
@@ -38,8 +48,8 @@ class KPayClient
      */
     public function execute(string $path, TransactionRequest $request): PackedMessage
     {
-        $packed_request = $this->k_pay_packer->encode($request);
-        return $this->client->callAPI($this->k_pay_packer->getHost(), $path, $packed_request);
+        $packed_request = $this->kPayPacker->encode($request);
+        return $this->client->callAPI($this->kPayPacker->getHost(), $path, $packed_request);
     }
 
     /**
@@ -48,7 +58,7 @@ class KPayClient
     public function createTransaction(CreateTransactionRequest $request): CreateTransactionResponse
     {
         $packed_response = $this->execute(CREATE_TRANSACTION_PATH, $request);
-        return $this->k_pay_packer->create($packed_response);
+        return $this->kPayPacker->create($packed_response);
     }
 
     /**
@@ -57,7 +67,7 @@ class KPayClient
     public function cancelTransaction(CancelTransactionRequest $request): CancelTransactionResponse
     {
         $packed_response = $this->execute(CANCEL_TRANSACTION_PATH, $request);
-        return $this->k_pay_packer->cancel($packed_response);
+        return $this->kPayPacker->cancel($packed_response);
     }
 
     /**
@@ -66,7 +76,7 @@ class KPayClient
     public function checkTransaction(QueryTransactionRequest $request): QueryTransactionResponse
     {
         $packed_response = $this->execute(CHECK_TRANSACTION_PATH, $request);
-        return $this->k_pay_packer->check($packed_response);
+        return $this->kPayPacker->check($packed_response);
     }
 
 }

@@ -1,15 +1,23 @@
 <?php
+declare(strict_types=1);
 
 namespace src\transaction\model;
 
-enum TransactionStatus: string
+/**
+ *
+ */
+class TransactionStatus: string
 {
-    case CREATED = "CREATED";
-    case SUCCESS = "SUCCESS";
-    case CANCELED = "CANCELED";
-    case FAIL = "FAIL";
-    case TIMEOUT = "TIMEOUT";
+    public const CREATED = 'CREATED';
+    public const SUCCESS = 'SUCCESS';
+    public const CANCELED = 'CANCELED';
+    public const FAILED = 'FAILED';
+    public const TIMEOUT = 'TIMEOUT';
 
+    /**
+     * @param $value
+     * @return TransactionStatus|null
+     */
     public static function valueOf($value): ?TransactionStatus
     {
         foreach (TransactionStatus::cases() as $values) {

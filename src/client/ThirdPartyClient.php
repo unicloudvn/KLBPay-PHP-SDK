@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace src\client;
 
@@ -10,14 +11,22 @@ use src\exception\PayResponseCode;
 use src\security\BaseHeader;
 use src\security\PackedMessage;
 
+/**
+ *
+ */
 class ThirdPartyClient
 {
+    /**
+     * @param string $url
+     * @param $request
+     * @return ResponseInterface
+     */
     private function execute(string $url, $request): ResponseInterface
     {
         try {
             $client = new Client();
             return $client->post($url, $request);
-        } catch (GuzzleException) {
+        } catch (GuzzleException $exception) {
             throw new PaymentException(PayResponseCode::PAYMENT_SECURITY_VIOLATION);
         }
     }
@@ -50,7 +59,7 @@ class ThirdPartyClient
             throw new PaymentException(PayResponseCode::PAYMENT_TRANSACTION_FAILED);
         }
 
-        $response_body = json_decode($response->getBody(), true);
+        $response_body = json_decode((string)$response->getBody(), true);
         if ($response_body === null) {
             throw new PaymentException(PayResponseCode::PAYMENT_TRANSACTION_FAILED);
         }

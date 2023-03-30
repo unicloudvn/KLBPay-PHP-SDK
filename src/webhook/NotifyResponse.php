@@ -1,10 +1,14 @@
 <?php
+declare(strict_types=1);
 
 namespace src\webhook;
 
+/**
+ *
+ */
 class NotifyResponse
 {
-    private bool $status;
+    private  $status;
 
     /**
      * @param bool $status

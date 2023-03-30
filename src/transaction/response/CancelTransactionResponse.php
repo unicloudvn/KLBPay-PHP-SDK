@@ -1,10 +1,14 @@
 <?php
+declare(strict_types=1);
 
 namespace src\transaction\response;
 
+/**
+ *
+ */
 class CancelTransactionResponse implements TransactionResponse
 {
-    public bool $success;
+    public $success;
 
     /**
      * @param bool $success

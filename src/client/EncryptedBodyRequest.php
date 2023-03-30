@@ -1,10 +1,14 @@
 <?php
+declare(strict_types=1);
 
 namespace src\client;
 
+/**
+ *
+ */
 class EncryptedBodyRequest
 {
-    public string $data;
+    public $data;
 
     /**
      * @param string $data
@@ -25,7 +29,7 @@ class EncryptedBodyRequest
     /**
      * @param string $data
      */
-    public function setData(string $data): void
+    public function setData(string $data)
     {
         $this->data = $data;
     }

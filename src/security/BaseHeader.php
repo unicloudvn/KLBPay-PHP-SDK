@@ -4,6 +4,9 @@ namespace src\security;
 
 use Exception;
 
+/**
+ *
+ */
 class BaseHeader
 {
     const TIMESTAMP = 'x-api-time';
