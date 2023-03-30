@@ -4,21 +4,24 @@ namespace src\transaction\response;
 
 use src\transaction\model\TransactionStatus;
 
+/**
+ *
+ */
 class QueryTransactionResponse implements TransactionResponse
 {
     public TransactionStatus $status;
-    public string $ref_transaction_id;
+    public string $refTransactionId;
     public int $amount;
 
     /**
      * @param TransactionStatus $status
-     * @param string $ref_transaction_id
+     * @param string $refTransactionId
      * @param int $amount
      */
-    public function __construct(TransactionStatus $status, string $ref_transaction_id, int $amount)
+    public function __construct(TransactionStatus $status, string $refTransactionId, int $amount)
     {
         $this->status = $status;
-        $this->ref_transaction_id = $ref_transaction_id;
+        $this->refTransactionId = $refTransactionId;
         $this->amount = $amount;
     }
 
@@ -43,15 +46,15 @@ class QueryTransactionResponse implements TransactionResponse
      */
     public function getRefTransactionId(): string
     {
-        return $this->ref_transaction_id;
+        return $this->refTransactionId;
     }
 
     /**
-     * @param string $ref_transaction_id
+     * @param string $refTransactionId
      */
-    public function setRefTransactionId(string $ref_transaction_id): void
+    public function setRefTransactionId(string $refTransactionId): void
     {
-        $this->ref_transaction_id = $ref_transaction_id;
+        $this->refTransactionId = $refTransactionId;
     }
 
     /**

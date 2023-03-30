@@ -4,46 +4,46 @@ namespace src\webhook;
 
 class NotifyRequest
 {
-    private string $transaction_id;
-    private string $ref_transaction_id;
-    private string $virtual_account;
-    private string $actual_account;
-    private string $from_bin;
-    private string $from_account;
+    private string $transactionId;
+    private string $refTransactionId;
+    private string $virtualAccount;
+    private string $actualAccount;
+    private string $fromBin;
+    private string $fromAccount;
     private bool $success;
     private int $amount;
-    private string $status_code;
-    private string $txn_number;
-    private string $transfer_desc;
+    private string $statusCode;
+    private string $txnNumber;
+    private string $transferDesc;
     private string $time; // yyyy-MM-dd HH:mm:ss
 
     /**
-     * @param string $transaction_id
-     * @param string $ref_transaction_id
-     * @param string $virtual_account
-     * @param string $actual_account
-     * @param string $from_bin
-     * @param string $from_account
+     * @param string $transactionId
+     * @param string $refTransactionId
+     * @param string $virtualAccount
+     * @param string $actualAccount
+     * @param string $fromBin
+     * @param string $fromAccount
      * @param bool $success
      * @param int $amount
-     * @param string $status_code
-     * @param string $txn_number
-     * @param string $transfer_desc
+     * @param string $statusCode
+     * @param string $txnNumber
+     * @param string $transferDesc
      * @param string $time
      */
-    public function __construct(string $transaction_id, string $ref_transaction_id, string $virtual_account, string $actual_account, string $from_bin, string $from_account, bool $success, int $amount, string $status_code, string $txn_number, string $transfer_desc, string $time)
+    public function __construct(string $transactionId, string $refTransactionId, string $virtualAccount, string $actualAccount, string $fromBin, string $fromAccount, bool $success, int $amount, string $statusCode, string $txnNumber, string $transferDesc, string $time)
     {
-        $this->transaction_id = $transaction_id;
-        $this->ref_transaction_id = $ref_transaction_id;
-        $this->virtual_account = $virtual_account;
-        $this->actual_account = $actual_account;
-        $this->from_bin = $from_bin;
-        $this->from_account = $from_account;
+        $this->transactionId = $transactionId;
+        $this->refTransactionId = $refTransactionId;
+        $this->virtualAccount = $virtualAccount;
+        $this->actualAccount = $actualAccount;
+        $this->fromBin = $fromBin;
+        $this->fromAccount = $fromAccount;
         $this->success = $success;
         $this->amount = $amount;
-        $this->status_code = $status_code;
-        $this->txn_number = $txn_number;
-        $this->transfer_desc = $transfer_desc;
+        $this->statusCode = $statusCode;
+        $this->txnNumber = $txnNumber;
+        $this->transferDesc = $transferDesc;
         $this->time = $time;
     }
 
@@ -52,15 +52,15 @@ class NotifyRequest
      */
     public function getTransactionId(): string
     {
-        return $this->transaction_id;
+        return $this->transactionId;
     }
 
     /**
-     * @param string $transaction_id
+     * @param string $transactionId
      */
-    public function setTransactionId(string $transaction_id)
+    public function setTransactionId(string $transactionId)
     {
-        $this->transaction_id = $transaction_id;
+        $this->transactionId = $transactionId;
     }
 
     /**
@@ -68,15 +68,15 @@ class NotifyRequest
      */
     public function getRefTransactionId(): string
     {
-        return $this->ref_transaction_id;
+        return $this->refTransactionId;
     }
 
     /**
-     * @param string $ref_transaction_id
+     * @param string $refTransactionId
      */
-    public function setRefTransactionId(string $ref_transaction_id): void
+    public function setRefTransactionId(string $refTransactionId): void
     {
-        $this->ref_transaction_id = $ref_transaction_id;
+        $this->refTransactionId = $refTransactionId;
     }
 
     /**
@@ -84,15 +84,15 @@ class NotifyRequest
      */
     public function getVirtualAccount(): string
     {
-        return $this->virtual_account;
+        return $this->virtualAccount;
     }
 
     /**
-     * @param string $virtual_account
+     * @param string $virtualAccount
      */
-    public function setVirtualAccount(string $virtual_account): void
+    public function setVirtualAccount(string $virtualAccount): void
     {
-        $this->virtual_account = $virtual_account;
+        $this->virtualAccount = $virtualAccount;
     }
 
     /**
@@ -100,15 +100,15 @@ class NotifyRequest
      */
     public function getActualAccount(): string
     {
-        return $this->actual_account;
+        return $this->actualAccount;
     }
 
     /**
-     * @param string $actual_account
+     * @param string $actualAccount
      */
-    public function setActualAccount(string $actual_account): void
+    public function setActualAccount(string $actualAccount): void
     {
-        $this->actual_account = $actual_account;
+        $this->actualAccount = $actualAccount;
     }
 
     /**
@@ -116,15 +116,15 @@ class NotifyRequest
      */
     public function getFromBin(): string
     {
-        return $this->from_bin;
+        return $this->fromBin;
     }
 
     /**
-     * @param string $from_bin
+     * @param string $fromBin
      */
-    public function setFromBin(string $from_bin): void
+    public function setFromBin(string $fromBin): void
     {
-        $this->from_bin = $from_bin;
+        $this->fromBin = $fromBin;
     }
 
     /**
@@ -132,15 +132,15 @@ class NotifyRequest
      */
     public function getFromAccount(): string
     {
-        return $this->from_account;
+        return $this->fromAccount;
     }
 
     /**
-     * @param string $from_account
+     * @param string $fromAccount
      */
-    public function setFromAccount(string $from_account): void
+    public function setFromAccount(string $fromAccount): void
     {
-        $this->from_account = $from_account;
+        $this->fromAccount = $fromAccount;
     }
 
     /**
@@ -180,15 +180,15 @@ class NotifyRequest
      */
     public function getStatusCode(): string
     {
-        return $this->status_code;
+        return $this->statusCode;
     }
 
     /**
-     * @param string $status_code
+     * @param string $statusCode
      */
-    public function setStatusCode(string $status_code): void
+    public function setStatusCode(string $statusCode): void
     {
-        $this->status_code = $status_code;
+        $this->statusCode = $statusCode;
     }
 
     /**
@@ -196,15 +196,15 @@ class NotifyRequest
      */
     public function getTxnNumber(): string
     {
-        return $this->txn_number;
+        return $this->txnNumber;
     }
 
     /**
-     * @param string $txn_number
+     * @param string $txnNumber
      */
-    public function setTxnNumber(string $txn_number): void
+    public function setTxnNumber(string $txnNumber): void
     {
-        $this->txn_number = $txn_number;
+        $this->txnNumber = $txnNumber;
     }
 
     /**
@@ -212,15 +212,15 @@ class NotifyRequest
      */
     public function getTransferDesc(): string
     {
-        return $this->transfer_desc;
+        return $this->transferDesc;
     }
 
     /**
-     * @param string $transfer_desc
+     * @param string $transferDesc
      */
-    public function setTransferDesc(string $transfer_desc): void
+    public function setTransferDesc(string $transferDesc): void
     {
-        $this->transfer_desc = $transfer_desc;
+        $this->transferDesc = $transferDesc;
     }
 
     /**

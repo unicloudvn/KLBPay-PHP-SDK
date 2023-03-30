@@ -2,6 +2,9 @@
 
 namespace src\transaction\request;
 
+/**
+ *
+ */
 class CancelTransactionRequest implements TransactionRequest
 {
     public string $transactionId;

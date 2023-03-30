@@ -4,6 +4,9 @@ namespace src\transaction\request;
 
 use src\transaction\model\CustomerInfo;
 
+/**
+ *
+ */
 class CreateTransactionRequest implements TransactionRequest
 {
     public string $refTransactionId;

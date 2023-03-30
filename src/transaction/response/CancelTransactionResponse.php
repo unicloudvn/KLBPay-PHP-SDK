@@ -2,6 +2,9 @@
 
 namespace src\transaction\response;
 
+/**
+ *
+ */
 class CancelTransactionResponse implements TransactionResponse
 {
     public bool $success;

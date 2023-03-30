@@ -4,11 +4,11 @@ namespace src\transaction\model;
 
 enum TransactionStatus: string
 {
-    case CREATED = "CREATED";
-    case SUCCESS = "SUCCESS";
-    case CANCELED = "CANCELED";
-    case FAIL = "FAIL";
-    case TIMEOUT = "TIMEOUT";
+    case CREATED = 'CREATED';
+    case SUCCESS = 'SUCCESS';
+    case CANCELED = 'CANCELED';
+    case FAIL = 'FAIL';
+    case TIMEOUT = 'TIMEOUT';
 
     public static function valueOf($value): ?TransactionStatus
     {

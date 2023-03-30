@@ -2,6 +2,9 @@
 
 namespace src\client;
 
+/**
+ *
+ */
 class EncryptedBodyRequest
 {
     public string $data;

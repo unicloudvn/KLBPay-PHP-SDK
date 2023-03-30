@@ -10,8 +10,16 @@ use src\exception\PayResponseCode;
 use src\security\BaseHeader;
 use src\security\PackedMessage;
 
+/**
+ *
+ */
 class ThirdPartyClient
 {
+    /**
+     * @param string $url
+     * @param $request
+     * @return ResponseInterface
+     */
     private function execute(string $url, $request): ResponseInterface
     {
         try {

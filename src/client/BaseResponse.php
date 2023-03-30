@@ -5,12 +5,18 @@ namespace src\client;
 use src\exception\PayResponseCode;
 use src\transaction\response\TransactionResponse;
 
+/**
+ *
+ */
 class BaseResponse
 {
     public int $code;
     public string $message;
     public TransactionResponse $data;
 
+    /**
+     * @param TransactionResponse $data
+     */
     public function __construct(TransactionResponse $data)
     {
         $this->data = $data;

@@ -4,6 +4,9 @@ namespace src\exception;
 
 use RuntimeException;
 
+/**
+ *
+ */
 class PaymentException extends RuntimeException
 {
 
@@ -12,6 +15,9 @@ class PaymentException extends RuntimeException
      */
     private PayResponseCode $response_code;
 
+    /**
+     * @param PayResponseCode $responseCode
+     */
     public function __construct(PayResponseCode $responseCode)
     {
         parent::__construct($responseCode->getMessage());

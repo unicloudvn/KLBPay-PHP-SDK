@@ -2,6 +2,9 @@
 
 namespace src\webhook;
 
+/**
+ *
+ */
 class NotifyResponse
 {
     private bool $status;
