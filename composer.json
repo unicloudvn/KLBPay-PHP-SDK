@@ -23,7 +23,7 @@
     }
   },
   "require": {
-    "php": ">=7.0",
+    "php": ">=7.1",
     "ext-openssl": "*",
     "guzzlehttp/guzzle": "^6.5.8",
     "ext-json": "*",
