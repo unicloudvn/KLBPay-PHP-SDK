@@ -1,11 +1,7 @@
 <?php
-declare(strict_types=1);
 
 namespace src\client;
 
-/**
- *
- */
 class EncryptedBodyRequest
 {
     public $data;

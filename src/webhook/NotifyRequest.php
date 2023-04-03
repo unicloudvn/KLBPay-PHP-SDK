@@ -1,25 +1,21 @@
 <?php
-declare(strict_types=1);
 
 namespace src\webhook;
 
-/**
- *
- */
 class NotifyRequest
 {
-    private $transactionId;
-    private $refTransactionId;
-    private $virtualAccount;
-    private $actualAccount;
-    private $fromBin;
-    private $fromAccount;
-    private $success;
-    private $amount;
-    private $statusCode;
-    private $txnNumber;
-    private $transferDesc;
-    private $time; // yyyy-MM-dd HH:mm:ss
+    public $transactionId;
+    public $refTransactionId;
+    public $virtualAccount;
+    public $actualAccount;
+    public $fromBin;
+    public $fromAccount;
+    public $success;
+    public $amount;
+    public $statusCode;
+    public $txnNumber;
+    public $transferDesc;
+    public $time; // yyyy-MM-dd HH:mm:ss
 
     /**
      * @param string $transactionId

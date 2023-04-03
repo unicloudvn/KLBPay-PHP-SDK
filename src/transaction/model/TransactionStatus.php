@@ -1,52 +1,48 @@
 <?php
-declare(strict_types=1);
 
 namespace src\transaction\model;
 
-/**
- *
- */
-class TransactionStatus: string
+use InvalidArgumentException;
+use ReflectionClass;
+
+class TransactionStatus
 {
-    public const CREATED = [1, 'CREATE'];
-    public const SUCCESS = [2, 'SUCCESS'];
-    public const CANCELED = [3, 'CANCELED'];
-    public const FAILED = [4, 'FAILED'];
-    public const TIMEOUT = [5, 'TIMEOUT'];
+    public const CREATED = ['code' => 1, 'status' => 'CREATED', 'name' => 'CREATED'];
+    public const SUCCESS = ['code' => 2, 'status' => 'SUCCESS', 'name' => 'SUCCESS'];
+    public const CANCELED = ['code' => 3, 'status' => 'CANCELED', 'name' => 'CANCELED'];
+    public const FAILED = ['code' => 4, 'status' => 'FAILED', 'name' => 'FAILED'];
+    public const TIMEOUT = ['code' => 5, 'status' => 'TIMEOUT', 'name' => 'TIMEOUT'];
 
 
     /**
      * @return array
      */
-    public static function getTransactionStatus(): array
+    public static function getConstants(): array
     {
-        switch ([]) {
-            case 1:
-                return self::CREATED;
-            case 2:
-                return self::SUCCESS;
-            case 3:
-                return self::CANCELED;
-            case 4:
-                return self::FAILED;
-            case 5 :
-                return self::TIMEOUT;
-        }
-        return [];
+        $oClass = new ReflectionClass(__CLASS__);
+        return $oClass->getConstants();
     }
 
-    /**
-     * @param $value
-     * @return TransactionStatus|null
-     */
-    public static function valueOf($value): ?TransactionStatus
+    public static function statusOf(string $status): string
     {
-        foreach (TransactionStatus::getTransactionStatus() as $values) {
-            if ($values->value == $value) {
-                return $values;
+        $constants = self::getConstants();
+        foreach ($constants as $name => $value) {
+            if ($value['status'] == $status) {
+                return $value['name'];
             }
         }
-        return null;
+        throw new InvalidArgumentException('Invalid StatusCode');
+    }
+
+    public static function codeOf(int $code): string
+    {
+        $constants = self::getConstants();
+        foreach ($constants as $name => $value) {
+            if ($value['code'] == $code) {
+                return $value['name'];
+            }
+        }
+        throw new InvalidArgumentException('Invalid StatusCode');
     }
 
 }

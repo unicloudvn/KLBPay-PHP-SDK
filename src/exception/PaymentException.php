@@ -1,52 +1,42 @@
 <?php
-declare(strict_types=1);
 
 namespace src\exception;
 
 use RuntimeException;
 
-/**
- *
- */
 class PaymentException extends RuntimeException
 {
 
-    /**
-     * @var PayResponseCode
-     */
-    private  $responseCode;
+    private $responseCode;
 
     /**
-     * @param PayResponseCode $responseCode
+     * @param string $responseCode
      */
-    public function __construct(PayResponseCode $responseCode)
+    public function __construct(string $responseCode)
     {
-        parent::__construct(PayResponseCode::getMessage());
+        parent::__construct();
         $this->responseCode = $responseCode;
     }
 
-    /**
-     * @return PayResponseCode
-     */
-    public function getResponseCode(): PayResponseCode
+    public function getResponseCode(): string
     {
         return $this->responseCode;
     }
 
-    /**
-     * @return array
-     */
-    public function getPaymentMessage(): array
+
+    public function getPaymentMessage(): string
     {
-        return PayResponseCode::getMessage();
+        return PayResponseCode::getMessage($this->responseCode);
     }
 
-    /**
-     * @return PayResponseCode
-     */
-    public function getPaymentCode(): PayResponseCode
+    public function getPaymentCode(): int
     {
-        return $this->responseCode;
+        return PayResponseCode::getCode($this->responseCode);
+    }
+
+    public function __toString()
+    {
+        return '- [' . $this->getPaymentCode() . '] - ' . $this->getPaymentMessage() . ' at ' . $this->getFile();
     }
 
 }

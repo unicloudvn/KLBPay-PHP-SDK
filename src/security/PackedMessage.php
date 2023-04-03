@@ -1,17 +1,13 @@
 <?php
-declare(strict_types=1);
 
 namespace src\security;
 
-/**
- *
- */
 class PackedMessage
 {
-    public  $clientId;
-    public  $signature;
-    public  $timestamp;
-    public  $encryptedData;
+    public $clientId;
+    public $signature;
+    public $timestamp;
+    public $encryptedData;
 
     /**
      * @param string $clientId

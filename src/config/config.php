@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 
 const AES_CIPHER_ALGORITHM = 'aes-256-cbc';
 const HMAC_ALGORITHM = 'sha256';

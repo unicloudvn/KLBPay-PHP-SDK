@@ -1,11 +1,7 @@
 <?php
-declare(strict_types=1);
 
 namespace src\transaction\response;
 
-/**
- *
- */
 class CancelTransactionResponse implements TransactionResponse
 {
     public $success;

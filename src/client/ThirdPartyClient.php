@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 
 namespace src\client;
 
@@ -11,9 +10,6 @@ use src\exception\PayResponseCode;
 use src\security\BaseHeader;
 use src\security\PackedMessage;
 
-/**
- *
- */
 class ThirdPartyClient
 {
     /**
@@ -27,7 +23,7 @@ class ThirdPartyClient
             $client = new Client();
             return $client->post($url, $request);
         } catch (GuzzleException $exception) {
-            throw new PaymentException(PayResponseCode::PAYMENT_SECURITY_VIOLATION);
+            throw new PaymentException('PAYMENT_SECURITY_VIOLATION');
         }
     }
 
@@ -46,6 +42,7 @@ class ThirdPartyClient
             BaseHeader::TIMESTAMP => $packed_message->getTimestamp(),
         ];
 
+
         $request = [
             'body' => json_encode(new EncryptedBodyRequest($packed_message->getEncryptedData())),
             'headers' => $headers
@@ -54,35 +51,35 @@ class ThirdPartyClient
         $url = $host . $path;
 
         $response = $this::execute($url, $request);
-
+        echo $response->getBody();
         if ($response->getStatusCode() !== 200) {
-            throw new PaymentException(PayResponseCode::PAYMENT_TRANSACTION_FAILED);
+            throw new PaymentException('PAYMENT_TRANSACTION_FAILED');
         }
 
         $response_body = json_decode((string)$response->getBody(), true);
         if ($response_body === null) {
-            throw new PaymentException(PayResponseCode::PAYMENT_TRANSACTION_FAILED);
+            throw new PaymentException('PAYMENT_TRANSACTION_FAILED');
         }
-
+        echo $response_body['code'];
         $response_code = PayResponseCode::valueOf($response_body['code']);
-        if ($response_code === null) {
-            throw new PaymentException(PayResponseCode::PAYMENT_TRANSACTION_FAILED);
+        if ($response_code == null) {
+            throw new PaymentException('PAYMENT_TRANSACTION_FAILED');
         }
 
-        if ($response_code != PayResponseCode::SUCCESS) {
+        if ($response_code != PayResponseCode::SUCCESS['name']) {
             throw new PaymentException(PayResponseCode::valueOf($response_code));
         }
 
         $encrypt_response = $response_body['data'];
         if ($encrypt_response === null) {
-            throw new PaymentException(PayResponseCode::PAYMENT_TRANSACTION_FAILED);
+            throw new PaymentException('PAYMENT_TRANSACTION_FAILED');
         }
 
         $response_headers = $response->getHeaders();
         if (!isset($response_headers[BaseHeader::CLIENT]) ||
             !isset($response_headers[BaseHeader::TIMESTAMP]) ||
             !isset($response_headers[BaseHeader::SIGNATURE])) {
-            throw new PaymentException(PayResponseCode::PAYMENT_SECURITY_VIOLATION);
+            throw new PaymentException('PAYMENT_SECURITY_VIOLATION');
         }
 
         return new PackedMessage(

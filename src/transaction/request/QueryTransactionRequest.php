@@ -2,12 +2,9 @@
 
 namespace src\transaction\request;
 
-/**
- *
- */
 class QueryTransactionRequest implements TransactionRequest
 {
-    public  $transactionId;
+    public $transactionId;
 
     /**
      * @param string $transactionId

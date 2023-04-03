@@ -1,19 +1,15 @@
 <?php
-declare(strict_types=1);
 
 namespace src\client;
 
 use src\exception\PayResponseCode;
 use src\transaction\response\TransactionResponse;
 
-/**
- *
- */
 class BaseResponse
 {
-    public  $code;
-    public  $message;
-    public  $data;
+    public $code;
+    public $message;
+    public $data;
 
     /**
      * @param TransactionResponse $data
@@ -21,8 +17,8 @@ class BaseResponse
     public function __construct(TransactionResponse $data)
     {
         $this->data = $data;
-        $this->message = PayResponseCode::SUCCESS->getMessage();
-        $this->code = PayResponseCode::SUCCESS->value;
+        $this->message = PayResponseCode::SUCCESS['message'];
+        $this->code = PayResponseCode::SUCCESS['code'];
     }
 
     /**

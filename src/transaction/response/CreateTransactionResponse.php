@@ -2,11 +2,6 @@
 
 namespace src\transaction\response;
 
-use src\transaction\model\TransactionStatus;
-
-/**
- *
- */
 class CreateTransactionResponse implements TransactionResponse
 {
     public $transactionId;
@@ -31,10 +26,11 @@ class CreateTransactionResponse implements TransactionResponse
      * @param string $description
      * @param int $amount
      * @param string $qrCodeString
-     * @param TransactionStatus $status
+     * @param string $status
      * @param string $time
      */
-    public function __construct(string $transactionId, string $refTransactionId, string $payLinkCode, int $timeout, string $url, string $virtualAccount, string $description, int $amount, string $qrCodeString, TransactionStatus $status, string $time)
+    public function __construct(string $transactionId, string $refTransactionId, string $payLinkCode, int $timeout,
+                                string $url, string $virtualAccount, string $description, int $amount, string $qrCodeString, string $status, string $time)
     {
         $this->transactionId = $transactionId;
         $this->refTransactionId = $refTransactionId;
@@ -195,17 +191,17 @@ class CreateTransactionResponse implements TransactionResponse
     }
 
     /**
-     * @return TransactionStatus
+     * @return string
      */
-    public function getStatus(): TransactionStatus
+    public function getStatus(): string
     {
         return $this->status;
     }
 
     /**
-     * @param TransactionStatus $status
+     * @param string $status
      */
-    public function setStatus(TransactionStatus $status): void
+    public function setStatus(string $status): void
     {
         $this->status = $status;
     }

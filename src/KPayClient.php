@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 
 namespace src;
 
@@ -16,14 +15,10 @@ use src\transaction\response\QueryTransactionResponse;
 
 require_once 'config/config.php';
 
-
-/**
- *
- */
 class KPayClient
 {
-    private  $client;
-    private  $kPayPacker;
+    public $client;
+    public $kPayPacker;
 
 
     /**

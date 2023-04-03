@@ -1,16 +1,12 @@
 <?php
-declare(strict_types=1);
 
 namespace src\security;
 
-/**
- *
- */
 class Credential
 {
-    private  $clientId;
-    private  $secretKey;
-    private  $encryptKey;
+    private $clientId;
+    private $secretKey;
+    private $encryptKey;
 
     /**
      * @param string $clientId

@@ -1,11 +1,9 @@
 <?php
-declare(strict_types=1);
 
 namespace src;
 
 use Exception;
 use src\exception\PaymentException;
-use src\exception\PayResponseCode;
 use src\security\PackedMessage;
 use src\security\SecurityUtil;
 use src\transaction\model\TransactionStatus;
@@ -14,17 +12,14 @@ use src\transaction\response\CancelTransactionResponse;
 use src\transaction\response\CreateTransactionResponse;
 use src\transaction\response\QueryTransactionResponse;
 
-/**
- *
- */
 class KPayPacker
 {
-    private  $clientId;
-    private  $encryptKey;
-    private  $secretKey;
-    private  $maxTimestampDiff;
+    public $clientId;
+    public $encryptKey;
+    public $secretKey;
+    public $maxTimestampDiff;
 
-    private  $host;
+    public $host;
 
     /**
      * @param string $clientId
@@ -50,23 +45,17 @@ class KPayPacker
         return $this->host;
     }
 
-
-    /**
-     * @param PackedMessage $packed_message
-     * @return mixed
-     * @noinspection PhpParamsInspection
-     */
     public function decode(PackedMessage $packed_message)
     {
         if ($packed_message->getClientId() == null || $packed_message->getClientId() !== $this->clientId) {
-            throw new PaymentException(PayResponseCode::PAYMENT_INVALID_CLIENT_ID);
+            throw new PaymentException('PAYMENT_INVALID_CLIENT_ID');
         }
         // check timestamp
         $check_time = time() * 1000 - $packed_message->getTimestamp();
 
         if ($check_time > $this->maxTimestampDiff) {
             error_log("expire payment: $check_time, threshold: $this->maxTimestampDiff");
-            throw new PaymentException(PayResponseCode::PAYMENT_TRANSACTION_EXPIRED);
+            throw new PaymentException('PAYMENT_TRANSACTION_EXPIRED');
         }
         // check signature
         try {
@@ -84,7 +73,7 @@ class KPayPacker
         } catch (Exception $e) {
             error_log("authenticate error: {$e->getMessage()}");
         }
-        throw new PaymentException(PayResponseCode::PAYMENT_SECURITY_VIOLATION);
+        throw new PaymentException('PAYMENT_SECURITY_VIOLATION');
     }
 
 
@@ -96,7 +85,7 @@ class KPayPacker
     {
         $decoded_response = $this->decode($packed_message);
 
-        $status = TransactionStatus::valueOf($decoded_response->status);
+        $status = TransactionStatus::statusOf($decoded_response->status);
         return new CreateTransactionResponse(
             $decoded_response->transactionId,
             $decoded_response->refTransactionId,
@@ -132,7 +121,7 @@ class KPayPacker
     public function check(PackedMessage $packed_message): QueryTransactionResponse
     {
         $decoded_response = $this->decode($packed_message);
-        $status = TransactionStatus::valueOf($decoded_response->status);
+        $status = TransactionStatus::codeOf($decoded_response->status);
         return new QueryTransactionResponse(
             $status,
             $decoded_response->refTransactionId,
@@ -151,7 +140,7 @@ class KPayPacker
             $json_string = json_encode($data);
         } catch (Exception $e) {
             error_log("Parse data error: {$e->getMessage()}");
-            throw new PaymentException(PayResponseCode::PAYMENT_TRANSACTION_FAILED);
+            throw new PaymentException('PAYMENT_TRANSACTION_FAILED');
         }
         $encrypt_data = SecurityUtil::encryptAES($json_string, $this->encryptKey);
         //encrypt header validation

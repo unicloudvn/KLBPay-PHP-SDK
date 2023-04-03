@@ -1,25 +1,21 @@
 <?php
-declare(strict_types=1);
 
 namespace src\transaction\response;
 
 use src\transaction\model\TransactionStatus;
 
-/**
- *
- */
 class QueryTransactionResponse implements TransactionResponse
 {
-    public  $status;
-    public  $refTransactionId;
-    public  $amount;
+    public $status;
+    public $refTransactionId;
+    public $amount;
 
     /**
-     * @param TransactionStatus $status
+     * @param string $status
      * @param string $refTransactionId
      * @param int $amount
      */
-    public function __construct(TransactionStatus $status, string $refTransactionId, int $amount)
+    public function __construct(string $status, string $refTransactionId, int $amount)
     {
         $this->status = $status;
         $this->refTransactionId = $refTransactionId;
@@ -27,9 +23,9 @@ class QueryTransactionResponse implements TransactionResponse
     }
 
     /**
-     * @return TransactionStatus
+     * @return string
      */
-    public function getStatus(): TransactionStatus
+    public function getStatus(): string
     {
         return $this->status;
     }

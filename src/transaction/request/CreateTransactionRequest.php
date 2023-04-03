@@ -1,26 +1,22 @@
 <?php
-declare(strict_types=1);
 
 namespace src\transaction\request;
 
 use src\transaction\model\CustomerInfo;
 
-/**
- *
- */
 class CreateTransactionRequest implements TransactionRequest
 {
-    public  $refTransactionId;
-    public  $amount;
-    public  $description;
-    public  $timeout;
-    public  $title;
-    public  $language;
-    public  $customerInfo;
-    public  $successUrl;
-    public  $failUrl;
-    public  $redirectAfter;
-    public  $bankAccountNo;
+    public $refTransactionId;
+    public $amount;
+    public $description;
+    public $timeout;
+    public $title;
+    public $language;
+    public $customerInfo;
+    public $successUrl;
+    public $failUrl;
+    public $redirectAfter;
+    public $bankAccountNo;
 
     /**
      * @param string $refTransactionId

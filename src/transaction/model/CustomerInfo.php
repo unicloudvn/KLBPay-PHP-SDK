@@ -1,17 +1,13 @@
 <?php
-declare(strict_types=1);
 
 namespace src\transaction\model;
 
-/**
- *
- */
 class CustomerInfo
 {
-    public  $fullName;
-    public  $email;
-    public  $phone;
-    public  $address;
+    public $fullName;
+    public $email;
+    public $phone;
+    public $address;
 
     /**
      * @param string $fullName

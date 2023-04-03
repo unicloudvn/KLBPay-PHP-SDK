@@ -1,76 +1,56 @@
 <?php
-declare(strict_types=1);
 
 namespace src\exception;
 
+use InvalidArgumentException;
+use ReflectionClass;
 
-/**
- *
- */
 class PayResponseCode
 {
-    public const SUCCESS = [0, 'Success'];
-    public const FAILED = [1, 'Failed'];
-    public const INVALID_PARAM = [2, 'Invalid param'];
+    public const SUCCESS = ['code' => 0, 'message' => 'Success', 'name' => 'SUCCESS'];
+    public const FAILED = ['code' => 1, 'message' => 'Failed', 'name' => 'FAILED'];
+    public const INVALID_PARAM = ['code' => 2, 'message' => 'Invalid param', 'name' => 'INVALID_PARAM'];
 
-    public const PAYMENT_SECURITY_VIOLATION = [1601, 'Security violation'];
-    public const PAYMENT_ORDER_COMPLETED = [1602, 'Order was completed'];
-    public const PAYMENT_AMOUNT_INVALID = [1603, 'Invalid amount'];
-    public const PAYMENT_TRANSACTION_CANCELED = [1604, 'Canceled transaction'];
-    public const PAYMENT_TRANSACTION_EXPIRED = [1605, 'Transaction expired'];
-    public const PAYMENT_TRANSACTION_INVALID = [1606, 'Invalid transaction'];
-    public const PAYMENT_TRANSACTION_FAILED = [1607, 'Transaction failed'];
-    public const PAYMENT_SERVICE_UNAVAILABLE = [1608, 'Service unavailable'];
-    public const PAYMENT_INVALID_CLIENT_ID = [1609, 'Invalid client id'];
+    public const PAYMENT_SECURITY_VIOLATION = ['code' => 1601, 'message' => 'Security violation', 'name' => 'PAYMENT_SECURITY_VIOLATION'];
+    public const PAYMENT_ORDER_COMPLETED = ['code' => 1602, 'message' => 'Order was completed', 'name' => 'PAYMENT_ORDER_COMPLETED'];
+    public const PAYMENT_AMOUNT_INVALID = ['code' => 1603, 'message' => 'Invalid amount', 'name' => 'PAYMENT_AMOUNT_INVALID'];
+    public const PAYMENT_TRANSACTION_CANCELED = ['code' => 1604, 'message' => 'Canceled transaction', 'name' => 'PAYMENT_TRANSACTION_CANCELED'];
+    public const PAYMENT_TRANSACTION_EXPIRED = ['code' => 1605, 'message' => 'Transaction expired', 'name' => 'PAYMENT_TRANSACTION_EXPIRED'];
+    public const PAYMENT_TRANSACTION_INVALID = ['code' => 1606, 'message' => 'Invalid transaction', 'name' => 'PAYMENT_TRANSACTION_INVALID'];
+    public const PAYMENT_TRANSACTION_FAILED = ['code' => 1607, 'message' => 'Transaction failed', 'name' => 'PAYMENT_TRANSACTION_FAILED'];
+    public const PAYMENT_SERVICE_UNAVAILABLE = ['code' => 1608, 'message' => 'Service unavailable', 'name' => 'PAYMENT_SERVICE_UNAVAILABLE'];
+    public const PAYMENT_INVALID_CLIENT_ID = ['code' => 1609, 'message' => 'Invalid client id', 'name' => 'PAYMENT_INVALID_CLIENT_ID'];
 
-
-    /**
-     * @return array
-     */
-    public static function getMessage(): array
+    public static function getCode($name): int
     {
-        switch ([]) {
-            case 0:
-                return self::SUCCESS;
-            case 1:
-                return self::FAILED;
-            case 2:
-                return self::INVALID_PARAM;
-            case 1601:
-                return self::PAYMENT_SECURITY_VIOLATION;
-            case 1602:
-                return self::PAYMENT_ORDER_COMPLETED;
-            case 1603:
-                return self::PAYMENT_AMOUNT_INVALID;
-            case 1604:
-                return self::PAYMENT_TRANSACTION_CANCELED;
-            case 1605:
-                return self::PAYMENT_TRANSACTION_EXPIRED;
-            case 1606:
-                return self::PAYMENT_TRANSACTION_INVALID;
-            case 1607:
-                return self::PAYMENT_TRANSACTION_FAILED;
-            case 1608:
-                return self::PAYMENT_SERVICE_UNAVAILABLE;
-            case 1609:
-                return self::PAYMENT_INVALID_CLIENT_ID;
+        if (defined("self::$name")) {
+            return constant("self::$name")['code'];
         }
-        return [];
+        throw new InvalidArgumentException('Invalid PayCode');
     }
 
-
-    /**
-     * @param $responseCode
-     * @return PayResponseCode|null
-     */
-    public static function valueOf($responseCode): ?PayResponseCode
+    public static function getMessage($name): string
     {
-        foreach (PayResponseCode::getMessage() as $code) {
-            if ($code->value == $responseCode) {
-                return $code;
+        if (defined("self::$name")) {
+            return constant("self::$name")['message'];
+        }
+        throw new InvalidArgumentException('Invalid PayCode');
+    }
+
+    public static function valueOf($code): string
+    {
+        $constants = self::getConstants();
+        foreach ($constants as $name => $value) {
+            if ($value['code'] == $code) {
+                return $value['name'];
             }
         }
-        return null;
+        throw new InvalidArgumentException('Invalid PayCode');
     }
 
+    public static function getConstants(): array
+    {
+        $oClass = new ReflectionClass(__CLASS__);
+        return $oClass->getConstants();
+    }
 }
