@@ -10,7 +10,7 @@ Github: [https://github.com/unicloudvn/KLBPay-PHP-SDK.git](https://github.com/un
 ##  **Cài đặt và sử dụng**
 
 ### **Requirements**
-Phiên bản PHP: từ 7.4 trở lên.
+Phiên bản PHP: từ 8.1 trở lên.
 
 ### **Composer**
 
@@ -62,8 +62,8 @@ require_once '/path/to/your-project/vendor/autoload.php';
 const HOST = '<HOST_URL>'; //'https://api-staging.kienlongbank.co/pay'
 const CLIENT_ID = '<YOUR_CLIENT_ID>';
 const SECRET_KEY = '<YOUR_SECRET_KEY>';
-const ENCRYPT_KEY = ''<YOUR_ENCRYPT_KEY>'';
-const ACCEPT_TIME_DIFF = ''<YOUR_ACCEPT_TIME_DIFF>';
+const ENCRYPT_KEY = '<YOUR_ENCRYPT_KEY>';
+const ACCEPT_TIME_DIFF = '<YOUR_ACCEPT_TIME_DIFF>';
 ```
 
 ### **Configure**
@@ -357,13 +357,13 @@ require 'kpay-php-sdk/vendor/autoload.php';
 include_once 'Config.php';
 
 // Input data
-$tnx_ref = $_POST['ref_transaction_id'];
+$tnx_ref = $_POST['refTransactionId'];
 $amount = $_POST['amount'];
 $desc = $_POST['description'];
 $timeout = $_POST['timeout'];
 $title = $_POST['title'];
 $language = $_POST['language'];
-$full_name = $_POST['full_name'];
+$full_name = $_POST['fullName'];
 $phone = $_POST['phone'];
 $email = $_POST['email'];
 $address = $_POST['address'];
@@ -376,22 +376,22 @@ $bank_account_no = "";
 $customer_info = new CustomerInfo($full_name, $email, $phone, $address);
 
 $request = new CreateTransactionRequest(
-    $tnx_ref,
+    $tnxRef,
     $amount,
     $desc,
     $timeout,
     $title,
     $language,
-    $customer_info,
-    $success_url,
-    $fail_url,
-    $redirect_after,
-    $bank_account_no
+    $customerInfo,
+    $successUrl,
+    $failUrl,
+    $redirectAfter,
+    $bankAccountNo
 );
 
 try {
-    if (!empty($pay_client)) {
-        $response = $pay_client->createTransaction($request);
+    if (!empty($payClient)) {
+        $response = $payClient->createTransaction($request);
         header('Location: ' . $response->getUrl());
     }
 } catch (Exception $e) {
@@ -402,21 +402,21 @@ try {
 ### **Kiểm tra giao dịch** (tương tự):
 
 ```php
-$order_id = $_POST["order-id"];
+$orderId = $_POST["orderId"];
 
-$checkRequest = new QueryTransactionRequest($order_id);
+$checkRequest = new QueryTransactionRequest($orderId);
 
-$response = $pay_client->checkTransaction($checkRequest);
+$response = $payClient->checkTransaction($checkRequest);
 ```
 
 ### **Hủy giao dịch** (tương tự):
 
 ```php
-$order_id = $_POST["order-id"];
+$orderId = $_POST["orderId"];
 
-$cancelRequest = new CancelTransactionRequest($order_id);
+$cancelRequest = new CancelTransactionRequest($orderId);
 
-$response = $pay_client->cancelTransaction($cancelRequest);
+$response = $payClient->cancelTransaction($cancelRequest);
 ```
 
 Bước cuối: Chạy dòng lệnh the php built-in web server
