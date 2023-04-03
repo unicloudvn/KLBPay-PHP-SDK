@@ -24,7 +24,7 @@ class SecurityUtil
     public static function getSecureRandomKey(int $key_size): string
     {
         $secureRandomKeyBytes = openssl_random_pseudo_bytes($key_size);
-        $key = openssl_digest($secureRandomKeyBytes, "SHA256", true);
+        $key = openssl_digest($secureRandomKeyBytes, 'SHA256', true);
         return base64_encode($key);
     }
 
@@ -40,7 +40,7 @@ class SecurityUtil
     {
         $iv = hex2bin(substr($key, 0, 32));
         $pri_key = hex2bin($key);
-        $data_utf8 = mb_convert_encoding($data, "UTF-8");
+        $data_utf8 = mb_convert_encoding($data, 'UTF-8');
         $encrypted_data = openssl_encrypt($data_utf8, AES_CIPHER_ALGORITHM, $pri_key, OPENSSL_RAW_DATA, $iv);
         return base64_encode($encrypted_data);
     }
@@ -96,6 +96,6 @@ class SecurityUtil
      */
     public static function buildRawSignature(string $client_id, string $timestamp, string $data): string
     {
-        return sprintf("%s|%s|%s", $client_id, $timestamp, $data);
+        return sprintf('%s|%s|%s', $client_id, $timestamp, $data);
     }
 }

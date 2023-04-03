@@ -2,6 +2,9 @@
 
 namespace src\transaction\model;
 
+/**
+ *
+ */
 enum TransactionStatus: string
 {
     case CREATED = 'CREATED';

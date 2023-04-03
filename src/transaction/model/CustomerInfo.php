@@ -2,6 +2,9 @@
 
 namespace src\transaction\model;
 
+/**
+ *
+ */
 class CustomerInfo
 {
     public string $fullName;
