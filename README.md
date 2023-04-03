@@ -10,7 +10,7 @@ Github: [https://github.com/unicloudvn/KLBPay-PHP-SDK.git](https://github.com/un
 ##  **Cài đặt và sử dụng**
 
 ### **Requirements**
-Phiên bản PHP: từ 8.1 trở lên.
+Phiên bản PHP: từ 7.1 trở lên.
 
 ### **Composer**
 
