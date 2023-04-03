@@ -51,7 +51,7 @@ class ThirdPartyClient
         $url = $host . $path;
 
         $response = $this::execute($url, $request);
-        echo $response->getBody();
+
         if ($response->getStatusCode() !== 200) {
             throw new PaymentException('PAYMENT_TRANSACTION_FAILED');
         }
@@ -60,7 +60,7 @@ class ThirdPartyClient
         if ($response_body === null) {
             throw new PaymentException('PAYMENT_TRANSACTION_FAILED');
         }
-        echo $response_body['code'];
+
         $response_code = PayResponseCode::valueOf($response_body['code']);
         if ($response_code == null) {
             throw new PaymentException('PAYMENT_TRANSACTION_FAILED');
