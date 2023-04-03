@@ -85,7 +85,7 @@ class KPayPacker
     {
         $decoded_response = $this->decode($packed_message);
 
-        $status = TransactionStatus::statusOf($decoded_response->status);
+        $status = TransactionStatus::valueOf($decoded_response->status);
         return new CreateTransactionResponse(
             $decoded_response->transactionId,
             $decoded_response->refTransactionId,
@@ -121,7 +121,7 @@ class KPayPacker
     public function check(PackedMessage $packed_message): QueryTransactionResponse
     {
         $decoded_response = $this->decode($packed_message);
-        $status = TransactionStatus::codeOf($decoded_response->status);
+        $status = TransactionStatus::valueOf($decoded_response->status);
         return new QueryTransactionResponse(
             $status,
             $decoded_response->refTransactionId,

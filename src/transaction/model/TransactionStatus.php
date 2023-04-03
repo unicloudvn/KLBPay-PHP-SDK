@@ -23,7 +23,7 @@ class TransactionStatus
         return $oClass->getConstants();
     }
 
-    public static function statusOf(string $status): string
+    public static function valueOf(string $status): string
     {
         $constants = self::getConstants();
         foreach ($constants as $name => $value) {
@@ -34,15 +34,5 @@ class TransactionStatus
         throw new InvalidArgumentException('Invalid StatusCode');
     }
 
-    public static function codeOf(int $code): string
-    {
-        $constants = self::getConstants();
-        foreach ($constants as $name => $value) {
-            if ($value['code'] == $code) {
-                return $value['name'];
-            }
-        }
-        throw new InvalidArgumentException('Invalid StatusCode');
-    }
-
 }
+
