@@ -26,7 +26,7 @@ Kiểm tra phần sau ở file composer.json:
 ```json
 {
   "require": {
-        "unicloudvn/klbpay-php-sdk": "^1.0"
+        "unicloudvn/klbpay-php-sdk": "^3.0"
     }
 }
 ```
@@ -69,7 +69,7 @@ const ACCEPT_TIME_DIFF = '<YOUR_ACCEPT_TIME_DIFF>';
 ### **Configure**
 
 ```php
-$k_pay_packer = new KPayPacker(
+$kPayPacker = new KPayPacker(
     CLIENT_ID,
     ENCRYPT_KEY,
     SECRET_KEY,
@@ -77,7 +77,7 @@ $k_pay_packer = new KPayPacker(
     HOST
 );
 
-$pay_client = new KPayClient($k_pay_packer);
+$payClient = new KPayClient($kPayPacker);
 ```
 
 ## **Ví dụ cơ bản**
@@ -301,7 +301,7 @@ Bước 2. Tạo index.php trên thư mục root của dự án.
             </div>
             <div class="form-group">
                 <label for="full_name">Họ tên (*)</label>
-                <input class="form-control" id="full_name"
+                <input class="form-control" id="fullName"
                        name="full_name" type="text" value="NGUYEN VAN XO"/>
             </div>
 
