@@ -10,7 +10,7 @@ Github: [https://github.com/unicloudvn/KLBPay-PHP-SDK.git](https://github.com/un
 ##  **Cài đặt và sử dụng**
 
 ### **Requirements**
-Phiên bản PHP: từ 7.1 trở lên.
+Phiên bản PHP: từ 7.3 trở lên.
 
 ### **Composer**
 
@@ -62,14 +62,14 @@ require_once '/path/to/your-project/vendor/autoload.php';
 const HOST = '<HOST_URL>'; //'https://api-staging.kienlongbank.co/pay'
 const CLIENT_ID = '<YOUR_CLIENT_ID>';
 const SECRET_KEY = '<YOUR_SECRET_KEY>';
-const ENCRYPT_KEY = ''<YOUR_ENCRYPT_KEY>'';
-const ACCEPT_TIME_DIFF = ''<YOUR_ACCEPT_TIME_DIFF>';
+const ENCRYPT_KEY = '<YOUR_ENCRYPT_KEY>';
+const ACCEPT_TIME_DIFF = '<YOUR_ACCEPT_TIME_DIFF>';
 ```
 
 ### **Configure**
 
 ```php
-$k_pay_packer = new KPayPacker(
+$kPayPacker = new KPayPacker(
     CLIENT_ID,
     ENCRYPT_KEY,
     SECRET_KEY,
@@ -77,7 +77,7 @@ $k_pay_packer = new KPayPacker(
     HOST
 );
 
-$pay_client = new KPayClient($k_pay_packer);
+$payClient = new KPayClient($kPayPacker);
 ```
 
 ## **Ví dụ cơ bản**
@@ -256,8 +256,8 @@ Bước 2. Tạo index.php trên thư mục root của dự án.
     <div class="table-responsive">
         <form action="CreateTransaction.php" id="create_form" method="post">
             <div class="form-group">
-                <label for="ref_transaction_id">Mã giao dịch</label>
-                <input class="form-control" id="ref_transaction_id" name="ref_transaction_id" type="text"
+                <label for="refTransactionId">Mã giao dịch</label>
+                <input class="form-control" id="refTransactionId" name="refTransactionId" type="text"
                        value="<?php try {
                            print random_int(100000, 999999);
                        } catch (Exception $e) {
@@ -300,9 +300,9 @@ Bước 2. Tạo index.php trên thư mục root của dự án.
                 <h3>Thông tin khách hàng</h3>
             </div>
             <div class="form-group">
-                <label for="full_name">Họ tên (*)</label>
-                <input class="form-control" id="full_name"
-                       name="full_name" type="text" value="NGUYEN VAN XO"/>
+                <label for="fullName">Họ tên (*)</label>
+                <input class="form-control" id="fullName"
+                       name="fullName" type="text" value="NGUYEN VAN XO"/>
             </div>
 
             <div class="form-group">
@@ -342,7 +342,7 @@ Bước 2. Tạo index.php trên thư mục root của dự án.
 ### **Tạo giao dịch**:
 
 ```php
-$response = $pay_client->createTransaction($request);
+$response = $payClient->createTransaction($request);
 ```
 
 Bước 3. Tạo `CreateTransaction.php` file:
@@ -357,41 +357,41 @@ require 'kpay-php-sdk/vendor/autoload.php';
 include_once 'Config.php';
 
 // Input data
-$tnx_ref = $_POST['ref_transaction_id'];
+$tnx_ref = $_POST['refTransactionId'];
 $amount = $_POST['amount'];
 $desc = $_POST['description'];
 $timeout = $_POST['timeout'];
 $title = $_POST['title'];
 $language = $_POST['language'];
-$full_name = $_POST['full_name'];
+$fullName = $_POST['fullName'];
 $phone = $_POST['phone'];
 $email = $_POST['email'];
 $address = $_POST['address'];
 
-$success_url = 'https://success.example.com.vn';
-$fail_url = 'https://fail.example.com.vn';
-$redirect_after = 5;
-$bank_account_no = "";
+$successUrl = 'https://success.example.com.vn';
+$failUrl = 'https://fail.example.com.vn';
+$redirectAfter = 5;
+$bankAccountNo = "";
 
-$customer_info = new CustomerInfo($full_name, $email, $phone, $address);
+$customer_info = new CustomerInfo($fullName, $email, $phone, $address);
 
 $request = new CreateTransactionRequest(
-    $tnx_ref,
+    $tnxRef,
     $amount,
     $desc,
     $timeout,
     $title,
     $language,
-    $customer_info,
-    $success_url,
-    $fail_url,
-    $redirect_after,
-    $bank_account_no
+    $customerInfo,
+    $successUrl,
+    $failUrl,
+    $redirectAfter,
+    $bankAccountNo
 );
 
 try {
-    if (!empty($pay_client)) {
-        $response = $pay_client->createTransaction($request);
+    if (!empty($payClient)) {
+        $response = $payClient->createTransaction($request);
         header('Location: ' . $response->getUrl());
     }
 } catch (Exception $e) {
@@ -402,21 +402,21 @@ try {
 ### **Kiểm tra giao dịch** (tương tự):
 
 ```php
-$order_id = $_POST["order-id"];
+$orderId = $_POST["orderId"];
 
-$checkRequest = new QueryTransactionRequest($order_id);
+$checkRequest = new QueryTransactionRequest($orderId);
 
-$response = $pay_client->checkTransaction($checkRequest);
+$response = $payClient->checkTransaction($checkRequest);
 ```
 
 ### **Hủy giao dịch** (tương tự):
 
 ```php
-$order_id = $_POST["order-id"];
+$orderId = $_POST["orderId"];
 
-$cancelRequest = new CancelTransactionRequest($order_id);
+$cancelRequest = new CancelTransactionRequest($orderId);
 
-$response = $pay_client->cancelTransaction($cancelRequest);
+$response = $payClient->cancelTransaction($cancelRequest);
 ```
 
 Bước cuối: Chạy dòng lệnh the php built-in web server
