@@ -7,15 +7,18 @@ use src\transaction\response\TransactionResponse;
 
 class BaseResponse
 {
-    public int $code;
-    public string $message;
-    public TransactionResponse $data;
+    public $code;
+    public $message;
+    public $data;
 
+    /**
+     * @param TransactionResponse $data
+     */
     public function __construct(TransactionResponse $data)
     {
         $this->data = $data;
-        $this->message = PayResponseCode::SUCCESS->getMessage();
-        $this->code = PayResponseCode::SUCCESS->value;
+        $this->message = PayResponseCode::SUCCESS['message'];
+        $this->code = PayResponseCode::SUCCESS['code'];
     }
 
     /**
@@ -29,7 +32,7 @@ class BaseResponse
     /**
      * @param int $code
      */
-    public function setCode(int $code): void
+    public function setCode(int $code)
     {
         $this->code = $code;
     }
@@ -45,7 +48,7 @@ class BaseResponse
     /**
      * @param string $message
      */
-    public function setMessage(string $message): void
+    public function setMessage(string $message)
     {
         $this->message = $message;
     }
@@ -61,7 +64,7 @@ class BaseResponse
     /**
      * @param mixed|null $data
      */
-    public function setData(TransactionResponse $data): void
+    public function setData(TransactionResponse $data)
     {
         $this->data = $data;
     }

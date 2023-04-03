@@ -4,20 +4,20 @@ namespace src\transaction\model;
 
 class CustomerInfo
 {
-    public string $full_name;
-    public string $email;
-    public string $phone;
-    public string $address;
+    public $fullName;
+    public $email;
+    public $phone;
+    public $address;
 
     /**
-     * @param string $full_name
+     * @param string $fullName
      * @param string $email
      * @param string $phone
      * @param string $address
      */
-    public function __construct(string $full_name, string $email, string $phone, string $address)
+    public function __construct(string $fullName, string $email, string $phone, string $address)
     {
-        $this->full_name = $full_name;
+        $this->fullName = $fullName;
         $this->email = $email;
         $this->phone = $phone;
         $this->address = $address;
@@ -28,15 +28,15 @@ class CustomerInfo
      */
     public function getFullName(): string
     {
-        return $this->full_name;
+        return $this->fullName;
     }
 
     /**
-     * @param string $full_name
+     * @param string $fullName
      */
-    public function setFullName(string $full_name): void
+    public function setFullName(string $fullName)
     {
-        $this->full_name = $full_name;
+        $this->fullName = $fullName;
     }
 
     /**
@@ -50,7 +50,7 @@ class CustomerInfo
     /**
      * @param string $email
      */
-    public function setEmail(string $email): void
+    public function setEmail(string $email)
     {
         $this->email = $email;
     }
@@ -66,7 +66,7 @@ class CustomerInfo
     /**
      * @param string $phone
      */
-    public function setPhone(string $phone): void
+    public function setPhone(string $phone)
     {
         $this->phone = $phone;
     }
@@ -82,7 +82,7 @@ class CustomerInfo
     /**
      * @param string $address
      */
-    public function setAddress(string $address): void
+    public function setAddress(string $address)
     {
         $this->address = $address;
     }

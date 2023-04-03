@@ -4,7 +4,7 @@ namespace src\webhook;
 
 class NotifyResponse
 {
-    private bool $status;
+    private $status;
 
     /**
      * @param bool $status

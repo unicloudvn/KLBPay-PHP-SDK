@@ -7,33 +7,36 @@ use RuntimeException;
 class PaymentException extends RuntimeException
 {
 
-    /**
-     * @var PayResponseCode
-     */
-    private PayResponseCode $response_code;
-
-    public function __construct(PayResponseCode $responseCode)
-    {
-        parent::__construct($responseCode->getMessage());
-        $this->response_code = $responseCode;
-    }
+    private $responseCode;
 
     /**
-     * @return PayResponseCode
+     * @param string $responseCode
      */
-    public function getResponseCode(): PayResponseCode
+    public function __construct(string $responseCode)
     {
-        return $this->response_code;
+        parent::__construct();
+        $this->responseCode = $responseCode;
     }
+
+    public function getResponseCode(): string
+    {
+        return $this->responseCode;
+    }
+
 
     public function getPaymentMessage(): string
     {
-        return $this->response_code->getMessage();
+        return PayResponseCode::getMessage($this->responseCode);
     }
 
     public function getPaymentCode(): int
     {
-        return $this->response_code->value;
+        return PayResponseCode::getCode($this->responseCode);
+    }
+
+    public function __toString()
+    {
+        return '- [' . $this->getPaymentCode() . '] - ' . $this->getPaymentMessage() . ' at ' . $this->getFile();
     }
 
 }

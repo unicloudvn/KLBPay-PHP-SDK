@@ -4,7 +4,6 @@ namespace src;
 
 use Exception;
 use src\exception\PaymentException;
-use src\exception\PayResponseCode;
 use src\security\PackedMessage;
 use src\security\SecurityUtil;
 use src\transaction\model\TransactionStatus;
@@ -15,19 +14,26 @@ use src\transaction\response\QueryTransactionResponse;
 
 class KPayPacker
 {
-    private string $client_id;
-    private string $encrypt_key;
-    private string $secret_key;
-    private int $max_timestamp_diff;
+    public $clientId;
+    public $encryptKey;
+    public $secretKey;
+    public $maxTimestampDiff;
 
-    private string $host;
+    public $host;
 
-    public function __construct(string $client_id, string $encrypt_key, string $secret_key, string $max_timestamp_diff, string $host)
+    /**
+     * @param string $clientId
+     * @param string $encryptKey
+     * @param string $secretKey
+     * @param string $maxTimestampDiff
+     * @param string $host
+     */
+    public function __construct(string $clientId, string $encryptKey, string $secretKey, string $maxTimestampDiff, string $host)
     {
-        $this->client_id = $client_id;
-        $this->encrypt_key = $encrypt_key;
-        $this->secret_key = $secret_key;
-        $this->max_timestamp_diff = $max_timestamp_diff;
+        $this->clientId = $clientId;
+        $this->encryptKey = $encryptKey;
+        $this->secretKey = $secretKey;
+        $this->maxTimestampDiff = $maxTimestampDiff;
         $this->host = $host;
     }
 
@@ -39,76 +45,87 @@ class KPayPacker
         return $this->host;
     }
 
-
     public function decode(PackedMessage $packed_message)
     {
-        if ($packed_message->getClientId() == null || $packed_message->getClientId() !== $this->client_id) {
-            throw new PaymentException(PayResponseCode::PAYMENT_INVALID_CLIENT_ID);
+        if ($packed_message->getClientId() == null || $packed_message->getClientId() !== $this->clientId) {
+            throw new PaymentException('PAYMENT_INVALID_CLIENT_ID');
         }
         // check timestamp
         $check_time = time() * 1000 - $packed_message->getTimestamp();
 
-        if ($check_time > $this->max_timestamp_diff) {
-            error_log("expire payment: $check_time, threshold: $this->max_timestamp_diff");
-            throw new PaymentException(PayResponseCode::PAYMENT_TRANSACTION_EXPIRED);
+        if ($check_time > $this->maxTimestampDiff) {
+            error_log("expire payment: $check_time, threshold: $this->maxTimestampDiff");
+            throw new PaymentException('PAYMENT_TRANSACTION_EXPIRED');
         }
         // check signature
         try {
             $signature = SecurityUtil::hmacEncode(
-                SecurityUtil::buildRawSignature($this->client_id, strval($packed_message->getTimestamp()), $packed_message->getEncryptedData()),
-                $this->secret_key
+                SecurityUtil::buildRawSignature($this->clientId, strval($packed_message->getTimestamp()), $packed_message->getEncryptedData()),
+                $this->secretKey
             );
 
             if ($signature != null && $signature === $packed_message->getSignature()) {
                 // Decrypt Data
-                $decryptBodyString = SecurityUtil::decryptAES($packed_message->getEncryptedData(), $this->encrypt_key);
+                $decryptBodyString = SecurityUtil::decryptAES($packed_message->getEncryptedData(), $this->encryptKey);
 
                 return json_decode($decryptBodyString);
             }
         } catch (Exception $e) {
             error_log("authenticate error: {$e->getMessage()}");
         }
-        throw new PaymentException(PayResponseCode::PAYMENT_SECURITY_VIOLATION);
+        throw new PaymentException('PAYMENT_SECURITY_VIOLATION');
     }
 
 
+    /**
+     * @param PackedMessage $packed_message
+     * @return CreateTransactionResponse
+     */
     public function create(PackedMessage $packed_message): CreateTransactionResponse
     {
-        $decodedResponse = $this->decode($packed_message);
+        $decoded_response = $this->decode($packed_message);
 
-        $status = TransactionStatus::valueOf($decodedResponse->status);
+        $status = TransactionStatus::statusOf($decoded_response->status);
         return new CreateTransactionResponse(
-            $decodedResponse->transactionId,
-            $decodedResponse->refTransactionId,
-            $decodedResponse->payLinkCode,
-            $decodedResponse->timeout,
-            $decodedResponse->url,
-            $decodedResponse->virtualAccount,
-            $decodedResponse->description,
-            $decodedResponse->amount,
-            $decodedResponse->qrCodeString,
+            $decoded_response->transactionId,
+            $decoded_response->refTransactionId,
+            $decoded_response->payLinkCode,
+            $decoded_response->timeout,
+            $decoded_response->url,
+            $decoded_response->virtualAccount,
+            $decoded_response->description,
+            $decoded_response->amount,
+            $decoded_response->qrCodeString,
             $status,
-            $decodedResponse->time
+            $decoded_response->time
         );
     }
 
+    /**
+     * @param PackedMessage $packed_message
+     * @return CancelTransactionResponse
+     */
     public function cancel(PackedMessage $packed_message): CancelTransactionResponse
     {
-        $decodedResponse = $this->decode($packed_message);
+        $decoded_response = $this->decode($packed_message);
 
         return new CancelTransactionResponse(
-            $decodedResponse->success
+            $decoded_response->success
         );
     }
 
+    /**
+     * @param PackedMessage $packed_message
+     * @return QueryTransactionResponse
+     */
     public function check(PackedMessage $packed_message): QueryTransactionResponse
     {
-        $decodedResponse = $this->decode($packed_message);
-        $status = TransactionStatus::valueOf($decodedResponse->status);
+        $decoded_response = $this->decode($packed_message);
+        $status = TransactionStatus::codeOf($decoded_response->status);
         return new QueryTransactionResponse(
             $status,
-            $decodedResponse->refTransactionId,
-            $decodedResponse->amount
+            $decoded_response->refTransactionId,
+            $decoded_response->amount
         );
     }
 
@@ -123,16 +140,16 @@ class KPayPacker
             $json_string = json_encode($data);
         } catch (Exception $e) {
             error_log("Parse data error: {$e->getMessage()}");
-            throw new PaymentException(PayResponseCode::PAYMENT_TRANSACTION_FAILED);
+            throw new PaymentException('PAYMENT_TRANSACTION_FAILED');
         }
-        $encrypt_data = SecurityUtil::encryptAES($json_string, $this->encrypt_key);
+        $encrypt_data = SecurityUtil::encryptAES($json_string, $this->encryptKey);
         //encrypt header validation
         $x_api_validate = SecurityUtil::hmacEncode(
-            SecurityUtil::buildRawSignature($this->client_id, strval($timestamp), $encrypt_data),
-            $this->secret_key
+            SecurityUtil::buildRawSignature($this->clientId, strval($timestamp), $encrypt_data),
+            $this->secretKey
         );
 
-        return new PackedMessage($this->client_id, $timestamp, $x_api_validate, $encrypt_data);
+        return new PackedMessage($this->clientId, $timestamp, $x_api_validate, $encrypt_data);
     }
 
 }

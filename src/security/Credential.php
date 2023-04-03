@@ -4,20 +4,20 @@ namespace src\security;
 
 class Credential
 {
-    private string $client_id;
-    private string $secret_key;
-    private string $encrypt_key;
+    private $clientId;
+    private $secretKey;
+    private $encryptKey;
 
     /**
-     * @param string $client_id
-     * @param string $secret_key
-     * @param string $encrypt_key
+     * @param string $clientId
+     * @param string $secretKey
+     * @param string $encryptKey
      */
-    public function __construct(string $client_id, string $secret_key, string $encrypt_key)
+    public function __construct(string $clientId, string $secretKey, string $encryptKey)
     {
-        $this->client_id = $client_id;
-        $this->secret_key = $secret_key;
-        $this->encrypt_key = $encrypt_key;
+        $this->clientId = $clientId;
+        $this->secretKey = $secretKey;
+        $this->encryptKey = $encryptKey;
     }
 
     /**
@@ -25,15 +25,15 @@ class Credential
      */
     public function getClientId(): string
     {
-        return $this->client_id;
+        return $this->clientId;
     }
 
     /**
-     * @param string $client_id
+     * @param string $clientId
      */
-    public function setClientId(string $client_id): void
+    public function setClientId(string $clientId)
     {
-        $this->client_id = $client_id;
+        $this->clientId = $clientId;
     }
 
     /**
@@ -41,15 +41,15 @@ class Credential
      */
     public function getSecretKey(): string
     {
-        return $this->secret_key;
+        return $this->secretKey;
     }
 
     /**
-     * @param string $secret_key
+     * @param string $secretKey
      */
-    public function setSecretKey(string $secret_key): void
+    public function setSecretKey(string $secretKey)
     {
-        $this->secret_key = $secret_key;
+        $this->secretKey = $secretKey;
     }
 
     /**
@@ -57,15 +57,15 @@ class Credential
      */
     public function getEncryptKey(): string
     {
-        return $this->encrypt_key;
+        return $this->encryptKey;
     }
 
     /**
-     * @param string $encrypt_key
+     * @param string $encryptKey
      */
-    public function setEncryptKey(string $encrypt_key): void
+    public function setEncryptKey(string $encryptKey)
     {
-        $this->encrypt_key = $encrypt_key;
+        $this->encryptKey = $encryptKey;
     }
 
 }

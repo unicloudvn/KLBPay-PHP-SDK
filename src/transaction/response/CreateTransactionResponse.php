@@ -2,46 +2,45 @@
 
 namespace src\transaction\response;
 
-use src\transaction\model\TransactionStatus;
-
 class CreateTransactionResponse implements TransactionResponse
 {
-    public string $transaction_id;
-    public string $ref_transaction_id;
-    public string $pay_link_code;
-    public int $timeout;
-    public string $url;
-    public string $virtual_account;
-    public string $description;
-    public int $amount;
-    public string $qr_code_string;
-    public TransactionStatus $status;
-    public string $time;
+    public $transactionId;
+    public $refTransactionId;
+    public $payLinkCode;
+    public $timeout;
+    public $url;
+    public $virtualAccount;
+    public $description;
+    public $amount;
+    public $qrCodeString;
+    public $status;
+    public $time;
 
     /**
-     * @param string $transaction_id
-     * @param string $ref_transaction_id
-     * @param string $pay_link_code
+     * @param string $transactionId
+     * @param string $refTransactionId
+     * @param string $payLinkCode
      * @param int $timeout
      * @param string $url
-     * @param string $virtual_account
+     * @param string $virtualAccount
      * @param string $description
      * @param int $amount
-     * @param string $qr_code_string
-     * @param TransactionStatus $status
+     * @param string $qrCodeString
+     * @param string $status
      * @param string $time
      */
-    public function __construct(string $transaction_id, string $ref_transaction_id, string $pay_link_code, int $timeout, string $url, string $virtual_account, string $description, int $amount, string $qr_code_string, TransactionStatus $status, string $time)
+    public function __construct(string $transactionId, string $refTransactionId, string $payLinkCode, int $timeout,
+                                string $url, string $virtualAccount, string $description, int $amount, string $qrCodeString, string $status, string $time)
     {
-        $this->transaction_id = $transaction_id;
-        $this->ref_transaction_id = $ref_transaction_id;
-        $this->pay_link_code = $pay_link_code;
+        $this->transactionId = $transactionId;
+        $this->refTransactionId = $refTransactionId;
+        $this->payLinkCode = $payLinkCode;
         $this->timeout = $timeout;
         $this->url = $url;
-        $this->virtual_account = $virtual_account;
+        $this->virtualAccount = $virtualAccount;
         $this->description = $description;
         $this->amount = $amount;
-        $this->qr_code_string = $qr_code_string;
+        $this->qrCodeString = $qrCodeString;
         $this->status = $status;
         $this->time = $time;
     }
@@ -52,15 +51,15 @@ class CreateTransactionResponse implements TransactionResponse
      */
     public function getTransactionId(): string
     {
-        return $this->transaction_id;
+        return $this->transactionId;
     }
 
     /**
-     * @param string $transaction_id
+     * @param string $transactionId
      */
-    public function setTransactionId(string $transaction_id): void
+    public function setTransactionId(string $transactionId): void
     {
-        $this->transaction_id = $transaction_id;
+        $this->transactionId = $transactionId;
     }
 
     /**
@@ -68,15 +67,15 @@ class CreateTransactionResponse implements TransactionResponse
      */
     public function getRefTransactionId(): string
     {
-        return $this->ref_transaction_id;
+        return $this->refTransactionId;
     }
 
     /**
-     * @param string $ref_transaction_id
+     * @param string $refTransactionId
      */
-    public function setRefTransactionId(string $ref_transaction_id): void
+    public function setRefTransactionId(string $refTransactionId): void
     {
-        $this->ref_transaction_id = $ref_transaction_id;
+        $this->refTransactionId = $refTransactionId;
     }
 
     /**
@@ -84,15 +83,15 @@ class CreateTransactionResponse implements TransactionResponse
      */
     public function getPayLinkCode(): string
     {
-        return $this->pay_link_code;
+        return $this->payLinkCode;
     }
 
     /**
-     * @param string $pay_link_code
+     * @param string $payLinkCode
      */
-    public function setPayLinkCode(string $pay_link_code): void
+    public function setPayLinkCode(string $payLinkCode): void
     {
-        $this->pay_link_code = $pay_link_code;
+        $this->payLinkCode = $payLinkCode;
     }
 
     /**
@@ -132,15 +131,15 @@ class CreateTransactionResponse implements TransactionResponse
      */
     public function getVirtualAccount(): string
     {
-        return $this->virtual_account;
+        return $this->virtualAccount;
     }
 
     /**
-     * @param string $virtual_account
+     * @param string $virtualAccount
      */
-    public function setVirtualAccount(string $virtual_account): void
+    public function setVirtualAccount(string $virtualAccount): void
     {
-        $this->virtual_account = $virtual_account;
+        $this->virtualAccount = $virtualAccount;
     }
 
     /**
@@ -180,29 +179,29 @@ class CreateTransactionResponse implements TransactionResponse
      */
     public function getQrCodeString(): string
     {
-        return $this->qr_code_string;
+        return $this->qrCodeString;
     }
 
     /**
-     * @param string $qr_code_string
+     * @param string $qrCodeString
      */
-    public function setQrCodeString(string $qr_code_string): void
+    public function setQrCodeString(string $qrCodeString): void
     {
-        $this->qr_code_string = $qr_code_string;
+        $this->qrCodeString = $qrCodeString;
     }
 
     /**
-     * @return TransactionStatus
+     * @return string
      */
-    public function getStatus(): TransactionStatus
+    public function getStatus(): string
     {
         return $this->status;
     }
 
     /**
-     * @param TransactionStatus $status
+     * @param string $status
      */
-    public function setStatus(TransactionStatus $status): void
+    public function setStatus(string $status): void
     {
         $this->status = $status;
     }

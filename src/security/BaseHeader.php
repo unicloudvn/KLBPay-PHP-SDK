@@ -11,12 +11,4 @@ class BaseHeader
     const CLIENT = 'x-api-client';
     const CONTENT_TYPE = 'Content-Type';
 
-    /**
-     * @throws Exception
-     */
-    private function __construct()
-    {
-        throw new Exception();
-    }
-
 }

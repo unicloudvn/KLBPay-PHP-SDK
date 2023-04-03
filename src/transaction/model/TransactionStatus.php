@@ -2,22 +2,47 @@
 
 namespace src\transaction\model;
 
-enum TransactionStatus: string
-{
-    case CREATED = "CREATED";
-    case SUCCESS = "SUCCESS";
-    case CANCELED = "CANCELED";
-    case FAIL = "FAIL";
-    case TIMEOUT = "TIMEOUT";
+use InvalidArgumentException;
+use ReflectionClass;
 
-    public static function valueOf($value): ?TransactionStatus
+class TransactionStatus
+{
+    public const CREATED = ['code' => 1, 'status' => 'CREATED', 'name' => 'CREATED'];
+    public const SUCCESS = ['code' => 2, 'status' => 'SUCCESS', 'name' => 'SUCCESS'];
+    public const CANCELED = ['code' => 3, 'status' => 'CANCELED', 'name' => 'CANCELED'];
+    public const FAILED = ['code' => 4, 'status' => 'FAILED', 'name' => 'FAILED'];
+    public const TIMEOUT = ['code' => 5, 'status' => 'TIMEOUT', 'name' => 'TIMEOUT'];
+
+
+    /**
+     * @return array
+     */
+    public static function getConstants(): array
     {
-        foreach (TransactionStatus::cases() as $values) {
-            if ($values->value == $value) {
-                return $values;
+        $oClass = new ReflectionClass(__CLASS__);
+        return $oClass->getConstants();
+    }
+
+    public static function statusOf(string $status): string
+    {
+        $constants = self::getConstants();
+        foreach ($constants as $name => $value) {
+            if ($value['status'] == $status) {
+                return $value['name'];
             }
         }
-        return null;
+        throw new InvalidArgumentException('Invalid StatusCode');
+    }
+
+    public static function codeOf(int $code): string
+    {
+        $constants = self::getConstants();
+        foreach ($constants as $name => $value) {
+            if ($value['code'] == $code) {
+                return $value['name'];
+            }
+        }
+        throw new InvalidArgumentException('Invalid StatusCode');
     }
 
 }

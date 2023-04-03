@@ -4,28 +4,28 @@ namespace src\security;
 
 class PackedMessage
 {
-    public string $client_id;
-    public string $signature;
-    public int $timestamp;
-    public string $encrypted_data;
+    public $clientId;
+    public $signature;
+    public $timestamp;
+    public $encryptedData;
 
     /**
-     * @param string $client_id
+     * @param string $clientId
      * @param int $timestamp
      * @param string $signature
-     * @param string $encrypted_data
+     * @param string $encryptedData
      */
     public function __construct(
-        string $client_id,
+        string $clientId,
         int    $timestamp,
         string $signature,
-        string $encrypted_data
+        string $encryptedData
     )
     {
-        $this->encrypted_data = $encrypted_data;
+        $this->encryptedData = $encryptedData;
         $this->timestamp = $timestamp;
         $this->signature = $signature;
-        $this->client_id = $client_id;
+        $this->clientId = $clientId;
     }
 
     /**
@@ -33,15 +33,15 @@ class PackedMessage
      */
     public function getClientId(): string
     {
-        return $this->client_id;
+        return $this->clientId;
     }
 
     /**
-     * @param string $client_id
+     * @param string $clientId
      */
-    public function setClientId(string $client_id): void
+    public function setClientId(string $clientId)
     {
-        $this->client_id = $client_id;
+        $this->clientId = $clientId;
     }
 
     /**
@@ -55,7 +55,7 @@ class PackedMessage
     /**
      * @param string $signature
      */
-    public function setSignature(string $signature): void
+    public function setSignature(string $signature)
     {
         $this->signature = $signature;
     }
@@ -71,7 +71,7 @@ class PackedMessage
     /**
      * @param int $timestamp
      */
-    public function setTimestamp(int $timestamp): void
+    public function setTimestamp(int $timestamp)
     {
         $this->timestamp = $timestamp;
     }
@@ -81,15 +81,15 @@ class PackedMessage
      */
     public function getEncryptedData(): string
     {
-        return $this->encrypted_data;
+        return $this->encryptedData;
     }
 
     /**
-     * @param string $encrypted_data
+     * @param string $encryptedData
      */
-    public function setEncryptedData(string $encrypted_data): void
+    public function setEncryptedData(string $encryptedData)
     {
-        $this->encrypted_data = $encrypted_data;
+        $this->encryptedData = $encryptedData;
     }
 
 }

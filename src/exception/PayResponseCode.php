@@ -2,57 +2,55 @@
 
 namespace src\exception;
 
-use JsonSerializable;
+use InvalidArgumentException;
+use ReflectionClass;
 
-enum PayResponseCode: int implements JsonSerializable
+class PayResponseCode
 {
-    case SUCCESS = 0;
-    case FAILED = 1;
-    case INVALID_PARAM = 2;
-    // Payment
-    case PAYMENT_SECURITY_VIOLATION = 1601;
-    case PAYMENT_ORDER_COMPLETED = 1602;
-    case PAYMENT_AMOUNT_INVALID = 1603;
-    case PAYMENT_TRANSACTION_CANCELED = 1604;
-    case PAYMENT_TRANSACTION_EXPIRED = 1605;
-    case PAYMENT_TRANSACTION_INVALID = 1606;
-    case PAYMENT_TRANSACTION_FAILED = 1607;
-    case PAYMENT_SERVICE_UNAVAILABLE = 1608;
-    case PAYMENT_INVALID_CLIENT_ID = 1609;
+    public const SUCCESS = ['code' => 0, 'message' => 'Success', 'name' => 'SUCCESS'];
+    public const FAILED = ['code' => 1, 'message' => 'Failed', 'name' => 'FAILED'];
+    public const INVALID_PARAM = ['code' => 2, 'message' => 'Invalid param', 'name' => 'INVALID_PARAM'];
 
-    public function getMessage(): string
+    public const PAYMENT_SECURITY_VIOLATION = ['code' => 1601, 'message' => 'Security violation', 'name' => 'PAYMENT_SECURITY_VIOLATION'];
+    public const PAYMENT_ORDER_COMPLETED = ['code' => 1602, 'message' => 'Order was completed', 'name' => 'PAYMENT_ORDER_COMPLETED'];
+    public const PAYMENT_AMOUNT_INVALID = ['code' => 1603, 'message' => 'Invalid amount', 'name' => 'PAYMENT_AMOUNT_INVALID'];
+    public const PAYMENT_TRANSACTION_CANCELED = ['code' => 1604, 'message' => 'Canceled transaction', 'name' => 'PAYMENT_TRANSACTION_CANCELED'];
+    public const PAYMENT_TRANSACTION_EXPIRED = ['code' => 1605, 'message' => 'Transaction expired', 'name' => 'PAYMENT_TRANSACTION_EXPIRED'];
+    public const PAYMENT_TRANSACTION_INVALID = ['code' => 1606, 'message' => 'Invalid transaction', 'name' => 'PAYMENT_TRANSACTION_INVALID'];
+    public const PAYMENT_TRANSACTION_FAILED = ['code' => 1607, 'message' => 'Transaction failed', 'name' => 'PAYMENT_TRANSACTION_FAILED'];
+    public const PAYMENT_SERVICE_UNAVAILABLE = ['code' => 1608, 'message' => 'Service unavailable', 'name' => 'PAYMENT_SERVICE_UNAVAILABLE'];
+    public const PAYMENT_INVALID_CLIENT_ID = ['code' => 1609, 'message' => 'Invalid client id', 'name' => 'PAYMENT_INVALID_CLIENT_ID'];
+
+    public static function getCode($name): int
     {
-        return match ($this) {
-            self::SUCCESS => "Success",
-            self::FAILED => "Failed",
-            self::INVALID_PARAM => "Invalid param",
-            self::PAYMENT_SECURITY_VIOLATION => "Security violation",
-            self::PAYMENT_ORDER_COMPLETED => "Order was completed",
-            self::PAYMENT_AMOUNT_INVALID => "Invalid amount",
-            self::PAYMENT_TRANSACTION_CANCELED => "Canceled transaction",
-            self::PAYMENT_TRANSACTION_EXPIRED => "Transaction expired",
-            self::PAYMENT_TRANSACTION_INVALID => "Invalid transaction",
-            self::PAYMENT_TRANSACTION_FAILED => "Transaction failed",
-            self::PAYMENT_SERVICE_UNAVAILABLE => "Service unavailable",
-            self::PAYMENT_INVALID_CLIENT_ID => "Invalid client id",
-        };
+        if (defined("self::$name")) {
+            return constant("self::$name")['code'];
+        }
+        throw new InvalidArgumentException('Invalid PayCode');
     }
 
-    public static function valueOf($value): ?PayResponseCode
+    public static function getMessage($name): string
     {
-        foreach (PayResponseCode::cases() as $code) {
-            if ($code->value == $value) {
-                return $code;
+        if (defined("self::$name")) {
+            return constant("self::$name")['message'];
+        }
+        throw new InvalidArgumentException('Invalid PayCode');
+    }
+
+    public static function valueOf($code): string
+    {
+        $constants = self::getConstants();
+        foreach ($constants as $name => $value) {
+            if ($value['code'] == $code) {
+                return $value['name'];
             }
         }
-        return null;
+        throw new InvalidArgumentException('Invalid PayCode');
     }
 
-    public function jsonSerialize(): array
+    public static function getConstants(): array
     {
-        return [
-            'code' => $this->value,
-            'message' => $this->getMessage()
-        ];
+        $oClass = new ReflectionClass(__CLASS__);
+        return $oClass->getConstants();
     }
 }

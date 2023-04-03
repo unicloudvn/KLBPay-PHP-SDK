@@ -4,7 +4,7 @@ namespace src\transaction\response;
 
 class CancelTransactionResponse implements TransactionResponse
 {
-    public bool $success;
+    public $success;
 
     /**
      * @param bool $success
