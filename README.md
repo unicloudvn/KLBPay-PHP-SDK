@@ -256,8 +256,8 @@ Bước 2. Tạo index.php trên thư mục root của dự án.
     <div class="table-responsive">
         <form action="CreateTransaction.php" id="create_form" method="post">
             <div class="form-group">
-                <label for="ref_transaction_id">Mã giao dịch</label>
-                <input class="form-control" id="ref_transaction_id" name="ref_transaction_id" type="text"
+                <label for="refTransactionId">Mã giao dịch</label>
+                <input class="form-control" id="refTransactionId" name="refTransactionId" type="text"
                        value="<?php try {
                            print random_int(100000, 999999);
                        } catch (Exception $e) {
@@ -300,9 +300,9 @@ Bước 2. Tạo index.php trên thư mục root của dự án.
                 <h3>Thông tin khách hàng</h3>
             </div>
             <div class="form-group">
-                <label for="full_name">Họ tên (*)</label>
+                <label for="fullName">Họ tên (*)</label>
                 <input class="form-control" id="fullName"
-                       name="full_name" type="text" value="NGUYEN VAN XO"/>
+                       name="fullName" type="text" value="NGUYEN VAN XO"/>
             </div>
 
             <div class="form-group">
@@ -363,17 +363,17 @@ $desc = $_POST['description'];
 $timeout = $_POST['timeout'];
 $title = $_POST['title'];
 $language = $_POST['language'];
-$full_name = $_POST['fullName'];
+$fullName = $_POST['fullName'];
 $phone = $_POST['phone'];
 $email = $_POST['email'];
 $address = $_POST['address'];
 
-$success_url = 'https://success.example.com.vn';
-$fail_url = 'https://fail.example.com.vn';
-$redirect_after = 5;
-$bank_account_no = "";
+$successUrl = 'https://success.example.com.vn';
+$failUrl = 'https://fail.example.com.vn';
+$redirectAfter = 5;
+$bankAccountNo = "";
 
-$customer_info = new CustomerInfo($full_name, $email, $phone, $address);
+$customer_info = new CustomerInfo($fullName, $email, $phone, $address);
 
 $request = new CreateTransactionRequest(
     $tnxRef,
