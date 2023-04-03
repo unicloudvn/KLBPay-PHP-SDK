@@ -342,7 +342,7 @@ Bước 2. Tạo index.php trên thư mục root của dự án.
 ### **Tạo giao dịch**:
 
 ```php
-$response = $pay_client->createTransaction($request);
+$response = $payClient->createTransaction($request);
 ```
 
 Bước 3. Tạo `CreateTransaction.php` file:
