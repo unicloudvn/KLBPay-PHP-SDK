@@ -15,7 +15,8 @@ Phiên bản PHP: từ 5.6 trở lên.
 ### **Composer**
 
 Để cài đặt các ràng buộc bằng [Composer](https://getcomposer.org/). Làm theo  [hướng dẫn cài đặt](https://getcomposer.org/doc/00-intro.md) nếu bạn chưa cài đặt Composer.
-Hiện tại phiên bản composer không hỗ trợ <=7.1 nên phải cài đặt thủ công
+Hiện tại phiên bản composer mới nhất không hỗ trợ <=7.1 nên phải cài đặt thủ công hoặc sử dụng phiên bản composer <=2.2
+
 Nếu phiên bản php hiện tại của bạn >7.1 thì sử dụng composer command
 
 Chạy dòng lệnh:
