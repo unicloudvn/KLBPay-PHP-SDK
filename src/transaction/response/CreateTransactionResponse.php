@@ -4,9 +4,6 @@ namespace src\transaction\response;
 
 use src\transaction\model\TransactionStatus;
 
-/**
- *
- */
 class CreateTransactionResponse implements TransactionResponse
 {
     public string $transactionId;
@@ -48,7 +45,6 @@ class CreateTransactionResponse implements TransactionResponse
         $this->status = $status;
         $this->time = $time;
     }
-
 
     /**
      * @return string

@@ -25,8 +25,10 @@ class NotifyResponse
         return $this->status;
     }
 
+
     /**
      * @param bool $status
+     * @return void
      */
     public function setStatus(bool $status): void
     {

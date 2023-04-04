@@ -4,9 +4,7 @@ namespace src\security;
 
 use Exception;
 
-/**
- *
- */
+
 class SecurityUtil
 {
 
@@ -18,8 +16,10 @@ class SecurityUtil
         throw new Exception();
     }
 
+
     /**
-     * @throws Exception
+     * @param int $key_size
+     * @return string
      */
     public static function getSecureRandomKey(int $key_size): string
     {
@@ -28,13 +28,20 @@ class SecurityUtil
         return base64_encode($key);
     }
 
+    /**
+     * @param string $input
+     * @return string
+     */
     public static function md5(string $input): string
     {
         return md5($input);
     }
 
+
     /**
-     * @throws Exception
+     * @param string $data
+     * @param string $key
+     * @return string
      */
     public static function encryptAES(string $data, string $key): string
     {
@@ -77,6 +84,7 @@ class SecurityUtil
         return strtoupper(bin2hex($key));
     }
 
+
     /**
      * @param string $data
      * @param string $key
@@ -87,6 +95,7 @@ class SecurityUtil
         $hmac = hash_hmac('sha256', $data, $key, true);
         return bin2hex($hmac);
     }
+
 
     /**
      * @param string $client_id

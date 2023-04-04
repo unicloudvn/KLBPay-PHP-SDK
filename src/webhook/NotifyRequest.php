@@ -31,7 +31,18 @@ class NotifyRequest
      * @param string $transferDesc
      * @param string $time
      */
-    public function __construct(string $transactionId, string $refTransactionId, string $virtualAccount, string $actualAccount, string $fromBin, string $fromAccount, bool $success, int $amount, string $statusCode, string $txnNumber, string $transferDesc, string $time)
+    public function __construct(string $transactionId,
+                                string $refTransactionId,
+                                string $virtualAccount,
+                                string $actualAccount,
+                                string $fromBin,
+                                string $fromAccount,
+                                bool $success,
+                                int $amount,
+                                string $statusCode,
+                                string $txnNumber,
+                                string $transferDesc,
+                                string $time)
     {
         $this->transactionId = $transactionId;
         $this->refTransactionId = $refTransactionId;
@@ -55,10 +66,12 @@ class NotifyRequest
         return $this->transactionId;
     }
 
+
     /**
      * @param string $transactionId
+     * @return void
      */
-    public function setTransactionId(string $transactionId)
+    public function setTransactionId(string $transactionId): void
     {
         $this->transactionId = $transactionId;
     }
@@ -71,8 +84,10 @@ class NotifyRequest
         return $this->refTransactionId;
     }
 
+
     /**
      * @param string $refTransactionId
+     * @return void
      */
     public function setRefTransactionId(string $refTransactionId): void
     {
@@ -87,8 +102,10 @@ class NotifyRequest
         return $this->virtualAccount;
     }
 
+
     /**
      * @param string $virtualAccount
+     * @return void
      */
     public function setVirtualAccount(string $virtualAccount): void
     {
@@ -103,8 +120,10 @@ class NotifyRequest
         return $this->actualAccount;
     }
 
+
     /**
      * @param string $actualAccount
+     * @return void
      */
     public function setActualAccount(string $actualAccount): void
     {
@@ -135,8 +154,10 @@ class NotifyRequest
         return $this->fromAccount;
     }
 
+
     /**
      * @param string $fromAccount
+     * @return void
      */
     public function setFromAccount(string $fromAccount): void
     {
@@ -151,8 +172,10 @@ class NotifyRequest
         return $this->success;
     }
 
+
     /**
      * @param bool $success
+     * @return void
      */
     public function setSuccess(bool $success): void
     {
@@ -199,8 +222,10 @@ class NotifyRequest
         return $this->txnNumber;
     }
 
+
     /**
      * @param string $txnNumber
+     * @return void
      */
     public function setTxnNumber(string $txnNumber): void
     {
@@ -215,8 +240,10 @@ class NotifyRequest
         return $this->transferDesc;
     }
 
+
     /**
      * @param string $transferDesc
+     * @return void
      */
     public function setTransferDesc(string $transferDesc): void
     {

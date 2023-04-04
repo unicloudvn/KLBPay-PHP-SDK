@@ -4,9 +4,6 @@ namespace src\transaction\response;
 
 use src\transaction\model\TransactionStatus;
 
-/**
- *
- */
 class QueryTransactionResponse implements TransactionResponse
 {
     public TransactionStatus $status;
@@ -41,6 +38,7 @@ class QueryTransactionResponse implements TransactionResponse
         $this->status = $status;
     }
 
+
     /**
      * @return string
      */
@@ -49,8 +47,10 @@ class QueryTransactionResponse implements TransactionResponse
         return $this->refTransactionId;
     }
 
+
     /**
      * @param string $refTransactionId
+     * @return void
      */
     public function setRefTransactionId(string $refTransactionId): void
     {

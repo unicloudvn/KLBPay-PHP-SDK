@@ -10,9 +10,7 @@ use src\exception\PayResponseCode;
 use src\security\BaseHeader;
 use src\security\PackedMessage;
 
-/**
- *
- */
+
 class ThirdPartyClient
 {
     /**

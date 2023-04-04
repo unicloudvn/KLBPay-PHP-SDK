@@ -13,6 +13,10 @@ enum TransactionStatus: string
     case FAIL = 'FAIL';
     case TIMEOUT = 'TIMEOUT';
 
+    /**
+     * @param $value
+     * @return TransactionStatus|null
+     */
     public static function valueOf($value): ?TransactionStatus
     {
         foreach (TransactionStatus::cases() as $values) {

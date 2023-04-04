@@ -5,9 +5,7 @@ namespace src\client;
 use src\exception\PayResponseCode;
 use src\transaction\response\TransactionResponse;
 
-/**
- *
- */
+
 class BaseResponse
 {
     public int $code;

@@ -42,7 +42,11 @@ class KPayClient
         return $this->kPayPacker;
     }
 
+
     /**
+     * @param string $path
+     * @param TransactionRequest $request
+     * @return PackedMessage
      * @throws Exception
      */
     public function execute(string $path, TransactionRequest $request): PackedMessage
@@ -52,6 +56,8 @@ class KPayClient
     }
 
     /**
+     * @param CreateTransactionRequest $request
+     * @return CreateTransactionResponse
      * @throws Exception
      */
     public function createTransaction(CreateTransactionRequest $request): CreateTransactionResponse
@@ -60,7 +66,10 @@ class KPayClient
         return $this->kPayPacker->create($packed_response);
     }
 
+
     /**
+     * @param CancelTransactionRequest $request
+     * @return CancelTransactionResponse
      * @throws Exception
      */
     public function cancelTransaction(CancelTransactionRequest $request): CancelTransactionResponse
@@ -70,6 +79,8 @@ class KPayClient
     }
 
     /**
+     * @param QueryTransactionRequest $request
+     * @return QueryTransactionResponse
      * @throws Exception
      */
     public function checkTransaction(QueryTransactionRequest $request): QueryTransactionResponse

@@ -13,7 +13,7 @@ class PaymentException extends RuntimeException
     /**
      * @var PayResponseCode
      */
-    private PayResponseCode $response_code;
+    private PayResponseCode $responseCode;
 
     /**
      * @param PayResponseCode $responseCode
@@ -21,7 +21,7 @@ class PaymentException extends RuntimeException
     public function __construct(PayResponseCode $responseCode)
     {
         parent::__construct($responseCode->getMessage());
-        $this->response_code = $responseCode;
+        $this->responseCode = $responseCode;
     }
 
     /**
@@ -29,17 +29,17 @@ class PaymentException extends RuntimeException
      */
     public function getResponseCode(): PayResponseCode
     {
-        return $this->response_code;
+        return $this->responseCode;
     }
 
     public function getPaymentMessage(): string
     {
-        return $this->response_code->getMessage();
+        return $this->responseCode->getMessage();
     }
 
     public function getPaymentCode(): int
     {
-        return $this->response_code->value;
+        return $this->responseCode->value;
     }
 
 }

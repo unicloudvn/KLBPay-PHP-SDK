@@ -138,8 +138,10 @@ class KPayPacker
         );
     }
 
+
     /**
-     * @throws Exception
+     * @param TransactionRequest $data
+     * @return PackedMessage
      */
     public function encode(TransactionRequest $data): PackedMessage
     {

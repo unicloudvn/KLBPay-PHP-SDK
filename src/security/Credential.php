@@ -2,6 +2,9 @@
 
 namespace src\security;
 
+/**
+ *
+ */
 class Credential
 {
     private string $clientId;

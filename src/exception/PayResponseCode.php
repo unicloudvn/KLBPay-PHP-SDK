@@ -4,9 +4,7 @@ namespace src\exception;
 
 use JsonSerializable;
 
-/**
- *
- */
+
 enum PayResponseCode: int implements JsonSerializable
 {
     case SUCCESS = 0;
