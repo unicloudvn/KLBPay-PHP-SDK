@@ -15,8 +15,10 @@ class SecurityUtil
         throw new Exception();
     }
 
+
     /**
-     * @throws Exception
+     * @param int $key_size
+     * @return string
      */
     public static function getSecureRandomKey(int $key_size): string
     {
@@ -34,8 +36,11 @@ class SecurityUtil
         return md5($input);
     }
 
+
     /**
-     * @throws Exception
+     * @param string $data
+     * @param string $key
+     * @return string
      */
     public static function encryptAES(string $data, string $key): string
     {
@@ -95,7 +100,9 @@ class SecurityUtil
      * @param string $data
      * @return string
      */
-    public static function buildRawSignature(string $client_id, string $timestamp, string $data): string
+    public static function buildRawSignature(string $client_id,
+                                             string $timestamp,
+                                             string $data): string
     {
         return sprintf('%s|%s|%s', $client_id, $timestamp, $data);
     }

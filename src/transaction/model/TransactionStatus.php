@@ -23,6 +23,10 @@ class TransactionStatus
         return $oClass->getConstants();
     }
 
+    /**
+     * @param string $status
+     * @return string
+     */
     public static function valueOf(string $status): string
     {
         $constants = self::getConstants();

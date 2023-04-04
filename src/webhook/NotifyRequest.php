@@ -31,7 +31,18 @@ class NotifyRequest
      * @param string $transferDesc
      * @param string $time
      */
-    public function __construct(string $transactionId, string $refTransactionId, string $virtualAccount, string $actualAccount, string $fromBin, string $fromAccount, bool $success, int $amount, string $statusCode, string $txnNumber, string $transferDesc, string $time)
+    public function __construct(string $transactionId,
+                                string $refTransactionId,
+                                string $virtualAccount,
+                                string $actualAccount,
+                                string $fromBin,
+                                string $fromAccount,
+                                bool $success,
+                                int $amount,
+                                string $statusCode,
+                                string $txnNumber,
+                                string $transferDesc,
+                                string $time)
     {
         $this->transactionId = $transactionId;
         $this->refTransactionId = $refTransactionId;

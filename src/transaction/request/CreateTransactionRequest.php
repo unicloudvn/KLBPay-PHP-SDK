@@ -31,7 +31,17 @@ class CreateTransactionRequest implements TransactionRequest
      * @param int $redirectAfter
      * @param string $bankAccountNo
      */
-    public function __construct(string $refTransactionId, int $amount, string $description, int $timeout, string $title, string $language, CustomerInfo $customerInfo, string $successUrl, string $failUrl, int $redirectAfter, string $bankAccountNo)
+    public function __construct(string       $refTransactionId,
+                                int          $amount,
+                                string       $description,
+                                int          $timeout,
+                                string       $title,
+                                string       $language,
+                                CustomerInfo $customerInfo,
+                                string       $successUrl,
+                                string       $failUrl,
+                                int          $redirectAfter,
+                                string       $bankAccountNo)
     {
         $this->refTransactionId = $refTransactionId;
         $this->amount = $amount;

@@ -13,7 +13,9 @@ class Credential
      * @param string $secretKey
      * @param string $encryptKey
      */
-    public function __construct(string $clientId, string $secretKey, string $encryptKey)
+    public function __construct(string $clientId,
+                                string $secretKey,
+                                string $encryptKey)
     {
         $this->clientId = $clientId;
         $this->secretKey = $secretKey;

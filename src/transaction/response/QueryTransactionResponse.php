@@ -15,7 +15,9 @@ class QueryTransactionResponse implements TransactionResponse
      * @param string $refTransactionId
      * @param int $amount
      */
-    public function __construct(string $status, string $refTransactionId, int $amount)
+    public function __construct(string $status,
+                                string $refTransactionId,
+                                int $amount)
     {
         $this->status = $status;
         $this->refTransactionId = $refTransactionId;

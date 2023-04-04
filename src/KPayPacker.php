@@ -28,7 +28,11 @@ class KPayPacker
      * @param string $maxTimestampDiff
      * @param string $host
      */
-    public function __construct(string $clientId, string $encryptKey, string $secretKey, string $maxTimestampDiff, string $host)
+    public function __construct(string $clientId,
+                                string $encryptKey,
+                                string $secretKey,
+                                string $maxTimestampDiff,
+                                string $host)
     {
         $this->clientId = $clientId;
         $this->encryptKey = $encryptKey;

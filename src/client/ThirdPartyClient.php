@@ -33,7 +33,9 @@ class ThirdPartyClient
      * @param PackedMessage $packed_message
      * @return PackedMessage
      */
-    public function callAPI(string $host, string $path, PackedMessage $packed_message): PackedMessage
+    public function callAPI(string        $host,
+                            string        $path,
+                            PackedMessage $packed_message): PackedMessage
     {
         $headers = [
             BaseHeader::CONTENT_TYPE => 'application/json',
