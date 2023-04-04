@@ -8,6 +8,8 @@ class Credential
     private $secretKey;
     private $encryptKey;
 
+
+
     /**
      * @param string $clientId
      * @param string $secretKey
@@ -51,5 +53,22 @@ class Credential
     {
         $this->secretKey = $secretKey;
     }
+
+    /**
+     * @return string
+     */
+    public function getEncryptKey()
+    {
+        return $this->encryptKey;
+    }
+
+    /**
+     * @param string $encryptKey
+     */
+    public function setEncryptKey($encryptKey)
+    {
+        $this->encryptKey = $encryptKey;
+    }
+
 
 }
