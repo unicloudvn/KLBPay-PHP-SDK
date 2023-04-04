@@ -19,6 +19,14 @@ Ví dụ cài đặt trên Linux
 sudo install php-oauth
 ```
 
+hoặc
+
+```shell
+sudo install php<version>-oauth
+sudo install php7.2-oauth
+
+```
+
 ### **Composer**
 
 Để cài đặt các ràng buộc bằng [Composer](https://getcomposer.org/). Làm theo  [hướng dẫn cài đặt](https://getcomposer.org/doc/00-intro.md) nếu bạn chưa cài đặt Composer.
