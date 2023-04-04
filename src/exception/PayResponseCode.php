@@ -21,6 +21,10 @@ class PayResponseCode
     public const PAYMENT_SERVICE_UNAVAILABLE = ['code' => 1608, 'message' => 'Service unavailable', 'name' => 'PAYMENT_SERVICE_UNAVAILABLE'];
     public const PAYMENT_INVALID_CLIENT_ID = ['code' => 1609, 'message' => 'Invalid client id', 'name' => 'PAYMENT_INVALID_CLIENT_ID'];
 
+    /**
+     * @param $name
+     * @return int
+     */
     public static function getCode($name): int
     {
         if (defined("self::$name")) {
@@ -29,6 +33,10 @@ class PayResponseCode
         throw new InvalidArgumentException('Invalid PayCode');
     }
 
+    /**
+     * @param $name
+     * @return string
+     */
     public static function getMessage($name): string
     {
         if (defined("self::$name")) {
@@ -37,6 +45,10 @@ class PayResponseCode
         throw new InvalidArgumentException('Invalid PayCode');
     }
 
+    /**
+     * @param $code
+     * @return string
+     */
     public static function valueOf($code): string
     {
         $constants = self::getConstants();
@@ -48,6 +60,9 @@ class PayResponseCode
         throw new InvalidArgumentException('Invalid PayCode');
     }
 
+    /**
+     * @return array
+     */
     public static function getConstants(): array
     {
         $oClass = new ReflectionClass(__CLASS__);

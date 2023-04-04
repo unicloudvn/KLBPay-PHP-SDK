@@ -15,8 +15,10 @@ class SecurityUtil
         throw new Exception();
     }
 
+
     /**
-     * @throws Exception
+     * @param int $key_size
+     * @return string
      */
     public static function getSecureRandomKey(int $key_size): string
     {
@@ -24,6 +26,7 @@ class SecurityUtil
         $key = openssl_digest($secureRandomKeyBytes, 'SHA256', true);
         return base64_encode($key);
     }
+
 
     /**
      * @param string $input
@@ -34,8 +37,11 @@ class SecurityUtil
         return md5($input);
     }
 
+
     /**
-     * @throws Exception
+     * @param string $data
+     * @param string $key
+     * @return string
      */
     public static function encryptAES(string $data, string $key): string
     {

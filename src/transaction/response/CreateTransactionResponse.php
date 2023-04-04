@@ -29,8 +29,17 @@ class CreateTransactionResponse implements TransactionResponse
      * @param string $status
      * @param string $time
      */
-    public function __construct(string $transactionId, string $refTransactionId, string $payLinkCode, int $timeout,
-                                string $url, string $virtualAccount, string $description, int $amount, string $qrCodeString, string $status, string $time)
+    public function __construct(string $transactionId,
+                                string $refTransactionId,
+                                string $payLinkCode,
+                                int    $timeout,
+                                string $url,
+                                string $virtualAccount,
+                                string $description,
+                                int    $amount,
+                                string $qrCodeString,
+                                string $status,
+                                string $time)
     {
         $this->transactionId = $transactionId;
         $this->refTransactionId = $refTransactionId;

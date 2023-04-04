@@ -15,7 +15,10 @@ class CustomerInfo
      * @param string $phone
      * @param string $address
      */
-    public function __construct(string $fullName, string $email, string $phone, string $address)
+    public function __construct(string $fullName,
+                                string $email,
+                                string $phone,
+                                string $address)
     {
         $this->fullName = $fullName;
         $this->email = $email;
