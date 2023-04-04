@@ -15,7 +15,7 @@ class CustomerInfo
      * @param string $phone
      * @param string $address
      */
-    public function __construct(string $fullName, string $email, string $phone, string $address)
+    public function __construct($fullName, $email, $phone, $address)
     {
         $this->fullName = $fullName;
         $this->email = $email;
@@ -26,7 +26,7 @@ class CustomerInfo
     /**
      * @return string
      */
-    public function getFullName(): string
+    public function getFullName()
     {
         return $this->fullName;
     }
@@ -34,7 +34,7 @@ class CustomerInfo
     /**
      * @param string $fullName
      */
-    public function setFullName(string $fullName)
+    public function setFullName($fullName)
     {
         $this->fullName = $fullName;
     }
@@ -42,7 +42,7 @@ class CustomerInfo
     /**
      * @return string
      */
-    public function getEmail(): string
+    public function getEmail()
     {
         return $this->email;
     }
@@ -50,7 +50,7 @@ class CustomerInfo
     /**
      * @param string $email
      */
-    public function setEmail(string $email)
+    public function setEmail($email)
     {
         $this->email = $email;
     }
@@ -58,7 +58,7 @@ class CustomerInfo
     /**
      * @return string
      */
-    public function getPhone(): string
+    public function getPhone()
     {
         return $this->phone;
     }
@@ -66,7 +66,7 @@ class CustomerInfo
     /**
      * @param string $phone
      */
-    public function setPhone(string $phone)
+    public function setPhone($phone)
     {
         $this->phone = $phone;
     }
@@ -74,7 +74,7 @@ class CustomerInfo
     /**
      * @return string
      */
-    public function getAddress(): string
+    public function getAddress()
     {
         return $this->address;
     }
@@ -82,7 +82,7 @@ class CustomerInfo
     /**
      * @param string $address
      */
-    public function setAddress(string $address)
+    public function setAddress($address)
     {
         $this->address = $address;
     }

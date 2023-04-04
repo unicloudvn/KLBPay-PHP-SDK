@@ -9,7 +9,7 @@ class EncryptedBodyRequest
     /**
      * @param string $data
      */
-    public function __construct(string $data)
+    public function __construct($data)
     {
         $this->data = $data;
     }
@@ -17,7 +17,7 @@ class EncryptedBodyRequest
     /**
      * @return string
      */
-    public function getData(): string
+    public function getData()
     {
         return $this->data;
     }
@@ -25,7 +25,7 @@ class EncryptedBodyRequest
     /**
      * @param string $data
      */
-    public function setData(string $data)
+    public function setData($data)
     {
         $this->data = $data;
     }

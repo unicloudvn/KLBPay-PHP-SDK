@@ -16,20 +16,10 @@ class SecurityUtil
     }
 
     /**
-     * @throws Exception
-     */
-    public static function getSecureRandomKey(int $key_size): string
-    {
-        $secureRandomKeyBytes = openssl_random_pseudo_bytes($key_size);
-        $key = openssl_digest($secureRandomKeyBytes, 'SHA256', true);
-        return base64_encode($key);
-    }
-
-    /**
      * @param string $input
      * @return string
      */
-    public static function md5(string $input): string
+    public static function md5($input)
     {
         return md5($input);
     }
@@ -37,7 +27,7 @@ class SecurityUtil
     /**
      * @throws Exception
      */
-    public static function encryptAES(string $data, string $key): string
+    public static function encryptAES($data, $key)
     {
         $iv = hex2bin(substr($key, 0, 32));
         $pri_key = hex2bin($key);
@@ -51,7 +41,7 @@ class SecurityUtil
      * @param string $key
      * @return string
      */
-    public static function decryptAES(string $data, string $key): string
+    public static function decryptAES($data, $key)
     {
         $iv = hex2bin(substr($key, 0, 32));
         $key = hex2bin($key);
@@ -62,7 +52,7 @@ class SecurityUtil
      * @param int $key_size
      * @return string
      */
-    public static function getEncryptKey(int $key_size): string
+    public static function getEncryptKey($key_size)
     {
         $key = openssl_random_pseudo_bytes($key_size / 8);
         return strtoupper(bin2hex($key));
@@ -72,7 +62,7 @@ class SecurityUtil
      * @param int $key_size
      * @return string
      */
-    public static function getAESKey(int $key_size): string
+    public static function getAESKey($key_size)
     {
         $key = openssl_random_pseudo_bytes($key_size / 8);
         return strtoupper(bin2hex($key));
@@ -83,7 +73,7 @@ class SecurityUtil
      * @param string $key
      * @return string
      */
-    public static function hmacEncode(string $data, string $key): string
+    public static function hmacEncode($data, $key)
     {
         $hmac = hash_hmac('sha256', $data, $key, true);
         return bin2hex($hmac);
@@ -95,7 +85,7 @@ class SecurityUtil
      * @param string $data
      * @return string
      */
-    public static function buildRawSignature(string $client_id, string $timestamp, string $data): string
+    public static function buildRawSignature($client_id, $timestamp, $data)
     {
         return sprintf('%s|%s|%s', $client_id, $timestamp, $data);
     }

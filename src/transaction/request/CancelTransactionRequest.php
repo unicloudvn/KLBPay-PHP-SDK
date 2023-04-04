@@ -9,7 +9,7 @@ class CancelTransactionRequest implements TransactionRequest
     /**
      * @param string $transactionId
      */
-    public function __construct(string $transactionId)
+    public function __construct( $transactionId)
     {
         $this->transactionId = $transactionId;
     }
@@ -17,7 +17,7 @@ class CancelTransactionRequest implements TransactionRequest
     /**
      * @return string
      */
-    public function getTransactionId(): string
+    public function getTransactionId()
     {
         return $this->transactionId;
     }
@@ -25,7 +25,7 @@ class CancelTransactionRequest implements TransactionRequest
     /**
      * @param string $transactionId
      */
-    public function setTransactionId(string $transactionId): void
+    public function setTransactionId( $transactionId)
     {
         $this->transactionId = $transactionId;
     }

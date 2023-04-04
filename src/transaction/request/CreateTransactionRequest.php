@@ -31,7 +31,7 @@ class CreateTransactionRequest implements TransactionRequest
      * @param int $redirectAfter
      * @param string $bankAccountNo
      */
-    public function __construct(string $refTransactionId, int $amount, string $description, int $timeout, string $title, string $language, CustomerInfo $customerInfo, string $successUrl, string $failUrl, int $redirectAfter, string $bankAccountNo)
+    public function __construct($refTransactionId, $amount, $description, $timeout, $title, $language, CustomerInfo $customerInfo, $successUrl, $failUrl, $redirectAfter, $bankAccountNo)
     {
         $this->refTransactionId = $refTransactionId;
         $this->amount = $amount;
@@ -49,7 +49,7 @@ class CreateTransactionRequest implements TransactionRequest
     /**
      * @return string
      */
-    public function getRefTransactionId(): string
+    public function getRefTransactionId()
     {
         return $this->refTransactionId;
     }
@@ -57,7 +57,7 @@ class CreateTransactionRequest implements TransactionRequest
     /**
      * @param string $refTransactionId
      */
-    public function setRefTransactionId(string $refTransactionId): void
+    public function setRefTransactionId($refTransactionId)
     {
         $this->refTransactionId = $refTransactionId;
     }
@@ -65,15 +65,16 @@ class CreateTransactionRequest implements TransactionRequest
     /**
      * @return int
      */
-    public function getAmount(): int
+    public function getAmount()
     {
         return $this->amount;
     }
 
     /**
      * @param int $amount
+     * @return void;
      */
-    public function setAmount(int $amount): void
+    public function setAmount($amount)
     {
         $this->amount = $amount;
     }
@@ -81,7 +82,7 @@ class CreateTransactionRequest implements TransactionRequest
     /**
      * @return string
      */
-    public function getDescription(): string
+    public function getDescription()
     {
         return $this->description;
     }
@@ -89,7 +90,7 @@ class CreateTransactionRequest implements TransactionRequest
     /**
      * @param string $description
      */
-    public function setDescription(string $description): void
+    public function setDescription($description)
     {
         $this->description = $description;
     }
@@ -97,7 +98,7 @@ class CreateTransactionRequest implements TransactionRequest
     /**
      * @return int
      */
-    public function getTimeout(): int
+    public function getTimeout()
     {
         return $this->timeout;
     }
@@ -105,7 +106,7 @@ class CreateTransactionRequest implements TransactionRequest
     /**
      * @param int $timeout
      */
-    public function setTimeout(int $timeout): void
+    public function setTimeout($timeout)
     {
         $this->timeout = $timeout;
     }
@@ -113,7 +114,7 @@ class CreateTransactionRequest implements TransactionRequest
     /**
      * @return string
      */
-    public function getTitle(): string
+    public function getTitle()
     {
         return $this->title;
     }
@@ -121,7 +122,7 @@ class CreateTransactionRequest implements TransactionRequest
     /**
      * @param string $title
      */
-    public function setTitle(string $title): void
+    public function setTitle($title)
     {
         $this->title = $title;
     }
@@ -129,7 +130,7 @@ class CreateTransactionRequest implements TransactionRequest
     /**
      * @return string
      */
-    public function getLanguage(): string
+    public function getLanguage()
     {
         return $this->language;
     }
@@ -137,7 +138,7 @@ class CreateTransactionRequest implements TransactionRequest
     /**
      * @param string $language
      */
-    public function setLanguage(string $language): void
+    public function setLanguage($language)
     {
         $this->language = $language;
     }
@@ -145,7 +146,7 @@ class CreateTransactionRequest implements TransactionRequest
     /**
      * @return CustomerInfo
      */
-    public function getCustomerInfo(): CustomerInfo
+    public function getCustomerInfo()
     {
         return $this->customerInfo;
     }
@@ -153,7 +154,7 @@ class CreateTransactionRequest implements TransactionRequest
     /**
      * @param CustomerInfo $customerInfo
      */
-    public function setCustomerInfo(CustomerInfo $customerInfo): void
+    public function setCustomerInfo(CustomerInfo $customerInfo)
     {
         $this->customerInfo = $customerInfo;
     }
@@ -161,7 +162,7 @@ class CreateTransactionRequest implements TransactionRequest
     /**
      * @return string
      */
-    public function getSuccessUrl(): string
+    public function getSuccessUrl()
     {
         return $this->successUrl;
     }
@@ -169,7 +170,7 @@ class CreateTransactionRequest implements TransactionRequest
     /**
      * @param string $successUrl
      */
-    public function setSuccessUrl(string $successUrl): void
+    public function setSuccessUrl($successUrl)
     {
         $this->successUrl = $successUrl;
     }
@@ -177,7 +178,7 @@ class CreateTransactionRequest implements TransactionRequest
     /**
      * @return string
      */
-    public function getFailUrl(): string
+    public function getFailUrl()
     {
         return $this->failUrl;
     }
@@ -185,7 +186,7 @@ class CreateTransactionRequest implements TransactionRequest
     /**
      * @param string $failUrl
      */
-    public function setFailUrl(string $failUrl): void
+    public function setFailUrl($failUrl)
     {
         $this->failUrl = $failUrl;
     }
@@ -193,7 +194,7 @@ class CreateTransactionRequest implements TransactionRequest
     /**
      * @return int
      */
-    public function getRedirectAfter(): int
+    public function getRedirectAfter()
     {
         return $this->redirectAfter;
     }
@@ -201,7 +202,7 @@ class CreateTransactionRequest implements TransactionRequest
     /**
      * @param int $redirectAfter
      */
-    public function setRedirectAfter(int $redirectAfter): void
+    public function setRedirectAfter($redirectAfter)
     {
         $this->redirectAfter = $redirectAfter;
     }
@@ -209,7 +210,7 @@ class CreateTransactionRequest implements TransactionRequest
     /**
      * @return string
      */
-    public function getBankAccountNo(): string
+    public function getBankAccountNo()
     {
         return $this->bankAccountNo;
     }
@@ -217,7 +218,7 @@ class CreateTransactionRequest implements TransactionRequest
     /**
      * @param string $bankAccountNo
      */
-    public function setBankAccountNo(string $bankAccountNo): void
+    public function setBankAccountNo($bankAccountNo)
     {
         $this->bankAccountNo = $bankAccountNo;
     }

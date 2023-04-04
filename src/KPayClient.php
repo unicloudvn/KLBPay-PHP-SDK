@@ -33,33 +33,43 @@ class KPayClient
     /**
      * @return KPayPacker
      */
-    public function getKPayPacker(): KPayPacker
+    public function getKPayPacker()
     {
         return $this->kPayPacker;
     }
 
+
     /**
+     * @param string $path
+     * @param TransactionRequest $request
+     * @return PackedMessage
      * @throws Exception
      */
-    public function execute(string $path, TransactionRequest $request): PackedMessage
+    public function execute( $path, TransactionRequest $request)
     {
         $packed_request = $this->kPayPacker->encode($request);
         return $this->client->callAPI($this->kPayPacker->getHost(), $path, $packed_request);
     }
 
+
     /**
+     * @param CreateTransactionRequest $request
+     * @return CreateTransactionResponse
      * @throws Exception
      */
-    public function createTransaction(CreateTransactionRequest $request): CreateTransactionResponse
+    public function createTransaction(CreateTransactionRequest $request)
     {
         $packed_response = $this->execute(CREATE_TRANSACTION_PATH, $request);
         return $this->kPayPacker->create($packed_response);
     }
 
+
     /**
+     * @param CancelTransactionRequest $request
+     * @return CancelTransactionResponse
      * @throws Exception
      */
-    public function cancelTransaction(CancelTransactionRequest $request): CancelTransactionResponse
+    public function cancelTransaction(CancelTransactionRequest $request)
     {
         $packed_response = $this->execute(CANCEL_TRANSACTION_PATH, $request);
         return $this->kPayPacker->cancel($packed_response);
@@ -68,7 +78,7 @@ class KPayClient
     /**
      * @throws Exception
      */
-    public function checkTransaction(QueryTransactionRequest $request): QueryTransactionResponse
+    public function checkTransaction(QueryTransactionRequest $request)
     {
         $packed_response = $this->execute(CHECK_TRANSACTION_PATH, $request);
         return $this->kPayPacker->check($packed_response);

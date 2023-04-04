@@ -13,7 +13,7 @@ class Credential
      * @param string $secretKey
      * @param string $encryptKey
      */
-    public function __construct(string $clientId, string $secretKey, string $encryptKey)
+    public function __construct($clientId, $secretKey, $encryptKey)
     {
         $this->clientId = $clientId;
         $this->secretKey = $secretKey;
@@ -23,7 +23,7 @@ class Credential
     /**
      * @return string
      */
-    public function getClientId(): string
+    public function getClientId()
     {
         return $this->clientId;
     }
@@ -31,7 +31,7 @@ class Credential
     /**
      * @param string $clientId
      */
-    public function setClientId(string $clientId)
+    public function setClientId($clientId)
     {
         $this->clientId = $clientId;
     }
@@ -39,7 +39,7 @@ class Credential
     /**
      * @return string
      */
-    public function getSecretKey(): string
+    public function getSecretKey()
     {
         return $this->secretKey;
     }
@@ -47,25 +47,9 @@ class Credential
     /**
      * @param string $secretKey
      */
-    public function setSecretKey(string $secretKey)
+    public function setSecretKey($secretKey)
     {
         $this->secretKey = $secretKey;
-    }
-
-    /**
-     * @return string
-     */
-    public function getEncryptKey(): string
-    {
-        return $this->encryptKey;
-    }
-
-    /**
-     * @param string $encryptKey
-     */
-    public function setEncryptKey(string $encryptKey)
-    {
-        $this->encryptKey = $encryptKey;
     }
 
 }

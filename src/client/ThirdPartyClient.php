@@ -17,7 +17,7 @@ class ThirdPartyClient
      * @param $request
      * @return ResponseInterface
      */
-    private function execute(string $url, $request): ResponseInterface
+    private function execute($url, $request)
     {
         try {
             $client = new Client();
@@ -33,7 +33,7 @@ class ThirdPartyClient
      * @param PackedMessage $packed_message
      * @return PackedMessage
      */
-    public function callAPI(string $host, string $path, PackedMessage $packed_message): PackedMessage
+    public function callAPI($host, $path, PackedMessage $packed_message)
     {
         $headers = [
             BaseHeader::CONTENT_TYPE => 'application/json',

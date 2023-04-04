@@ -28,7 +28,12 @@ class KPayPacker
      * @param string $maxTimestampDiff
      * @param string $host
      */
-    public function __construct(string $clientId, string $encryptKey, string $secretKey, string $maxTimestampDiff, string $host)
+    public function __construct(
+        $clientId,
+        $encryptKey,
+        $secretKey,
+        $maxTimestampDiff,
+        $host)
     {
         $this->clientId = $clientId;
         $this->encryptKey = $encryptKey;
@@ -40,11 +45,15 @@ class KPayPacker
     /**
      * @return string
      */
-    public function getHost(): string
+    public function getHost()
     {
         return $this->host;
     }
 
+    /**
+     * @param PackedMessage $packed_message
+     * @return mixed
+     */
     public function decode(PackedMessage $packed_message)
     {
         if ($packed_message->getClientId() == null || $packed_message->getClientId() !== $this->clientId) {
@@ -81,7 +90,7 @@ class KPayPacker
      * @param PackedMessage $packed_message
      * @return CreateTransactionResponse
      */
-    public function create(PackedMessage $packed_message): CreateTransactionResponse
+    public function create(PackedMessage $packed_message)
     {
         $decoded_response = $this->decode($packed_message);
 
@@ -105,7 +114,7 @@ class KPayPacker
      * @param PackedMessage $packed_message
      * @return CancelTransactionResponse
      */
-    public function cancel(PackedMessage $packed_message): CancelTransactionResponse
+    public function cancel(PackedMessage $packed_message)
     {
         $decoded_response = $this->decode($packed_message);
 
@@ -118,7 +127,7 @@ class KPayPacker
      * @param PackedMessage $packed_message
      * @return QueryTransactionResponse
      */
-    public function check(PackedMessage $packed_message): QueryTransactionResponse
+    public function check(PackedMessage $packed_message)
     {
         $decoded_response = $this->decode($packed_message);
         $status = TransactionStatus::valueOf($decoded_response->status);
@@ -130,9 +139,10 @@ class KPayPacker
     }
 
     /**
+     * @return PackedMessage
      * @throws Exception
      */
-    public function encode(TransactionRequest $data): PackedMessage
+    public function encode(TransactionRequest $data)
     {
         $timestamp = time() * 1000;
 

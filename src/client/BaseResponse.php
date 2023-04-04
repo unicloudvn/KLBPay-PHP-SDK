@@ -24,7 +24,7 @@ class BaseResponse
     /**
      * @return int
      */
-    public function getCode(): int
+    public function getCode()
     {
         return $this->code;
     }
@@ -32,7 +32,7 @@ class BaseResponse
     /**
      * @param int $code
      */
-    public function setCode(int $code)
+    public function setCode($code)
     {
         $this->code = $code;
     }
@@ -40,7 +40,7 @@ class BaseResponse
     /**
      * @return string
      */
-    public function getMessage(): string
+    public function getMessage()
     {
         return $this->message;
     }
@@ -48,7 +48,7 @@ class BaseResponse
     /**
      * @param string $message
      */
-    public function setMessage(string $message)
+    public function setMessage($message)
     {
         $this->message = $message;
     }
@@ -56,7 +56,7 @@ class BaseResponse
     /**
      * @return TransactionResponse
      */
-    public function getData(): TransactionResponse
+    public function getData()
     {
         return $this->data;
     }
@@ -64,7 +64,7 @@ class BaseResponse
     /**
      * @param mixed|null $data
      */
-    public function setData(TransactionResponse $data)
+    public function setData($data)
     {
         $this->data = $data;
     }

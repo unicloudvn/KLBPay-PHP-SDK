@@ -9,7 +9,7 @@ class CancelTransactionResponse implements TransactionResponse
     /**
      * @param bool $success
      */
-    public function __construct(bool $success)
+    public function __construct( $success)
     {
         $this->success = $success;
     }
@@ -17,7 +17,7 @@ class CancelTransactionResponse implements TransactionResponse
     /**
      * @return bool
      */
-    public function isSuccess(): bool
+    public function isSuccess()
     {
         return $this->success;
     }
@@ -25,7 +25,7 @@ class CancelTransactionResponse implements TransactionResponse
     /**
      * @param bool $success
      */
-    public function setSuccess(bool $success): void
+    public function setSuccess( $success)
     {
         $this->success = $success;
     }

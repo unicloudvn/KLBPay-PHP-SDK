@@ -16,10 +16,10 @@ class PackedMessage
      * @param string $encryptedData
      */
     public function __construct(
-        string $clientId,
-        int    $timestamp,
-        string $signature,
-        string $encryptedData
+        $clientId,
+        $timestamp,
+        $signature,
+        $encryptedData
     )
     {
         $this->encryptedData = $encryptedData;
@@ -31,7 +31,7 @@ class PackedMessage
     /**
      * @return string
      */
-    public function getClientId(): string
+    public function getClientId()
     {
         return $this->clientId;
     }
@@ -39,7 +39,7 @@ class PackedMessage
     /**
      * @param string $clientId
      */
-    public function setClientId(string $clientId)
+    public function setClientId($clientId)
     {
         $this->clientId = $clientId;
     }
@@ -47,7 +47,7 @@ class PackedMessage
     /**
      * @return string
      */
-    public function getSignature(): string
+    public function getSignature()
     {
         return $this->signature;
     }
@@ -55,7 +55,7 @@ class PackedMessage
     /**
      * @param string $signature
      */
-    public function setSignature(string $signature)
+    public function setSignature($signature)
     {
         $this->signature = $signature;
     }
@@ -63,7 +63,7 @@ class PackedMessage
     /**
      * @return int
      */
-    public function getTimestamp(): int
+    public function getTimestamp()
     {
         return $this->timestamp;
     }
@@ -71,7 +71,7 @@ class PackedMessage
     /**
      * @param int $timestamp
      */
-    public function setTimestamp(int $timestamp)
+    public function setTimestamp($timestamp)
     {
         $this->timestamp = $timestamp;
     }
@@ -79,7 +79,7 @@ class PackedMessage
     /**
      * @return string
      */
-    public function getEncryptedData(): string
+    public function getEncryptedData()
     {
         return $this->encryptedData;
     }
@@ -87,7 +87,7 @@ class PackedMessage
     /**
      * @param string $encryptedData
      */
-    public function setEncryptedData(string $encryptedData)
+    public function setEncryptedData($encryptedData)
     {
         $this->encryptedData = $encryptedData;
     }

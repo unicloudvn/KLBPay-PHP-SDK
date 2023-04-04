@@ -9,7 +9,7 @@ class NotifyResponse
     /**
      * @param bool $status
      */
-    public function __construct(bool $status)
+    public function __construct( $status)
     {
         $this->status = $status;
     }
@@ -17,7 +17,7 @@ class NotifyResponse
     /**
      * @return bool
      */
-    public function isStatus(): bool
+    public function isStatus()
     {
         return $this->status;
     }
@@ -25,7 +25,7 @@ class NotifyResponse
     /**
      * @param bool $status
      */
-    public function setStatus(bool $status): void
+    public function setStatus($status)
     {
         $this->status = $status;
     }

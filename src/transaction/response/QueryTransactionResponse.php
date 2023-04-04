@@ -15,7 +15,9 @@ class QueryTransactionResponse implements TransactionResponse
      * @param string $refTransactionId
      * @param int $amount
      */
-    public function __construct(string $status, string $refTransactionId, int $amount)
+    public function __construct($status,
+                                $refTransactionId,
+                                $amount)
     {
         $this->status = $status;
         $this->refTransactionId = $refTransactionId;
@@ -25,7 +27,7 @@ class QueryTransactionResponse implements TransactionResponse
     /**
      * @return string
      */
-    public function getStatus(): string
+    public function getStatus()
     {
         return $this->status;
     }
@@ -33,7 +35,7 @@ class QueryTransactionResponse implements TransactionResponse
     /**
      * @param TransactionStatus $status
      */
-    public function setStatus(TransactionStatus $status): void
+    public function setStatus(TransactionStatus $status)
     {
         $this->status = $status;
     }
@@ -41,7 +43,7 @@ class QueryTransactionResponse implements TransactionResponse
     /**
      * @return string
      */
-    public function getRefTransactionId(): string
+    public function getRefTransactionId()
     {
         return $this->refTransactionId;
     }
@@ -49,7 +51,7 @@ class QueryTransactionResponse implements TransactionResponse
     /**
      * @param string $refTransactionId
      */
-    public function setRefTransactionId(string $refTransactionId): void
+    public function setRefTransactionId($refTransactionId)
     {
         $this->refTransactionId = $refTransactionId;
     }
@@ -57,7 +59,7 @@ class QueryTransactionResponse implements TransactionResponse
     /**
      * @return int
      */
-    public function getAmount(): int
+    public function getAmount()
     {
         return $this->amount;
     }
@@ -65,7 +67,7 @@ class QueryTransactionResponse implements TransactionResponse
     /**
      * @param int $amount
      */
-    public function setAmount(int $amount): void
+    public function setAmount($amount)
     {
         $this->amount = $amount;
     }

@@ -29,8 +29,17 @@ class CreateTransactionResponse implements TransactionResponse
      * @param string $status
      * @param string $time
      */
-    public function __construct(string $transactionId, string $refTransactionId, string $payLinkCode, int $timeout,
-                                string $url, string $virtualAccount, string $description, int $amount, string $qrCodeString, string $status, string $time)
+    public function __construct($transactionId,
+                                $refTransactionId,
+                                $payLinkCode,
+                                $timeout,
+                                $url,
+                                $virtualAccount,
+                                $description,
+                                $amount,
+                                $qrCodeString,
+                                $status,
+                                $time)
     {
         $this->transactionId = $transactionId;
         $this->refTransactionId = $refTransactionId;
@@ -49,7 +58,7 @@ class CreateTransactionResponse implements TransactionResponse
     /**
      * @return string
      */
-    public function getTransactionId(): string
+    public function getTransactionId()
     {
         return $this->transactionId;
     }
@@ -57,7 +66,7 @@ class CreateTransactionResponse implements TransactionResponse
     /**
      * @param string $transactionId
      */
-    public function setTransactionId(string $transactionId): void
+    public function setTransactionId($transactionId)
     {
         $this->transactionId = $transactionId;
     }
@@ -65,7 +74,7 @@ class CreateTransactionResponse implements TransactionResponse
     /**
      * @return string
      */
-    public function getRefTransactionId(): string
+    public function getRefTransactionId()
     {
         return $this->refTransactionId;
     }
@@ -73,7 +82,7 @@ class CreateTransactionResponse implements TransactionResponse
     /**
      * @param string $refTransactionId
      */
-    public function setRefTransactionId(string $refTransactionId): void
+    public function setRefTransactionId($refTransactionId)
     {
         $this->refTransactionId = $refTransactionId;
     }
@@ -81,7 +90,7 @@ class CreateTransactionResponse implements TransactionResponse
     /**
      * @return string
      */
-    public function getPayLinkCode(): string
+    public function getPayLinkCode()
     {
         return $this->payLinkCode;
     }
@@ -89,7 +98,7 @@ class CreateTransactionResponse implements TransactionResponse
     /**
      * @param string $payLinkCode
      */
-    public function setPayLinkCode(string $payLinkCode): void
+    public function setPayLinkCode($payLinkCode)
     {
         $this->payLinkCode = $payLinkCode;
     }
@@ -97,7 +106,7 @@ class CreateTransactionResponse implements TransactionResponse
     /**
      * @return int
      */
-    public function getTimeout(): int
+    public function getTimeout()
     {
         return $this->timeout;
     }
@@ -105,7 +114,7 @@ class CreateTransactionResponse implements TransactionResponse
     /**
      * @param int $timeout
      */
-    public function setTimeout(int $timeout): void
+    public function setTimeout($timeout)
     {
         $this->timeout = $timeout;
     }
@@ -113,7 +122,7 @@ class CreateTransactionResponse implements TransactionResponse
     /**
      * @return string
      */
-    public function getUrl(): string
+    public function getUrl()
     {
         return $this->url;
     }
@@ -121,7 +130,7 @@ class CreateTransactionResponse implements TransactionResponse
     /**
      * @param string $url
      */
-    public function setUrl(string $url): void
+    public function setUrl($url)
     {
         $this->url = $url;
     }
@@ -129,7 +138,7 @@ class CreateTransactionResponse implements TransactionResponse
     /**
      * @return string
      */
-    public function getVirtualAccount(): string
+    public function getVirtualAccount()
     {
         return $this->virtualAccount;
     }
@@ -137,7 +146,7 @@ class CreateTransactionResponse implements TransactionResponse
     /**
      * @param string $virtualAccount
      */
-    public function setVirtualAccount(string $virtualAccount): void
+    public function setVirtualAccount($virtualAccount)
     {
         $this->virtualAccount = $virtualAccount;
     }
@@ -145,7 +154,7 @@ class CreateTransactionResponse implements TransactionResponse
     /**
      * @return string
      */
-    public function getDescription(): string
+    public function getDescription()
     {
         return $this->description;
     }
@@ -153,7 +162,7 @@ class CreateTransactionResponse implements TransactionResponse
     /**
      * @param string $description
      */
-    public function setDescription(string $description): void
+    public function setDescription($description)
     {
         $this->description = $description;
     }
@@ -161,7 +170,7 @@ class CreateTransactionResponse implements TransactionResponse
     /**
      * @return int
      */
-    public function getAmount(): int
+    public function getAmount()
     {
         return $this->amount;
     }
@@ -169,7 +178,7 @@ class CreateTransactionResponse implements TransactionResponse
     /**
      * @param int $amount
      */
-    public function setAmount(int $amount): void
+    public function setAmount($amount)
     {
         $this->amount = $amount;
     }
@@ -177,7 +186,7 @@ class CreateTransactionResponse implements TransactionResponse
     /**
      * @return string
      */
-    public function getQrCodeString(): string
+    public function getQrCodeString()
     {
         return $this->qrCodeString;
     }
@@ -185,7 +194,7 @@ class CreateTransactionResponse implements TransactionResponse
     /**
      * @param string $qrCodeString
      */
-    public function setQrCodeString(string $qrCodeString): void
+    public function setQrCodeString($qrCodeString)
     {
         $this->qrCodeString = $qrCodeString;
     }
@@ -193,7 +202,7 @@ class CreateTransactionResponse implements TransactionResponse
     /**
      * @return string
      */
-    public function getStatus(): string
+    public function getStatus()
     {
         return $this->status;
     }
@@ -201,7 +210,7 @@ class CreateTransactionResponse implements TransactionResponse
     /**
      * @param string $status
      */
-    public function setStatus(string $status): void
+    public function setStatus($status)
     {
         $this->status = $status;
     }
@@ -209,7 +218,7 @@ class CreateTransactionResponse implements TransactionResponse
     /**
      * @return string
      */
-    public function getTime(): string
+    public function getTime()
     {
         return $this->time;
     }
@@ -217,7 +226,7 @@ class CreateTransactionResponse implements TransactionResponse
     /**
      * @param string $time
      */
-    public function setTime(string $time): void
+    public function setTime($time)
     {
         $this->time = $time;
     }
