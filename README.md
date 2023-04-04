@@ -27,7 +27,7 @@ Kiểm tra phần sau ở file composer.json:
 ```json
 {
   "require": {
-        "unicloudvn/klbpay-php-sdk": "^1.0"
+        "unicloudvn/klbpay-php-sdk": "^dev-php5.6"
     }
 }
 ```
