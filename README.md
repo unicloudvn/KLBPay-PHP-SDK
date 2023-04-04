@@ -11,7 +11,8 @@ Github: [https://github.com/unicloudvn/KLBPay-PHP-SDK.git](https://github.com/un
 
 ### **Requirements**
 Phiên bản PHP: từ 7.2 trở lên.
-Ngoài ra cần một số extension của php như php-oauth
+Ngoài ra cần một số extension của php như php-oauth.
+
 Ví dụ cài đặt trên Linux
 
 ```shell
