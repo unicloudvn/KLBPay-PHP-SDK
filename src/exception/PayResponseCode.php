@@ -10,7 +10,7 @@ class PayResponseCode
     public const SUCCESS = ['code' => 0, 'message' => 'Success', 'name' => 'SUCCESS'];
     public const FAILED = ['code' => 1, 'message' => 'Failed', 'name' => 'FAILED'];
     public const INVALID_PARAM = ['code' => 2, 'message' => 'Invalid param', 'name' => 'INVALID_PARAM'];
-
+    public const PAYMENT_TRANSACTION_ID_NOT_FOUND = ['code' => 402, 'message' => 'Payment transaction id is not found', 'name' => 'PAYMENT_TRANSACTION_ID_NOT_FOUND'];
     public const PAYMENT_SECURITY_VIOLATION = ['code' => 1601, 'message' => 'Security violation', 'name' => 'PAYMENT_SECURITY_VIOLATION'];
     public const PAYMENT_ORDER_COMPLETED = ['code' => 1602, 'message' => 'Order was completed', 'name' => 'PAYMENT_ORDER_COMPLETED'];
     public const PAYMENT_AMOUNT_INVALID = ['code' => 1603, 'message' => 'Invalid amount', 'name' => 'PAYMENT_AMOUNT_INVALID'];

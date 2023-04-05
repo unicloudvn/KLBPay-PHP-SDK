@@ -4,6 +4,8 @@ namespace src\security;
 
 use Exception;
 
+require_once '../config/config.php';
+
 class SecurityUtil
 {
 
