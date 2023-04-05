@@ -372,7 +372,7 @@ require 'kpay-php-sdk/vendor/autoload.php';
 include_once 'Config.php';
 
 // Input data
-$tnx_ref = $_POST['refTransactionId'];
+$tnxRef = $_POST['refTransactionId'];
 $amount = $_POST['amount'];
 $desc = $_POST['description'];
 $timeout = $_POST['timeout'];
