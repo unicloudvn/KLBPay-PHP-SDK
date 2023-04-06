@@ -1,10 +1,8 @@
 # KLBPay-PHP-SDK
----
 
-# PHP
 Thư viện người dùng tích hợp KLBPay vào hệ thống thanh toán của Merchant
 
-
+# PHP
 Github: [https://github.com/unicloudvn/KLBPay-PHP-SDK.git](https://github.com/unicloudvn/KLBPay-PHP-SDK.git)
 
 ##  **Cài đặt và sử dụng**
