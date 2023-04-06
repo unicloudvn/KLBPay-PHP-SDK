@@ -48,7 +48,6 @@ class PaymentException extends RuntimeException
      */
     public function __toString()
     {
-        return '- [' . $this->getPaymentCode() . '] - ' . $this->getPaymentMessage() . ' at ' . $this->getFile();
-    }
+        return "\e[0;31m[ERROR]:\e[0m Caught PaymentException: " . "\e[0;31m'{$this->getPaymentMessage()}'\e[0m in {$this->file}({$this->line})\n";    }
 
 }
