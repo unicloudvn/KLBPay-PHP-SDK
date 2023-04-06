@@ -351,11 +351,10 @@ Bước 2. Tạo index.php trên thư mục root của dự án.
 </body>
 </html>
 ```
-
 ### **Tạo giao dịch**:
 
 ```php
-$response = $payClient->createTransaction($request);
+$response = $pay_client->createTransaction($request);
 ```
 
 Bước 3. Tạo `CreateTransaction.php` file:
@@ -370,41 +369,41 @@ require 'kpay-php-sdk/vendor/autoload.php';
 include_once 'Config.php';
 
 // Input data
-$tnxRef = $_POST['refTransactionId'];
+$tnx_ref = $_POST['ref_transaction_id'];
 $amount = $_POST['amount'];
 $desc = $_POST['description'];
 $timeout = $_POST['timeout'];
 $title = $_POST['title'];
 $language = $_POST['language'];
-$fullName = $_POST['fullName'];
+$full_name = $_POST['full_name'];
 $phone = $_POST['phone'];
 $email = $_POST['email'];
 $address = $_POST['address'];
 
-$successUrl = 'https://success.example.com.vn';
-$failUrl = 'https://fail.example.com.vn';
-$redirectAfter = 5;
-$bankAccountNo = "";
+$success_url = 'https://success.example.com.vn';
+$fail_url = 'https://fail.example.com.vn';
+$redirect_after = 5;
+$bank_account_no = "";
 
-$customer_info = new CustomerInfo($fullName, $email, $phone, $address);
+$customer_info = new CustomerInfo($full_name, $email, $phone, $address);
 
 $request = new CreateTransactionRequest(
-    $tnxRef,
+    $tnx_ref,
     $amount,
     $desc,
     $timeout,
     $title,
     $language,
-    $customerInfo,
-    $successUrl,
-    $failUrl,
-    $redirectAfter,
-    $bankAccountNo
+    $customer_info,
+    $success_url,
+    $fail_url,
+    $redirect_after,
+    $bank_account_no // hệ thống chọn tài khoản mặc định trong trường hợp null
 );
 
 try {
-    if (!empty($payClient)) {
-        $response = $payClient->createTransaction($request);
+    if (!empty($pay_client)) {
+        $response = $pay_client->createTransaction($request);
         header('Location: ' . $response->getUrl());
     }
 } catch (Exception $e) {
@@ -415,21 +414,21 @@ try {
 ### **Kiểm tra giao dịch** (tương tự):
 
 ```php
-$orderId = $_POST["orderId"];
+$order_id = $_POST["order-id"];
 
-$checkRequest = new QueryTransactionRequest($orderId);
+$checkRequest = new QueryTransactionRequest($order_id);
 
-$response = $payClient->checkTransaction($checkRequest);
+$response = $pay_client->checkTransaction($checkRequest);
 ```
 
 ### **Hủy giao dịch** (tương tự):
 
 ```php
-$orderId = $_POST["orderId"];
+$order_id = $_POST["order-id"];
 
-$cancelRequest = new CancelTransactionRequest($orderId);
+$cancelRequest = new CancelTransactionRequest($order_id);
 
-$response = $payClient->cancelTransaction($cancelRequest);
+$response = $pay_client->cancelTransaction($cancelRequest);
 ```
 
 Bước cuối: Chạy dòng lệnh the php built-in web server
