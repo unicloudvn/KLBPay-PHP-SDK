@@ -441,6 +441,29 @@ sudo rm -rf ~ php -S localhost:8000
 
 Sau đó, mở trình duyệt truy cập đến host và port đã chỉ định (Ví dụ bên trên, [http://localhost:8000](http://localhost:8000) ).
 
+### **Callback thanh toán** (Webhook):
+
+Thông báo giao dịch:
+
+```php
+use src\security\SecurityUtil;
+
+require 'vendor/autoload.php';
+include_once 'Config.php';
+
+
+/* Payment Notify
+ * IPN URL: Ghi nhận kết quả thanh toán từ KLBPay
+ * $response_data -> Giá trị 'data' từ Request body  
+ * $encrypt_key -> ENCRYPT_KEY
+ * $decrypt_data -> Giá trị data sau khi decryptAES (JSON String)
+ */
+$decrypt_data = SecurityUtil::decryptAES($response_data, $encrypt_key)
+// Kiểm tra giao dịch và trả về giá trị bool $status (true or false)
+echo json_encode(['status' => $status]);
+```
+
+
 ## **Author**
 ---
 [dev@unicloud.com.vn](#)
