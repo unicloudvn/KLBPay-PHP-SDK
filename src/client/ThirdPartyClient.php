@@ -67,7 +67,7 @@ class ThirdPartyClient
         }
 
         if ($response_code != PayResponseCode::SUCCESS['name']) {
-            throw new PaymentException(PayResponseCode::valueOf($response_code));
+            throw new PaymentException($response_code);
         }
 
         $encrypt_response = $response_body['data'];

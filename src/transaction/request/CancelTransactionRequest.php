@@ -25,7 +25,7 @@ class CancelTransactionRequest implements TransactionRequest
     /**
      * @param string $transactionId
      */
-    public function setTransactionId( $transactionId)
+    public function setTransactionId($transactionId)
     {
         $this->transactionId = $transactionId;
     }
