@@ -11,6 +11,8 @@ class PayResponseCode
     public const FAILED = ['code' => 1, 'message' => 'Failed', 'name' => 'FAILED'];
     public const INVALID_PARAM = ['code' => 2, 'message' => 'Invalid param', 'name' => 'INVALID_PARAM'];
     public const INVALID_TRANSACTION_ID = ['code' => 402, 'message' => 'Invalid transaction id', 'name' => 'INVALID_TRANSACTION_ID'];
+    public const DUPLICATE_REFERENCE_TRANSACTION_ID = ['code' => 411, 'message' => 'Duplicate ref transaction id', 'name' => 'DUPLICATE_REFERENCE_TRANSACTION_ID'];
+    public const BANK_ACCOUNT_NOT_FOUND = ['code' => 1301, 'message' => 'Bank account not found', 'name' => 'BANK_ACCOUNT_NOT_FOUND'];
     public const PAYMENT_SECURITY_VIOLATION = ['code' => 1601, 'message' => 'Security violation', 'name' => 'PAYMENT_SECURITY_VIOLATION'];
     public const PAYMENT_ORDER_COMPLETED = ['code' => 1602, 'message' => 'Order was completed', 'name' => 'PAYMENT_ORDER_COMPLETED'];
     public const PAYMENT_AMOUNT_INVALID = ['code' => 1603, 'message' => 'Invalid amount', 'name' => 'PAYMENT_AMOUNT_INVALID'];
