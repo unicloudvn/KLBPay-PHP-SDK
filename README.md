@@ -447,7 +447,7 @@ Thông báo giao dịch:
 use src\security\SecurityUtil;
 
 require 'vendor/autoload.php';
-include_once 'Config.php';
+include_once 'config.php';
 
 
 /* Payment Notify
