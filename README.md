@@ -433,7 +433,7 @@ $response = $pay_client->cancelTransaction($cancelRequest);
 
 Bước cuối: Chạy dòng lệnh the php built-in web server
 ```shell
-sudo rm -rf ~ php -S localhost:8000
+php -S localhost:8000
 ```
 
 Sau đó, mở trình duyệt truy cập đến host và port đã chỉ định (Ví dụ bên trên, [http://localhost:8000](http://localhost:8000) ).
