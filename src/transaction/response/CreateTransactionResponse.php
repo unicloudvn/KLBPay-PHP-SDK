@@ -15,6 +15,7 @@ class CreateTransactionResponse implements TransactionResponse
     public $qrCodeString;
     public $status;
     public $time;
+    public $accountName;
 
     /**
      * @param string $transactionId
@@ -28,6 +29,7 @@ class CreateTransactionResponse implements TransactionResponse
      * @param string $qrCodeString
      * @param string $status
      * @param string $time
+     * @param string $accountName
      */
     public function __construct(string $transactionId,
                                 string $refTransactionId,
@@ -39,7 +41,9 @@ class CreateTransactionResponse implements TransactionResponse
                                 int    $amount,
                                 string $qrCodeString,
                                 string $status,
-                                string $time)
+                                string $time,
+                                string $accountName
+    )
     {
         $this->transactionId = $transactionId;
         $this->refTransactionId = $refTransactionId;
@@ -52,6 +56,7 @@ class CreateTransactionResponse implements TransactionResponse
         $this->qrCodeString = $qrCodeString;
         $this->status = $status;
         $this->time = $time;
+        $this->accountName = $accountName;
     }
 
 
@@ -229,6 +234,22 @@ class CreateTransactionResponse implements TransactionResponse
     public function setTime(string $time): void
     {
         $this->time = $time;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAccountName(): string
+    {
+        return $this->accountName;
+    }
+
+    /**
+     * @param string $accountName
+     */
+    public function setAccountName(string $accountName): void
+    {
+        $this->accountName = $accountName;
     }
 
 }
