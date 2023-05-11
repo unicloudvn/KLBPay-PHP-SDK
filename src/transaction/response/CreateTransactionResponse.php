@@ -42,8 +42,7 @@ class CreateTransactionResponse implements TransactionResponse
                                 string $qrCodeString,
                                 string $status,
                                 string $time,
-                                string $accountName
-    )
+                                string $accountName)
     {
         $this->transactionId = $transactionId;
         $this->refTransactionId = $refTransactionId;
