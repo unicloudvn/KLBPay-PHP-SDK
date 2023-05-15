@@ -24,6 +24,8 @@ class PayResponseCode
     public const PAYMENT_TRANSACTION_EXPIRED = ['code' => 1610, 'message' => 'Transaction expired', 'name' => 'PAYMENT_TRANSACTION_EXPIRED'];
     public const PAYMENT_TRANSACTION_FAILED = ['code' => 1611, 'message' => 'Transaction failed', 'name' => 'PAYMENT_TRANSACTION_FAILED'];
     public const PAYMENT_SERVICE_UNAVAILABLE = ['code' => 1612, 'message' => 'Service unavailable', 'name' => 'PAYMENT_SERVICE_UNAVAILABLE'];
+    public const PAYMENT_TRANSACTION_STATUS_INVALID = ['code' => 1613, 'message' => 'Invalid transaction status', 'name' => 'PAYMENT_TRANSACTION_STATUS_INVALID'];
+
 
     /**
      * @param $name
