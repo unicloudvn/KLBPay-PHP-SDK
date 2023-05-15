@@ -10,18 +10,20 @@ class PayResponseCode
     public const SUCCESS = ['code' => 0, 'message' => 'Success', 'name' => 'SUCCESS'];
     public const FAILED = ['code' => 1, 'message' => 'Failed', 'name' => 'FAILED'];
     public const INVALID_PARAM = ['code' => 2, 'message' => 'Invalid param', 'name' => 'INVALID_PARAM'];
-    public const INVALID_TRANSACTION_ID = ['code' => 402, 'message' => 'Invalid transaction id', 'name' => 'INVALID_TRANSACTION_ID'];
-    public const DUPLICATE_REFERENCE_TRANSACTION_ID = ['code' => 411, 'message' => 'Duplicate ref transaction id', 'name' => 'DUPLICATE_REFERENCE_TRANSACTION_ID'];
+    public const AMOUNT_INVALID = ['code' => 507, 'message' => 'Invalid amount', 'name' => 'AMOUNT_INVALID'];
     public const BANK_ACCOUNT_NOT_FOUND = ['code' => 1301, 'message' => 'Bank account not found', 'name' => 'BANK_ACCOUNT_NOT_FOUND'];
     public const PAYMENT_SECURITY_VIOLATION = ['code' => 1601, 'message' => 'Security violation', 'name' => 'PAYMENT_SECURITY_VIOLATION'];
-    public const PAYMENT_ORDER_COMPLETED = ['code' => 1602, 'message' => 'Order was completed', 'name' => 'PAYMENT_ORDER_COMPLETED'];
-    public const PAYMENT_AMOUNT_INVALID = ['code' => 1603, 'message' => 'Invalid amount', 'name' => 'PAYMENT_AMOUNT_INVALID'];
-    public const PAYMENT_TRANSACTION_CANCELED = ['code' => 1604, 'message' => 'Canceled transaction', 'name' => 'PAYMENT_TRANSACTION_CANCELED'];
-    public const PAYMENT_TRANSACTION_EXPIRED = ['code' => 1605, 'message' => 'Transaction expired', 'name' => 'PAYMENT_TRANSACTION_EXPIRED'];
-    public const PAYMENT_TRANSACTION_INVALID = ['code' => 1606, 'message' => 'Invalid transaction', 'name' => 'PAYMENT_TRANSACTION_INVALID'];
-    public const PAYMENT_TRANSACTION_FAILED = ['code' => 1607, 'message' => 'Transaction failed', 'name' => 'PAYMENT_TRANSACTION_FAILED'];
-    public const PAYMENT_SERVICE_UNAVAILABLE = ['code' => 1608, 'message' => 'Service unavailable', 'name' => 'PAYMENT_SERVICE_UNAVAILABLE'];
-    public const PAYMENT_INVALID_CLIENT_ID = ['code' => 1609, 'message' => 'Invalid client id', 'name' => 'PAYMENT_INVALID_CLIENT_ID'];
+    public const PAYMENT_INVALID_CLIENT_ID = ['code' => 1602, 'message' => 'Invalid client id', 'name' => 'PAYMENT_INVALID_CLIENT_ID'];
+    public const PAYMENT_INVALID_TRANSACTION_ID = ['code' => 1603, 'message' => 'Invalid transaction id', 'name' => 'PAYMENT_INVALID_TRANSACTION_ID'];
+    public const DUPLICATE_REFERENCE_TRANSACTION_ID = ['code' => 1604, 'message' => 'Duplicate ref transaction id', 'name' => 'DUPLICATE_REFERENCE_TRANSACTION_ID'];
+    public const PAYMENT_TYPE_INVALID = ['code' => 1605, 'message' => 'Invalid payment type"', 'name' => 'PAYMENT_TYPE_INVALID'];
+    public const PAYMENT_INVALID_DATA = ['code' => 1606, 'message' => 'Invalid payment type"', 'name' => 'PAYMENT_INVALID_DATA'];
+    public const PAYMENT_ORDER_COMPLETED = ['code' => 1607, 'message' => 'Order was completed', 'name' => 'PAYMENT_ORDER_COMPLETED'];
+    public const PAYMENT_TRANSACTION_TIMEOUT = ['code' => 1608, 'message' => 'Canceled transaction', 'name' => 'PAYMENT_TRANSACTION_TIMEOUT'];
+    public const PAYMENT_TRANSACTION_CANCELED = ['code' => 1609, 'message' => 'Canceled transaction', 'name' => 'PAYMENT_TRANSACTION_CANCELED'];
+    public const PAYMENT_TRANSACTION_EXPIRED = ['code' => 1610, 'message' => 'Transaction expired', 'name' => 'PAYMENT_TRANSACTION_EXPIRED'];
+    public const PAYMENT_TRANSACTION_FAILED = ['code' => 1611, 'message' => 'Transaction failed', 'name' => 'PAYMENT_TRANSACTION_FAILED'];
+    public const PAYMENT_SERVICE_UNAVAILABLE = ['code' => 1612, 'message' => 'Service unavailable', 'name' => 'PAYMENT_SERVICE_UNAVAILABLE'];
 
     /**
      * @param $name
