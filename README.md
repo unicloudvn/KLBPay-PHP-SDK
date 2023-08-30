@@ -481,15 +481,6 @@ echo json_encode(['status' => $status]);
 
 ### **Xác nhận liên kết tài khoản* :
 ```php
-   $accountNo = $_POST['account_no'];
-
-   $checkRequest = new LinkAccountRequest($accountNo);
-      ...
-
-   $response = $client->linkAccountNo($checkRequest);
-```
-## **Author**
-```php
     $sessionId = $_POST['session_id'];
     $accountNo = $_POST['account_no'];
     $otp = $_POST['otp'];
@@ -500,4 +491,6 @@ echo json_encode(['status' => $status]);
     $response = $client->verifyLinkAccountNo($checkRequest);
 
 ```
+## **Author**
+
 [dev@unicloud.com.vn](#)
