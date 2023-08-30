@@ -11,9 +11,9 @@ use src\transaction\request\TransactionRequest;
 use src\transaction\response\CancelTransactionResponse;
 use src\transaction\response\CreateTransactionResponse;
 use src\transaction\response\QueryTransactionResponse;
-use src\verifyAccount\response\CheckAccountResponse;
-use src\verifyAccount\response\LinkAccountResponse;
-use src\verifyAccount\response\VerifyLinkAccountResponse;
+use src\verify\response\CheckAccountResponse;
+use src\verify\response\LinkAccountResponse;
+use src\verify\response\VerifyLinkAccountResponse;
 
 class KPayPacker
 {

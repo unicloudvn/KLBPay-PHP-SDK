@@ -1,6 +1,6 @@
 <?php
 
-namespace src\verifyAccount\request;
+namespace src\verify\request;
 
 use src\transaction\request\TransactionRequest;
 

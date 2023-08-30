@@ -12,12 +12,12 @@ use src\transaction\request\TransactionRequest;
 use src\transaction\response\CancelTransactionResponse;
 use src\transaction\response\CreateTransactionResponse;
 use src\transaction\response\QueryTransactionResponse;
-use src\verifyAccount\request\CheckAccountNoRequest;
-use src\verifyAccount\request\LinkAccountRequest;
-use src\verifyAccount\request\VerifyLinkAccountRequest;
-use src\verifyAccount\response\CheckAccountResponse;
-use src\verifyAccount\response\LinkAccountResponse;
-use src\verifyAccount\response\VerifyLinkAccountResponse;
+use src\verify\request\CheckAccountNoRequest;
+use src\verify\request\LinkAccountRequest;
+use src\verify\request\VerifyLinkAccountRequest;
+use src\verify\response\CheckAccountResponse;
+use src\verify\response\LinkAccountResponse;
+use src\verify\response\VerifyLinkAccountResponse;
 
 require_once 'config/config.php';
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace src\verifyAccount\response;
+namespace src\verify\response;
 
 use src\transaction\response\TransactionResponse;
 

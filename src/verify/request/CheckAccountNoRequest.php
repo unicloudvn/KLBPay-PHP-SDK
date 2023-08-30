@@ -1,9 +1,8 @@
 <?php
 
-namespace src\verifyAccount\request;
+namespace src\verify\request;
 
 use src\transaction\request\TransactionRequest;
-use src\verifyAccount\response\CheckAccountResponse;
 
 class CheckAccountNoRequest implements TransactionRequest
 {
