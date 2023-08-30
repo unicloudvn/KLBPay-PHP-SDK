@@ -459,8 +459,47 @@ $decrypt_data = SecurityUtil::decryptAES($response_data, $encrypt_key)
 // Kiểm tra giao dịch và trả về giá trị bool $status (true or false)
 echo json_encode(['status' => $status]);
 ```
+### **Kiểm tra tài khoản* :
+```php
+  $accountNo = $_POST['account_no'];
 
+  $checkRequest = new CheckAccountNoRequest($accountNo);
 
+  $response = $client->checkAccountNo($checkRequest);
+
+```
+
+### **Liên kết tài khoản* :
+```php
+   $accountNo = $_POST['account_no'];
+
+   $checkRequest = new LinkAccountRequest($accountNo);
+      ...
+
+   $response = $client->linkAccountNo($checkRequest);
+```
+
+### **Xác nhận liên kết tài khoản* :
+```php
+   $accountNo = $_POST['account_no'];
+
+   $checkRequest = new LinkAccountRequest($accountNo);
+      ...
+
+   $response = $client->linkAccountNo($checkRequest);
+```
 ## **Author**
+```php
+    $sessionId = $_POST['session_id'];
+    $accountNo = $_POST['account_no'];
+    $otp = $_POST['otp'];
 
+    $checkRequest = new VerifyLinkAccountRequest($sessionId, $accountNo, $otp);
+      ...
+
+    $response = $client->verifyLinkAccountNo($checkRequest);
+
+```
+
+            $checkRequest = new VerifyLinkAccountRequest($sessionId, $accountNo, $otp);
 [dev@unicloud.com.vn](#)
