@@ -500,6 +500,4 @@ echo json_encode(['status' => $status]);
     $response = $client->verifyLinkAccountNo($checkRequest);
 
 ```
-
-            $checkRequest = new VerifyLinkAccountRequest($sessionId, $accountNo, $otp);
 [dev@unicloud.com.vn](#)
