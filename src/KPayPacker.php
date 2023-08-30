@@ -11,6 +11,9 @@ use src\transaction\request\TransactionRequest;
 use src\transaction\response\CancelTransactionResponse;
 use src\transaction\response\CreateTransactionResponse;
 use src\transaction\response\QueryTransactionResponse;
+use src\verifyAccount\response\CheckAccountResponse;
+use src\verifyAccount\response\LinkAccountResponse;
+use src\verifyAccount\response\VerifyLinkAccountResponse;
 
 class KPayPacker
 {
@@ -134,6 +137,35 @@ class KPayPacker
         );
     }
 
+    public function checkAccountNo(PackedMessage $packed_message): CheckAccountResponse
+    {
+        $decoded_response = $this->decode($packed_message);
+        return new CheckAccountResponse(
+            $decoded_response->accountNo,
+            $decoded_response->accountName
+        );
+    }
+
+    public function linkAccount(PackedMessage $packed_message): LinkAccountResponse
+    {
+        $decoded_response = $this->decode($packed_message);
+        return new LinkAccountResponse(
+            $decoded_response->accountNo,
+            $decoded_response->accountName,
+            $decoded_response->phone,
+            $decoded_response->expireTime,
+            $decoded_response->sessionId
+        );
+    }
+
+    public function verifyLinkAccount(PackedMessage $packed_message): VerifyLinkAccountResponse
+    {
+        $decoded_response = $this->decode($packed_message);
+        return new VerifyLinkAccountResponse(
+            $decoded_response->success
+        );
+    }
+
     /**
      * @throws Exception
      */
@@ -156,5 +188,6 @@ class KPayPacker
 
         return new PackedMessage($this->clientId, $timestamp, $x_api_validate, $encrypt_data);
     }
+
 
 }

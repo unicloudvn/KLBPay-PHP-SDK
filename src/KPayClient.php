@@ -12,6 +12,12 @@ use src\transaction\request\TransactionRequest;
 use src\transaction\response\CancelTransactionResponse;
 use src\transaction\response\CreateTransactionResponse;
 use src\transaction\response\QueryTransactionResponse;
+use src\verifyAccount\request\CheckAccountNoRequest;
+use src\verifyAccount\request\LinkAccountRequest;
+use src\verifyAccount\request\VerifyLinkAccountRequest;
+use src\verifyAccount\response\CheckAccountResponse;
+use src\verifyAccount\response\LinkAccountResponse;
+use src\verifyAccount\response\VerifyLinkAccountResponse;
 
 require_once 'config/config.php';
 
@@ -72,6 +78,33 @@ class KPayClient
     {
         $packed_response = $this->execute(CHECK_TRANSACTION_PATH, $request);
         return $this->kPayPacker->check($packed_response);
+    }
+
+    /**
+     * @throws Exception
+     */
+    public function checkAccountNo(CheckAccountNoRequest $request): CheckAccountResponse
+    {
+        $packed_response = $this->execute(CHECK_ACCOUNT_NO_PATH, $request);
+        return $this->kPayPacker->checkAccountNo($packed_response);
+    }
+
+    /**
+     * @throws Exception
+     */
+    public function linkAccountNo(LinkAccountRequest $request): LinkAccountResponse
+    {
+        $packed_response = $this->execute(LINK_ACCOUNT_PATH, $request);
+        return $this->kPayPacker->linkAccount($packed_response);
+    }
+
+    /**
+     * @throws Exception
+     */
+    public function verifyLinkAccountNo(VerifyLinkAccountRequest $request): VerifyLinkAccountResponse
+    {
+        $packed_response = $this->execute(LINK_ACCOUNT_PATH, $request);
+        return $this->kPayPacker->verifyLinkAccount($packed_response);
     }
 
 }
