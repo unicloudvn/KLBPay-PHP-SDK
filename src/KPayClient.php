@@ -15,7 +15,7 @@ use src\transaction\response\QueryTransactionResponse;
 use src\verify\request\CheckAccountNoRequest;
 use src\verify\request\LinkAccountRequest;
 use src\verify\request\VerifyLinkAccountRequest;
-use src\verify\response\CheckAccountResponse;
+use src\verify\response\CheckAccountNoResponse;
 use src\verify\response\LinkAccountResponse;
 use src\verify\response\VerifyLinkAccountResponse;
 
@@ -83,7 +83,7 @@ class KPayClient
     /**
      * @throws Exception
      */
-    public function checkAccountNo(CheckAccountNoRequest $request): CheckAccountResponse
+    public function checkAccountNo(CheckAccountNoRequest $request): CheckAccountNoResponse
     {
         $packed_response = $this->execute(CHECK_ACCOUNT_NO_PATH, $request);
         return $this->kPayPacker->checkAccountNo($packed_response);

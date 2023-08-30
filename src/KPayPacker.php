@@ -11,7 +11,7 @@ use src\transaction\request\TransactionRequest;
 use src\transaction\response\CancelTransactionResponse;
 use src\transaction\response\CreateTransactionResponse;
 use src\transaction\response\QueryTransactionResponse;
-use src\verify\response\CheckAccountResponse;
+use src\verify\response\CheckAccountNoResponse;
 use src\verify\response\LinkAccountResponse;
 use src\verify\response\VerifyLinkAccountResponse;
 
@@ -137,10 +137,10 @@ class KPayPacker
         );
     }
 
-    public function checkAccountNo(PackedMessage $packed_message): CheckAccountResponse
+    public function checkAccountNo(PackedMessage $packed_message): CheckAccountNoResponse
     {
         $decoded_response = $this->decode($packed_message);
-        return new CheckAccountResponse(
+        return new CheckAccountNoResponse(
             $decoded_response->accountNo,
             $decoded_response->accountName
         );

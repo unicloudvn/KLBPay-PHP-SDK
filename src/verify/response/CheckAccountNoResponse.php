@@ -4,7 +4,7 @@ namespace src\verify\response;
 
 use src\transaction\response\TransactionResponse;
 
-class CheckAccountResponse implements TransactionResponse
+class CheckAccountNoResponse implements TransactionResponse
 {
     private $accountNo;
     private $accountName;

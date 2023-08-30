@@ -33,8 +33,8 @@ class ThirdPartyClient
      * @param PackedMessage $packed_message
      * @return PackedMessage
      */
-    public function callAPI(string $host,
-                            string $path,
+    public function callAPI(string        $host,
+                            string        $path,
                             PackedMessage $packed_message): PackedMessage
     {
         $headers = [
