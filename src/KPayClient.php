@@ -103,7 +103,7 @@ class KPayClient
      */
     public function verifyLinkAccountNo(VerifyLinkAccountRequest $request): VerifyLinkAccountResponse
     {
-        $packed_response = $this->execute(LINK_ACCOUNT_PATH, $request);
+        $packed_response = $this->execute(LINK_ACCOUNT_VERIFY_PATH, $request);
         return $this->kPayPacker->verifyLinkAccount($packed_response);
     }
 
