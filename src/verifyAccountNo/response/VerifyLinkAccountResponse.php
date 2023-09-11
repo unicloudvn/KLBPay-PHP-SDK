@@ -2,11 +2,11 @@
 
 namespace src\verify\response;
 
-use src\transaction\response\TransactionResponse;
+use src\base\IResponse;
 
-class VerifyLinkAccountResponse implements TransactionResponse
+class VerifyLinkAccountResponse implements IResponse
 {
-    public $success;
+    public  $success;
 
     /**
      * @param bool $success

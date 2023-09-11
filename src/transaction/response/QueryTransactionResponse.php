@@ -2,9 +2,10 @@
 
 namespace src\transaction\response;
 
+use src\base\IResponse;
 use src\transaction\model\TransactionStatus;
 
-class QueryTransactionResponse implements TransactionResponse
+class QueryTransactionResponse implements IResponse
 {
     public $status;
     public $refTransactionId;

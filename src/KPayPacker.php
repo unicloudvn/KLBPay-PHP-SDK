@@ -3,17 +3,23 @@
 namespace src;
 
 use Exception;
+use src\base\IRequest;
 use src\exception\PaymentException;
 use src\security\PackedMessage;
 use src\security\SecurityUtil;
 use src\transaction\model\TransactionStatus;
-use src\transaction\request\TransactionRequest;
 use src\transaction\response\CancelTransactionResponse;
 use src\transaction\response\CreateTransactionResponse;
 use src\transaction\response\QueryTransactionResponse;
+
+
 use src\verify\response\CheckAccountNoResponse;
 use src\verify\response\LinkAccountResponse;
 use src\verify\response\VerifyLinkAccountResponse;
+use src\virtualAccount\response\DisableVirtualAccountResponse;
+use src\virtualAccount\response\EnableVirtualAccountResponse;
+use src\virtualAccount\response\GetTransactionResponse;
+
 
 class KPayPacker
 {
@@ -166,10 +172,53 @@ class KPayPacker
         );
     }
 
+    public function enableVirtualAccount(PackedMessage $packed_message): EnableVirtualAccountResponse
+    {
+        $decoded_response = $this->decode($packed_message);
+        return new EnableVirtualAccountResponse(
+            $decoded_response->order,
+            $decoded_response->virtualAccount,
+            $decoded_response->bankAccountNo,
+            $decoded_response->fixAmount,
+            $decoded_response->fixContent,
+            $decoded_response->qrContent,
+            $decoded_response->timeout
+        );
+    }
+
+    public function disableVirtualAccount(PackedMessage $packed_message): DisableVirtualAccountResponse
+    {
+        $decoded_response = $this->decode($packed_message);
+        return new DisableVirtualAccountResponse(
+            $decoded_response->success
+        );
+    }
+
+    public function getTransaction(PackedMessage $packed_message): GetTransactionResponse
+    {
+        $decoded_response = $this->decode($packed_message);
+        $status = TransactionStatus::valueOf($decoded_response->status);
+        return new GetTransactionResponse(
+            $decoded_response->id,
+            $status,
+            $decoded_response->amount,
+            $decoded_response->refTransactionId,
+            $decoded_response->createDateTime,
+            $decoded_response->completeTime,
+            $decoded_response->virtualAccount,
+            $decoded_response->description,
+            $decoded_response->paymentType,
+            $decoded_response->txnNumber,
+            $decoded_response->accountName,
+            $decoded_response->accountNo,
+            $decoded_response->interBankTrace
+        );
+    }
+
     /**
      * @throws Exception
      */
-    public function encode(TransactionRequest $data): PackedMessage
+    public function encode(IRequest $data): PackedMessage
     {
         $timestamp = time() * 1000;
 

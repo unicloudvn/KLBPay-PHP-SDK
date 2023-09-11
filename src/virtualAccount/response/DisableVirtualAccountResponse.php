@@ -1,11 +1,12 @@
 <?php
 
-namespace src\transaction\response;
+namespace src\virtualAccount\response;
 
 use src\base\IResponse;
 
-class CancelTransactionResponse implements IResponse
+class DisableVirtualAccountResponse implements IResponse
 {
+
     public $success;
 
     /**
@@ -31,5 +32,4 @@ class CancelTransactionResponse implements IResponse
     {
         $this->success = $success;
     }
-
 }

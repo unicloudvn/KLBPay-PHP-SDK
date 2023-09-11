@@ -2,7 +2,9 @@
 
 namespace src\transaction\response;
 
-class CreateTransactionResponse implements TransactionResponse
+use src\base\IResponse;
+
+class CreateTransactionResponse implements IResponse
 {
     public $transactionId;
     public $refTransactionId;

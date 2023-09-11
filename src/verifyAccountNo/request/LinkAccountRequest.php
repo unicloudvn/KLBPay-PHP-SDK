@@ -2,24 +2,22 @@
 
 namespace src\verify\request;
 
-use src\transaction\request\TransactionRequest;
+use src\base\IRequest;
 
-class CheckAccountNoRequest implements TransactionRequest
+class LinkAccountRequest implements IRequest
 {
-
-
     public $accountNo;
 
     /**
-     * @param $accountNo
+     * @param string $accountNo
      */
-    public function __construct($accountNo)
+    public function __construct(string $accountNo)
     {
         $this->accountNo = $accountNo;
     }
 
     /**
-     * @return String
+     * @return string
      */
     public function getAccountNo()
     {
@@ -27,19 +25,10 @@ class CheckAccountNoRequest implements TransactionRequest
     }
 
     /**
-     * @param String $accountNo
+     * @param string $accountNo
      */
     public function setAccountNo($accountNo): void
     {
         $this->accountNo = $accountNo;
     }
-
-
 }
-
-
-
-
-
-
-
