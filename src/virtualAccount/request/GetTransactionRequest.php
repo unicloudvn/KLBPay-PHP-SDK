@@ -6,35 +6,31 @@ use src\base\IRequest;
 
 class GetTransactionRequest implements IRequest
 {
-    public $order;
-    public $page;
     public $size;
+    public $page;
+    public $order;
     public $bankAccountNo;
     public $fromDate;
     public $toDate;
 
     /**
-     * @param int $order
-     * @param int $page
-     * @param int $size
-     * @param string $bankAccountNo
-     * @param string $fromDate
-     * @param string $toDate
+     * @param $size
+     * @param $page
+     * @param $order
+     * @param $bankAccountNo
+     * @param $fromDate
+     * @param $toDate
      */
-    public function __construct(int    $order,
-                                int    $page,
-                                int    $size,
-                                string $bankAccountNo,
-                                string $fromDate,
-                                string $toDate)
+    public function __construct($size, $page, $order, $bankAccountNo, $fromDate, $toDate)
     {
-        $this->order = $order;
-        $this->page = $page;
         $this->size = $size;
+        $this->page = $page;
+        $this->order = $order;
         $this->bankAccountNo = $bankAccountNo;
         $this->fromDate = $fromDate;
         $this->toDate = $toDate;
     }
+
 
     /**
      * @return int
