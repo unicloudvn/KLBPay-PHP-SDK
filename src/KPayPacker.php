@@ -14,9 +14,12 @@ use src\transaction\response\QueryTransactionResponse;
 use src\verifyAccountNo\request\CheckAccountNoResponse;
 use src\verifyAccountNo\request\LinkAccountResponse;
 use src\verifyAccountNo\request\VerifyLinkAccountResponse;
+use src\virtualAccount\request\GetTransactionRequest;
 use src\virtualAccount\response\DisableVirtualAccountResponse;
 use src\virtualAccount\response\EnableVirtualAccountResponse;
 use src\virtualAccount\response\GetTransactionResponse;
+use src\virtualAccount\response\PageResponse;
+
 class KPayPacker
 {
     public $clientId;
@@ -190,11 +193,12 @@ class KPayPacker
         );
     }
 
-    public function getTransaction(PackedMessage $packed_message): GetTransactionResponse
+    public function getTransaction(PackedMessage $packed_message, GetTransactionRequest $request): PageResponse
     {
         $decoded_response = $this->decode($packed_message);
         $status = TransactionStatus::valueOf($decoded_response->status);
-        return new GetTransactionResponse(
+
+        $transactionResponse = new GetTransactionResponse(
             $decoded_response->id,
             $status,
             $decoded_response->amount,
@@ -209,7 +213,10 @@ class KPayPacker
             $decoded_response->accountNo,
             $decoded_response->interBankTrace
         );
+
+        return PageResponse::fromGetTransactionRequest($request, [$transactionResponse]);
     }
+
 
     /**
      * @throws Exception
