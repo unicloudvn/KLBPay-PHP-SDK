@@ -67,7 +67,7 @@ class EnableVirtualAccountResponse implements IResponse
     /**
      * @param string $virtualAccount
      */
-    public function setVirtualAccount($virtualAccount): void
+    public function setVirtualAccount(string $virtualAccount): void
     {
         $this->virtualAccount = $virtualAccount;
     }

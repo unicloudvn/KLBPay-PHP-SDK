@@ -195,27 +195,33 @@ class KPayPacker
 
     public function getTransaction(PackedMessage $packed_message, GetTransactionRequest $request): PageResponse
     {
-        $decoded_response = $this->decode($packed_message);
-        $status = TransactionStatus::valueOf($decoded_response->status);
+        $decoded_responses = $this->decode($packed_message);
+        $status = TransactionStatus::valueOf($decoded_responses->status);
 
-        $transactionResponse = new GetTransactionResponse(
-            $decoded_response->id,
-            $status,
-            $decoded_response->amount,
-            $decoded_response->refTransactionId,
-            $decoded_response->createDateTime,
-            $decoded_response->completeTime,
-            $decoded_response->virtualAccount,
-            $decoded_response->description,
-            $decoded_response->paymentType,
-            $decoded_response->txnNumber,
-            $decoded_response->accountName,
-            $decoded_response->accountNo,
-            $decoded_response->interBankTrace
-        );
+        $transactionResponses = [];
 
-        return PageResponse::fromGetTransactionRequest($request, [$transactionResponse]);
+        foreach ($decoded_responses as $decoded_response) {
+            $transactionResponse = new GetTransactionResponse(
+                $decoded_response->id,
+                $status,
+                $decoded_response->amount,
+                $decoded_response->refTransactionId,
+                $decoded_response->createDateTime,
+                $decoded_response->completeTime,
+                $decoded_response->virtualAccount,
+                $decoded_response->description,
+                $decoded_response->paymentType,
+                $decoded_response->txnNumber,
+                $decoded_response->accountName,
+                $decoded_response->accountNo,
+                $decoded_response->interBankTrace
+            );
+            $transactionResponses[] = $transactionResponse;
+        }
+
+        return new PageResponse($transactionResponses, $request->getPage(), $request->getSize(), count($transactionResponses));
     }
+
 
 
     /**
