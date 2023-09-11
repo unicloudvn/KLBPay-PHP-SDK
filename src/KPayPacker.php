@@ -11,16 +11,12 @@ use src\transaction\model\TransactionStatus;
 use src\transaction\response\CancelTransactionResponse;
 use src\transaction\response\CreateTransactionResponse;
 use src\transaction\response\QueryTransactionResponse;
-
-
-use src\verify\response\CheckAccountNoResponse;
-use src\verify\response\LinkAccountResponse;
-use src\verify\response\VerifyLinkAccountResponse;
+use src\verifyAccountNo\request\CheckAccountNoResponse;
+use src\verifyAccountNo\request\LinkAccountResponse;
+use src\verifyAccountNo\request\VerifyLinkAccountResponse;
 use src\virtualAccount\response\DisableVirtualAccountResponse;
 use src\virtualAccount\response\EnableVirtualAccountResponse;
 use src\virtualAccount\response\GetTransactionResponse;
-
-
 class KPayPacker
 {
     public $clientId;

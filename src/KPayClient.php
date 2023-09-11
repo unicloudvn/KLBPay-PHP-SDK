@@ -2,8 +2,6 @@
 
 namespace src;
 
-
-
 use Exception;
 use src\base\IRequest;
 use src\client\ThirdPartyClient;
@@ -14,12 +12,12 @@ use src\transaction\request\QueryTransactionRequest;
 use src\transaction\response\CancelTransactionResponse;
 use src\transaction\response\CreateTransactionResponse;
 use src\transaction\response\QueryTransactionResponse;
-use src\verify\request\LinkAccountRequest;
-use src\verify\request\VerifyLinkAccountRequest;
-use src\verify\response\CheckAccountNoResponse;
-use src\verify\response\LinkAccountResponse;
-use src\verify\response\VerifyLinkAccountResponse;
+use src\verifyAccountNo\request\CheckAccountNoResponse;
+use src\verifyAccountNo\request\LinkAccountRequest;
+use src\verifyAccountNo\request\LinkAccountResponse;
+use src\verifyAccountNo\request\VerifyLinkAccountRequest;
 use src\verifyAccountNo\request\CheckAccountNoRequest;
+use src\verifyAccountNo\request\VerifyLinkAccountResponse;
 use src\virtualAccount\request\DisableVirtualAccountRequest;
 use src\virtualAccount\request\EnableVirtualAccountRequest;
 use src\virtualAccount\request\GetTransactionRequest;
