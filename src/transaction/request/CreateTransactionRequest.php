@@ -2,9 +2,10 @@
 
 namespace src\transaction\request;
 
+use src\base\IRequest;
 use src\transaction\model\CustomerInfo;
 
-class CreateTransactionRequest implements TransactionRequest
+class CreateTransactionRequest implements IRequest
 {
     public $refTransactionId;
     public $amount;

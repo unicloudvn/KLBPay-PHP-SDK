@@ -2,8 +2,8 @@
 
 namespace src\client;
 
+use src\base\IResponse;
 use src\exception\PayResponseCode;
-use src\transaction\response\TransactionResponse;
 
 class BaseResponse
 {
@@ -12,9 +12,9 @@ class BaseResponse
     public $data;
 
     /**
-     * @param TransactionResponse $data
+     * @param IResponse $data
      */
-    public function __construct(TransactionResponse $data)
+    public function __construct(IResponse $data)
     {
         $this->data = $data;
         $this->message = PayResponseCode::SUCCESS['message'];
@@ -54,9 +54,9 @@ class BaseResponse
     }
 
     /**
-     * @return TransactionResponse
+     * @return IResponse
      */
-    public function getData(): TransactionResponse
+    public function getData(): IResponse
     {
         return $this->data;
     }
@@ -64,7 +64,7 @@ class BaseResponse
     /**
      * @param mixed|null $data
      */
-    public function setData(TransactionResponse $data)
+    public function setData(IResponse $data)
     {
         $this->data = $data;
     }

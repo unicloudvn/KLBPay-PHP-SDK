@@ -2,7 +2,9 @@
 
 namespace src\transaction\request;
 
-class CancelTransactionRequest implements TransactionRequest
+use src\base\IRequest;
+
+class CancelTransactionRequest implements IRequest
 {
     public $transactionId;
 

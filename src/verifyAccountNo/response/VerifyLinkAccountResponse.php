@@ -1,12 +1,12 @@
 <?php
 
-namespace src\transaction\response;
+namespace src\verifyAccountNo\request;
 
 use src\base\IResponse;
 
-class CancelTransactionResponse implements IResponse
+class VerifyLinkAccountResponse implements IResponse
 {
-    public $success;
+    public  $success;
 
     /**
      * @param bool $success
@@ -31,5 +31,4 @@ class CancelTransactionResponse implements IResponse
     {
         $this->success = $success;
     }
-
 }

@@ -1,11 +1,12 @@
 <?php
 
-namespace src\verify\response;
+namespace src\virtualAccount\response;
 
-use src\transaction\response\TransactionResponse;
+use src\base\IResponse;
 
-class VerifyLinkAccountResponse implements TransactionResponse
+class DisableVirtualAccountResponse implements IResponse
 {
+
     public $success;
 
     /**

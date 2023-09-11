@@ -2,7 +2,9 @@
 
 namespace src\transaction\request;
 
-class QueryTransactionRequest implements TransactionRequest
+use src\base\IRequest;
+
+class QueryTransactionRequest implements IRequest
 {
     public $transactionId;
 

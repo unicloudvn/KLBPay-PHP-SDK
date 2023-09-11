@@ -9,6 +9,9 @@ const CHECK_TRANSACTION_PATH = '/api/payment/v1/check';
 
 const CHECK_ACCOUNT_NO_PATH = '/api/openBanking/v1/checkAccountNo';
 const LINK_ACCOUNT_PATH = '/api/openBanking/v1/linkAccount';
-const LINK_ACCOUNT_VERIFY_PATH = '/api/openBanking/v1/linkAccount/verify';
+const LINK_ACCOUNT_VERIFY_PATH = '/api/openBanking/v1/linkAccount/verifyAccountNo';
 
 
+const ENABLE_VIRTUAL_ACCOUNT = '/api/payment/v1/virtualAccount/enable';
+const DISABLE_VIRTUAL_ACCOUNT = '/api/payment/v1/virtualAccount/disable';
+const GET_TRANSACTION = '/api/payment/v1/getTransaction';
