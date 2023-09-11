@@ -7,11 +7,13 @@ use ReflectionClass;
 
 class TransactionStatus
 {
+    public const NONE = ['code' => 0, 'status' => 'NONE', 'name' => 'NONE'];
     public const CREATED = ['code' => 1, 'status' => 'CREATED', 'name' => 'CREATED'];
     public const SUCCESS = ['code' => 2, 'status' => 'SUCCESS', 'name' => 'SUCCESS'];
     public const CANCELED = ['code' => 3, 'status' => 'CANCELED', 'name' => 'CANCELED'];
     public const FAILED = ['code' => 4, 'status' => 'FAILED', 'name' => 'FAILED'];
     public const TIMEOUT = ['code' => 5, 'status' => 'TIMEOUT', 'name' => 'TIMEOUT'];
+    public const PENDING = ['code' => 6, 'status' => 'PENDING', 'name' => 'PENDING'];
 
 
     /**
