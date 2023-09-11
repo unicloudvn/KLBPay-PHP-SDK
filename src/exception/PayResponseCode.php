@@ -25,6 +25,7 @@ class PayResponseCode
     public const PAYMENT_TRANSACTION_FAILED = ['code' => 1611, 'message' => 'Transaction failed', 'name' => 'PAYMENT_TRANSACTION_FAILED'];
     public const PAYMENT_SERVICE_UNAVAILABLE = ['code' => 1612, 'message' => 'Service unavailable', 'name' => 'PAYMENT_SERVICE_UNAVAILABLE'];
     public const PAYMENT_TRANSACTION_STATUS_INVALID = ['code' => 1613, 'message' => 'Invalid transaction status', 'name' => 'PAYMENT_TRANSACTION_STATUS_INVALID'];
+    public const PAYMENT_ACCESS_DENIED = ['code' => 1614, 'message' => "Access denied", 'name' => 'PAYMENT_ACCESS_DENIED'];
     public const MIDDLEWARE_EXISTED_OTP = ['code' => 100014, 'message' => 'Existed OTP', 'name' => 'MIDDLEWARE_EXISTED_OTP'];
     public const MIDDLEWARE_INVALID_OTP = ['code' => 100015, 'message' => 'Invalid OTP', 'name' => 'MIDDLEWARE_INVALID_OTP'];
     public const BENEFICIARY_NOT_EXISTED = ['code' => 5100000, 'message' => 'Beneficiary not existed', 'name' => 'BENEFICIARY_NOT_EXISTED'];
