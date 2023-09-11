@@ -431,32 +431,6 @@ $cancelRequest = new CancelTransactionRequest($order_id);
 $response = $pay_client->cancelTransaction($cancelRequest);
 ```
 
-### **Tạo tài khoản ảo* :
-```php
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $order = $_POST['order'];
-            $timeout = $_POST['timeout'];
-            $fixAmount = $_POST['fixAmount'];
-            $fixContent = $_POST['fixContent'];
-            $bankAccountNo = $_POST['bankAccountNo'];
-            $checkRequest = new EnableVirtualAccountRequest($order,  $timeout,  $fixAmount,  $fixContent,  $bankAccountNo);
-                
-                ...
-            
-            $response = $client->enableVirtualAccount($checkRequest);
-```
-
-### **Hủy tài khoản ảo* :
-```php
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $order = $_POST['order'];
-            $checkRequest = new DisableVirtualAccountRequest($order);
-            
-                ...
-                
-            $response = $client->disableVirtualAccount($checkRequest);
-
-```
 
 Bước cuối: Chạy dòng lệnh the php built-in web server
 ```shell
@@ -516,6 +490,34 @@ echo json_encode(['status' => $status]);
       ...
 
     $response = $client->verifyLinkAccountNo($checkRequest);
+
+```
+
+
+### **Tạo tài khoản ảo* :
+```php
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $order = $_POST['order'];
+            $timeout = $_POST['timeout'];
+            $fixAmount = $_POST['fixAmount'];
+            $fixContent = $_POST['fixContent'];
+            $bankAccountNo = $_POST['bankAccountNo'];
+            $checkRequest = new EnableVirtualAccountRequest($order,  $timeout,  $fixAmount,  $fixContent,  $bankAccountNo);
+                
+                ...
+            
+            $response = $client->enableVirtualAccount($checkRequest);
+```
+
+### **Hủy tài khoản ảo* :
+```php
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $order = $_POST['order'];
+            $checkRequest = new DisableVirtualAccountRequest($order);
+            
+                ...
+                
+            $response = $client->disableVirtualAccount($checkRequest);
 
 ```
 ## **Author**
