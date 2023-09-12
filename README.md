@@ -520,6 +520,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $response = $client->disableVirtualAccount($checkRequest);
 
 ```
+
+### **Lấy danh sách giao dịch* :
+```php
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $size = $_POST['size'];
+            $page = $_POST['page'];
+            $order = $_POST['order'];
+            $bankAccountNo = $_POST['bankAccountNo'];
+            $fromDate = $_POST['fromDate'];
+            $toDate = $_POST['toDate'];
+
+            $checkRequest = new GetTransactionRequest(
+                $size,
+                $page,
+                $order,
+                $bankAccountNo,
+                $fromDate,
+                $toDate
+            );
+                    ...
+            $response = $client->getTransaction($checkRequest);
+            $transactions = json_encode($response, JSON_PRETTY_PRINT);
+            error_log(json_encode($response));
+            echo '<div class="form-group">
+          <label for="transactionData">Transaction Data (JSON)</label>
+          <textarea class="form-control" id="transactionData" rows="30">' . $transactions. '</textarea>
+
+```
 ## **Author**
 
 [dev@unicloud.com.vn](#)
