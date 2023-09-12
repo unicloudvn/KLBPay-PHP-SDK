@@ -15,3 +15,4 @@ const LINK_ACCOUNT_VERIFY_PATH = '/api/openBanking/v1/linkAccount/verifyAccountN
 const ENABLE_VIRTUAL_ACCOUNT = '/api/payment/v1/virtualAccount/enable';
 const DISABLE_VIRTUAL_ACCOUNT = '/api/payment/v1/virtualAccount/disable';
 const GET_TRANSACTION = '/api/payment/v1/getTransaction';
+

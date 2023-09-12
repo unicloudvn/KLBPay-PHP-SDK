@@ -11,9 +11,10 @@ use src\transaction\model\TransactionStatus;
 use src\transaction\response\CancelTransactionResponse;
 use src\transaction\response\CreateTransactionResponse;
 use src\transaction\response\QueryTransactionResponse;
-use src\verifyaccountno\request\CheckAccountNoResponse;
-use src\verifyaccountno\request\LinkAccountResponse;
-use src\verifyaccountno\request\VerifyLinkAccountResponse;
+
+use src\verifyaccountno\response\CheckAccountNoResponse;
+use src\verifyaccountno\response\LinkAccountResponse;
+use src\verifyaccountno\response\VerifyLinkAccountResponse;
 use src\virtualaccount\request\GetTransactionRequest;
 use src\virtualaccount\response\DisableVirtualAccountResponse;
 use src\virtualaccount\response\EnableVirtualAccountResponse;
