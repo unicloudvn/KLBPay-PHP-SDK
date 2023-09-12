@@ -194,12 +194,11 @@ class KPayPacker
     {
         $decoded_response = $this->decode($packed_message);
         $items = [];
-        $status = TransactionStatus::valueOf($decoded_response->status);
 
         foreach ($decoded_response->items as $itemData) {
             $getTransactionResponse = new GetTransactionResponse(
                 $itemData->id,
-                $itemData->$status,
+                $itemData->status,
                 $itemData->amount,
                 $itemData->refTransactionId,
                 $itemData->createDateTime,

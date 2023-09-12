@@ -24,7 +24,7 @@ class GetTransactionResponse implements IRequest
      * @param string $id
      * @param string $status
      * @param int $amount
-     * @param string $refTransactionId
+     * @param string|null $refTransactionId
      * @param string $createDateTime
      * @param string $completeTime
      * @param string $virtualAccount
@@ -38,7 +38,7 @@ class GetTransactionResponse implements IRequest
     public function __construct(string $id,
                                 string $status,
                                 int    $amount,
-                                string $refTransactionId,
+                                ?string $refTransactionId,
                                 string $createDateTime,
                                 string $completeTime,
                                 string $virtualAccount,
@@ -113,17 +113,17 @@ class GetTransactionResponse implements IRequest
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getRefTransactionId(): string
+    public function getRefTransactionId(): ?string
     {
         return $this->refTransactionId;
     }
 
     /**
-     * @param string $refTransactionId
+     * @param string|null $refTransactionId
      */
-    public function setRefTransactionId(string $refTransactionId): void
+    public function setRefTransactionId(?string $refTransactionId): void
     {
         $this->refTransactionId = $refTransactionId;
     }
