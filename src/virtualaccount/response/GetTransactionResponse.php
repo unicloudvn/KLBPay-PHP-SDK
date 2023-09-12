@@ -12,7 +12,6 @@ class GetTransactionResponse implements IRequest
     public $refTransactionId;
     public $createDateTime;
     public $completeTime;
-
     public $virtualAccount;
     public $description;
     public $paymentType;

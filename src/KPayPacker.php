@@ -4,6 +4,7 @@ namespace src;
 
 use Exception;
 use src\base\IRequest;
+use src\base\PageResponse;
 use src\exception\PaymentException;
 use src\security\PackedMessage;
 use src\security\SecurityUtil;
@@ -11,16 +12,12 @@ use src\transaction\model\TransactionStatus;
 use src\transaction\response\CancelTransactionResponse;
 use src\transaction\response\CreateTransactionResponse;
 use src\transaction\response\QueryTransactionResponse;
-
 use src\verifyaccountno\response\CheckAccountNoResponse;
 use src\verifyaccountno\response\LinkAccountResponse;
 use src\verifyaccountno\response\VerifyLinkAccountResponse;
-use src\virtualaccount\request\GetTransactionRequest;
 use src\virtualaccount\response\DisableVirtualAccountResponse;
 use src\virtualaccount\response\EnableVirtualAccountResponse;
 use src\virtualaccount\response\GetTransactionResponse;
-use src\virtualaccount\response\PageResponse;
-
 
 class KPayPacker
 {
@@ -28,7 +25,6 @@ class KPayPacker
     public $encryptKey;
     public $secretKey;
     public $maxTimestampDiff;
-
     public $host;
 
     /**
@@ -123,7 +119,6 @@ class KPayPacker
     public function cancel(PackedMessage $packed_message): CancelTransactionResponse
     {
         $decoded_response = $this->decode($packed_message);
-
         return new CancelTransactionResponse(
             $decoded_response->success
         );
@@ -195,28 +190,41 @@ class KPayPacker
         );
     }
 
-    public function getTransaction(PackedMessage $packed_message): GetTransactionResponse
+    public function getTransaction(PackedMessage $packed_message): PageResponse
     {
         $decoded_response = $this->decode($packed_message);
-        return new GetTransactionResponse(
-            $decoded_response->id,
-            TransactionStatus::valueOf($decoded_response->status),
-            $decoded_response->amount,
-            $decoded_response->refTransactionId,
-            $decoded_response->createDateTime,
-            $decoded_response->completeTime,
-            $decoded_response->virtualAccount,
-            $decoded_response->description,
-            $decoded_response->paymentType,
-            $decoded_response->txnNumber,
-            $decoded_response->accountName,
-            $decoded_response->accountNo,
-            $decoded_response->interBankTrace
+        $items = [];
+        $status = TransactionStatus::valueOf($decoded_response->status);
 
+        foreach ($decoded_response->items as $itemData) {
+            $getTransactionResponse = new GetTransactionResponse(
+                $itemData->id,
+                $itemData->$status,
+                $itemData->amount,
+                $itemData->refTransactionId,
+                $itemData->createDateTime,
+                $itemData->completeTime,
+                $itemData->virtualAccount,
+                $itemData->description,
+                $itemData->paymentType,
+                $itemData->txnNumber,
+                $itemData->accountName,
+                $itemData->accountNo,
+                $itemData->interBankTrace
+            );
+
+            $items[] = $getTransactionResponse;
+        }
+
+        return new PageResponse(
+            $items,
+            $decoded_response->pageNumber,
+            $decoded_response->pageSize,
+            $decoded_response->totalPage,
+            $decoded_response->totalSize
         );
 
     }
-
 
     /**
      * @throws Exception
@@ -240,6 +248,5 @@ class KPayPacker
 
         return new PackedMessage($this->clientId, $timestamp, $x_api_validate, $encrypt_data);
     }
-
 
 }
