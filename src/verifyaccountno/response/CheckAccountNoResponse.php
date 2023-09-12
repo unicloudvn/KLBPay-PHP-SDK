@@ -1,6 +1,6 @@
 <?php
 
-namespace src\verifyAccountNo\request;
+namespace src\verifyaccountno\request;
 
 use src\base\IResponse;
 

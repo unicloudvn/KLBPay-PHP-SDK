@@ -1,8 +1,8 @@
 <?php
 
-namespace src\virtualAccount\response;
+namespace src\virtualaccount\response;
 
-use src\virtualAccount\request\GetTransactionRequest;
+use src\virtualaccount\request\GetTransactionRequest;
 
 class PageResponse
 {

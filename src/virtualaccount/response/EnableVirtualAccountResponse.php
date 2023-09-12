@@ -1,6 +1,6 @@
 <?php
 
-namespace src\virtualAccount\response;
+namespace src\virtualaccount\response;
 
 use src\base\IResponse;
 

@@ -1,12 +1,13 @@
 <?php
 
-namespace src\verifyAccountNo\request;
+namespace src\virtualaccount\response;
 
 use src\base\IResponse;
 
-class VerifyLinkAccountResponse implements IResponse
+class DisableVirtualAccountResponse implements IResponse
 {
-    public  $success;
+
+    public $success;
 
     /**
      * @param bool $success

@@ -1,6 +1,6 @@
 <?php
 
-namespace src\virtualAccount\request;
+namespace src\virtualaccount\request;
 
 use src\base\IRequest;
 

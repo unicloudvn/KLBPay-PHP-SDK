@@ -11,14 +11,15 @@ use src\transaction\model\TransactionStatus;
 use src\transaction\response\CancelTransactionResponse;
 use src\transaction\response\CreateTransactionResponse;
 use src\transaction\response\QueryTransactionResponse;
-use src\verifyAccountNo\request\CheckAccountNoResponse;
-use src\verifyAccountNo\request\LinkAccountResponse;
-use src\verifyAccountNo\request\VerifyLinkAccountResponse;
-use src\virtualAccount\request\GetTransactionRequest;
-use src\virtualAccount\response\DisableVirtualAccountResponse;
-use src\virtualAccount\response\EnableVirtualAccountResponse;
-use src\virtualAccount\response\GetTransactionResponse;
-use src\virtualAccount\response\PageResponse;
+use src\verifyaccountno\request\CheckAccountNoResponse;
+use src\verifyaccountno\request\LinkAccountResponse;
+use src\verifyaccountno\request\VerifyLinkAccountResponse;
+use src\virtualaccount\request\GetTransactionRequest;
+use src\virtualaccount\response\DisableVirtualAccountResponse;
+use src\virtualaccount\response\EnableVirtualAccountResponse;
+use src\virtualaccount\response\GetTransactionResponse;
+use src\virtualaccount\response\PageResponse;
+
 
 class KPayPacker
 {
@@ -196,14 +197,13 @@ class KPayPacker
     public function getTransaction(PackedMessage $packed_message, GetTransactionRequest $request): PageResponse
     {
         $decoded_responses = $this->decode($packed_message);
-        $status = TransactionStatus::valueOf($decoded_responses->status);
 
         $transactionResponses = [];
 
         foreach ($decoded_responses as $decoded_response) {
             $transactionResponse = new GetTransactionResponse(
                 $decoded_response->id,
-                $status,
+                TransactionStatus::valueOf($decoded_responses->status),
                 $decoded_response->amount,
                 $decoded_response->refTransactionId,
                 $decoded_response->createDateTime,
@@ -221,7 +221,6 @@ class KPayPacker
 
         return new PageResponse($transactionResponses, $request->getPage(), $request->getSize(), count($transactionResponses));
     }
-
 
 
     /**
