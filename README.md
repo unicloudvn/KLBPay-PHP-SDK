@@ -545,7 +545,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             error_log(json_encode($response));
             echo '<div class="form-group">
           <label for="transactionData">Transaction Data (JSON)</label>
-          <textarea class="form-control" id="transactionData" rows="30">' . $transactions. '</textarea>
+          <textarea class="form-control" id="transactionData" rows="30" readonly>' . $transactions. '</textarea>
 
 ```
 ## **Author**
