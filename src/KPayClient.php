@@ -23,7 +23,7 @@ use src\virtualaccount\request\EnableVirtualAccountRequest;
 use src\virtualaccount\request\GetTransactionRequest;
 use src\virtualaccount\response\DisableVirtualAccountResponse;
 use src\virtualaccount\response\EnableVirtualAccountResponse;
-use src\virtualaccount\response\PageResponse;
+use src\virtualaccount\response\GetTransactionResponse;
 
 
 require_once 'config/config.php';
@@ -135,10 +135,10 @@ class KPayClient
     /**
      * @throws Exception
      */
-    public function getTransaction(GetTransactionRequest $request): PageResponse
+    public function getTransaction(GetTransactionRequest $request): GetTransactionResponse
     {
         $packed_response = $this->execute(GET_TRANSACTION, $request);
-        return $this->kPayPacker->getTransaction($packed_response,  $request);
+        return $this->kPayPacker->getTransaction($packed_response);
     }
 
 }

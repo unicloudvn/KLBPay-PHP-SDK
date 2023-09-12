@@ -195,32 +195,26 @@ class KPayPacker
         );
     }
 
-    public function getTransaction(PackedMessage $packed_message, GetTransactionRequest $request): PageResponse
+    public function getTransaction(PackedMessage $packed_message): GetTransactionResponse
     {
-        $decoded_responses = $this->decode($packed_message);
+        $decoded_response = $this->decode($packed_message);
+        return new GetTransactionResponse(
+            $decoded_response->id,
+            TransactionStatus::valueOf($decoded_response->status),
+            $decoded_response->amount,
+            $decoded_response->refTransactionId,
+            $decoded_response->createDateTime,
+            $decoded_response->completeTime,
+            $decoded_response->virtualAccount,
+            $decoded_response->description,
+            $decoded_response->paymentType,
+            $decoded_response->txnNumber,
+            $decoded_response->accountName,
+            $decoded_response->accountNo,
+            $decoded_response->interBankTrace
 
-        $transactionResponses = [];
+        );
 
-        foreach ($decoded_responses as $decoded_response) {
-            $transactionResponse = new GetTransactionResponse(
-                $decoded_response->id,
-                TransactionStatus::valueOf($decoded_responses->status),
-                $decoded_response->amount,
-                $decoded_response->refTransactionId,
-                $decoded_response->createDateTime,
-                $decoded_response->completeTime,
-                $decoded_response->virtualAccount,
-                $decoded_response->description,
-                $decoded_response->paymentType,
-                $decoded_response->txnNumber,
-                $decoded_response->accountName,
-                $decoded_response->accountNo,
-                $decoded_response->interBankTrace
-            );
-            $transactionResponses[] = $transactionResponse;
-        }
-
-        return new PageResponse($transactionResponses, $request->getPage(), $request->getSize(), count($transactionResponses));
     }
 
 
