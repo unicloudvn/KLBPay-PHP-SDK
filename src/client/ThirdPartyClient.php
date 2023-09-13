@@ -23,6 +23,7 @@ class ThirdPartyClient
             $client = new Client();
             return $client->post($url, $request);
         } catch (GuzzleException $exception) {
+            error_log($exception);
             throw new PaymentException('PAYMENT_SECURITY_VIOLATION');
         }
     }
