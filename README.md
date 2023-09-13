@@ -524,12 +524,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ### **Lấy danh sách giao dịch* :
 ```php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $size = $_POST['size'];
-            $page = $_POST['page'];
-            $order = $_POST['order'];
+            $size = $_POST['size'] ?? null;
+            $page = $_POST['page'] ?? null;
+            $order = $_POST['order'] ?? null;
             $bankAccountNo = $_POST['bankAccountNo'];
             $fromDate = $_POST['fromDate'];
             $toDate = $_POST['toDate'];
+            if ($size === '') {
+                $size = null;
+            }
+            if ($page === '') {
+                $page = null;
+            }
+            if ($order === '') {
+                $order = null;
+            }
 
             $checkRequest = new GetTransactionRequest(
                 $size,
